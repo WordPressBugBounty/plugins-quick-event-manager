@@ -1,0 +1,4462 @@
+# Copyright (C) 2024 quick-event-manager
+# This file is distributed under the same license as the quick-event-manager package.
+msgid ""
+msgstr ""
+"Project-Id-Version: quick-event-manager\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-23 10:33+0000\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: quick-event-manager/business/class-business.php:129
+msgid "Payment not completed for"
+msgstr ""
+
+#: quick-event-manager/business/class-business.php:129, quick-event-manager/legacy/quick-event-register.php:1956
+msgid " on "
+msgstr ""
+
+#: quick-event-manager/control/autoloader.php:74
+msgid "The system file attempting to be loaded at %1$s does not exist."
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:151, quick-event-manager/legacy/quick-event-options.php:99
+msgid "Find out more..."
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:152, quick-event-manager/legacy/quick-event-options.php:100
+msgid "No event found"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:156, quick-event-manager/legacy/quick-event-options.php:104
+msgid "Return to Event list"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:165, quick-event-manager/legacy/quick-event-options.php:113
+msgid "Download Event to Calendar"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:167, quick-event-manager/legacy/quick-event-options.php:115
+msgid "Timezone:"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:168, quick-event-manager/legacy/quick-event-options.php:116
+msgid "time"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:175, quick-event-manager/legacy/quick-event-options.php:123
+msgid "Select a Category"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:184, quick-event-manager/legacy/quick-event-options.php:132, quick-event-manager/legacy/quick-event-options.php:189
+msgid "Event Categories:"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:187, quick-event-manager/legacy/quick-event-options.php:135, quick-event-manager/legacy/quick-event-options.php:193
+msgid "Current Category:"
+msgstr ""
+
+#: quick-event-manager/core/class-utilities.php:190, quick-event-manager/legacy/quick-event-options.php:138, quick-event-manager/legacy/quick-event-options.php:196, quick-event-manager/legacy/quick-event-options.php:269
+msgid "Show All"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-csv-functions.php:7, quick-event-manager/legacy/qem-ics-functions.php:20, quick-event-manager/legacy/quick-event-editor.php:978, quick-event-manager/legacy/quick-event-register.php:2943, quick-event-manager/legacy/quick-event-register.php:2972, quick-event-manager/legacy/quick-event-register.php:2984, quick-event-manager/legacy/quick-event-register.php:3002, quick-event-manager/legacy/quick-event-register.php:3019, quick-event-manager/legacy/quick-event-register.php:3037, quick-event-manager/legacy/quick-event-register.php:3060, quick-event-manager/legacy/quick-event-register.php:3120, quick-event-manager/legacy/quick-event-register.php:3132, quick-event-manager/legacy/quick-event-register.php:3157, quick-event-manager/legacy/quick-event-register.php:3187
+msgid "Invalid Nonce, sorry something went wrong"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-csv-functions.php:206, quick-event-manager/legacy/quick-event-register.php:2777, quick-event-manager/legacy/quick-event-register.php:2792
+msgid "Pending"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-build-functions.php:856
+msgid "Since June 2016 you need to have a valid API key enabled to display Google maps, see plugin settings"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:7
+msgctxt "post type general name"
+msgid "Events"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:8
+msgctxt "post type singular name"
+msgid "Event"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:9
+msgctxt "event"
+msgid "Add New"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:10
+msgid "Add New Event"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:11
+msgid "Edit Event"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:12
+msgid "New Event"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:13
+msgid "View Event"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:14
+msgid "Search event"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:15
+msgid "Nothing found"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:16
+msgid "Nothing found in Trash"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-cpt-functions.php:108
+msgid "Copy of:"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-guest__premium_only.php:114
+msgid "Errors will reset to today&#146;s date."
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-guest__premium_only.php:118
+msgid "Leave blank for one day events."
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-guest__premium_only.php:369, quick-event-manager/legacy/qem-event-guest__premium_only.php:341
+msgid "Guest Event Posted"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-guest__premium_only.php:370
+msgid "New event awaiting approval"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-guest__premium_only.php:337
+msgid "Author"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-guest__premium_only.php:338, quick-event-manager/legacy/quick-event-options.php:719
+msgid "Author Email"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-event-guest__premium_only.php:342
+msgid "A new event has been published"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-filter-functions.php:50, quick-event-manager/legacy/quick-event-manager-settings.php:131, quick-event-manager/legacy/quick-event-manager-settings.php:213, quick-event-manager/legacy/quick-event-manager-settings.php:214, quick-event-manager/legacy/quick-event-manager-settings.php:1760
+msgid "Settings"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-navi-functions__premium_only.php:38
+msgid "Page %CURRENT_PAGE% of %TOTAL_PAGES%"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-navi-functions__premium_only.php:41
+msgid "&laquo; First"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-navi-functions__premium_only.php:42
+msgid "Last &raquo;"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-navi-functions__premium_only.php:43
+msgid "&laquo;"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-navi-functions__premium_only.php:44
+msgid "&raquo;"
+msgstr ""
+
+#: quick-event-manager/legacy/qem-navi-functions__premium_only.php:45, quick-event-manager/legacy/qem-navi-functions__premium_only.php:46
+msgid "..."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:82, quick-event-manager/legacy/quick-event-extensions__premium_only.php:679, quick-event-manager/legacy/quick-event-manager-settings.php:1450, quick-event-manager/legacy/quick-event-payments.php:153, quick-event-manager/legacy/quick-event-register.php:408
+msgid "Event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:83
+msgid "Event Date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:84, quick-event-manager/legacy/quick-event-manager-settings.php:444, quick-event-manager/legacy/quick-event-options.php:32
+msgid "Event Time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:85, quick-event-manager/legacy/quick-event-editor.php:277, quick-event-manager/legacy/quick-event-manager-settings.php:445, quick-event-manager/legacy/quick-event-options.php:33, quick-event-manager/legacy/quick-event-options.php:730
+msgid "Venue"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:86
+msgid "Attending"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:86, quick-event-manager/legacy/quick-event-editor.php:615, quick-event-manager/legacy/quick-event-manager-settings.php:1908
+msgid "Places"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:177
+msgid "Empty fields are not displayed"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:178, quick-event-manager/legacy/quick-event-editor.php:607
+msgid "See the plugin"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:180
+msgid "settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:181
+msgid "page for options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:183, quick-event-manager/legacy/quick-event-register.php:3225
+msgid "Event ID:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:187, quick-event-manager/legacy/quick-event-extensions__premium_only.php:679
+msgid "Date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:190
+msgid "Local date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:191, quick-event-manager/legacy/quick-event-editor.php:202
+msgid "as it appears on your website"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:195, quick-event-manager/legacy/quick-event-options.php:703, quick-event-manager/legacy/quick-event-options.php:726
+msgid "End Date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:198
+msgid "Leave blank for one day events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:201
+msgid "Current end date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:208, quick-event-manager/legacy/quick-event-options.php:31
+msgid "Short Description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:215
+msgid "Time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:222
+msgid "Start times in the format 8.23 am/pm, 8.23, 8:23 and 08:23 will be used to order events by time and date. All other formats will display but won't contribute to the event ordering"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:229
+msgid "Timezone"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:232
+msgid "Current timezone:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:234
+msgid "Select a new timezone or enter your own:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:236, quick-event-manager/legacy/quick-event-manager-settings.php:1303, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:28, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:35
+msgid "None"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:281, quick-event-manager/legacy/quick-event-manager-settings.php:446, quick-event-manager/legacy/quick-event-options.php:34, quick-event-manager/legacy/quick-event-options.php:708, quick-event-manager/legacy/quick-event-options.php:731
+msgid "Address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:285, quick-event-manager/legacy/quick-event-manager-settings.php:447, quick-event-manager/legacy/quick-event-options.php:709, quick-event-manager/legacy/quick-event-options.php:732
+msgid "Website"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:287, quick-event-manager/legacy/quick-event-options.php:710
+msgid "Display As"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:292, quick-event-manager/legacy/quick-event-manager-settings.php:448, quick-event-manager/legacy/quick-event-options.php:36, quick-event-manager/legacy/quick-event-options.php:711, quick-event-manager/legacy/quick-event-options.php:734
+msgid "Cost"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:297, quick-event-manager/legacy/quick-event-options.php:712
+msgid "Donation?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:298
+msgid "Accept a variable  donation ( minimum per place set in costs)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:299, quick-event-manager/legacy/quick-event-editor.php:322, quick-event-manager/legacy/quick-event-manager-settings.php:512
+msgid "Registration form settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:303, quick-event-manager/legacy/quick-event-options.php:59
+msgid "Deposit"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:305
+msgid "Per person"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:305
+msgid "Per Event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:306
+msgid "If you add a deposit this amount will be used for payments"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:309, quick-event-manager/legacy/quick-event-manager-settings.php:449, quick-event-manager/legacy/quick-event-options.php:37, quick-event-manager/legacy/quick-event-options.php:713, quick-event-manager/legacy/quick-event-options.php:736
+msgid "Organiser"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:313
+msgid "Organiser Contact Details"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:318, quick-event-manager/legacy/quick-event-manager-settings.php:454, quick-event-manager/legacy/quick-event-manager-settings.php:1859, quick-event-manager/legacy/quick-event-options.php:42, quick-event-manager/legacy/quick-event-options.php:715
+msgid "Registration Form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:320
+msgid "Add registration form to this event."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:328, quick-event-manager/legacy/quick-event-editor.php:572
+msgid "Notes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:329
+msgid "You can create a custom registration form for this event using the options at the bottom of this page"
+msgstr ""
+
+#. translators: leave % placeholder in place
+#: quick-event-manager/legacy/quick-event-editor.php:332
+msgid "If you are using the %1$sautoresponder%2$s you can create a reply message for this event. See the 'Registration Confirmation Message' at the bottom of this page."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:346
+msgid "External Event / Registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:347
+msgid "your-external-event-link-here"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:348
+msgid "Upgrade to be able to specify a link to a third party event detail / registration system, e.g. Eventbrite / Ticketmaster etc. No registration form wil be shown or processed by Quick Event Manager"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:337
+msgid "External Event / Registration Link"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:339
+msgid "Specify a link to a third party event detail / registration system, e.g. Eventbrite / Ticketmaster etc. No registration form wil be shown or processed by Quick Event Manager. Registration Form: must be selected for this link to show instead of the form. Leave blank to use QEM registration forms."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:341
+msgid "External Event / Registration Description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:343
+msgid "Specify a a label for the External Event button e.g. 'Register on X-Sys'"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:355, quick-event-manager/legacy/quick-event-manager-settings.php:453, quick-event-manager/legacy/quick-event-options.php:41
+msgid "Places Available"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:360
+msgid "Maximum number of places per registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:363
+msgid "Make this required number"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:366
+msgid "Tick if you want only a single name/email to reserve multi places"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:369
+msgid "Collect emails - if you have made emails mandatory on the registration form - you need to tick this otherwise users will not be able to submit the form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:404, quick-event-manager/legacy/quick-event-editor.php:374
+msgid "Registration Start Date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:407
+msgid "Upgrade to set registration start"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:412
+msgid "Show registration not open on event page. Message to display before start date:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:417, quick-event-manager/legacy/quick-event-editor.php:386
+msgid "Registration Cutoff Date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:420
+msgid "Upgrade to set time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:426, quick-event-manager/legacy/quick-event-editor.php:393
+msgid "Show cutoff date on event page. Message to display before cutoff date:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:433, quick-event-manager/legacy/quick-event-editor.php:398
+msgid "Show message after cutoff. Message to display:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:381
+msgid "Show registraton not open on event page. Message to display before start date:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:441, quick-event-manager/legacy/quick-event-manager-settings.php:226, quick-event-manager/legacy/quick-event-options.php:461
+msgid "Payment"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:443
+msgid "Link to payment after registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:445
+msgid "Payment settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:451
+msgid "Use variable prices"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:465
+msgid "Ticket Type Name/ Label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:466
+msgid "Cost per ticket"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:490
+msgid "Redirect to a URL after registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:493
+msgid "Add event ID to redirect URL"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:497
+msgid "Read More Label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:502
+msgid "Password protection"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:505
+msgid "Whole event ( also set Visibility: Password protected in Publish box)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:511
+msgid "Hide Event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:513
+msgid "Hide this event in the event list (only display on the calendar)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:518, quick-event-manager/legacy/quick-event-manager-settings.php:1383, quick-event-manager/legacy/quick-event-options.php:716
+msgid "Event Image"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:522
+msgid "event image"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:520
+msgid "placeholder image"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:528
+msgid "Upload Image"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:529
+msgid "Remove Image"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:532, quick-event-manager/legacy/quick-event-editor.php:535
+msgid "Repeat Event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:533
+msgid "Warning"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:534
+msgid "Only use once or you will get lots of duplicated events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:537
+msgid "Repeat every"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:542
+msgid "for"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:556, quick-event-manager/legacy/quick-event-manager-settings.php:452, quick-event-manager/legacy/quick-event-options.php:40
+msgid "Attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:556
+msgid "names and emails collected from the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:558
+msgid "registration form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:563
+msgid "View Full Registration Details"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:568
+msgid "Tick to hide registration names from event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:597
+msgid "Upgrade to premium to enable changes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:605
+msgid "Use custom form settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:606
+msgid "Check the fields you want to display on the form."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:609, quick-event-manager/legacy/quick-event-manager-settings.php:135, quick-event-manager/legacy/quick-event-manager-settings.php:222, quick-event-manager/legacy/quick-event-manager-settings.php:231, quick-event-manager/legacy/quick-event-manager-settings.php:2575
+msgid "Registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:610
+msgid "page for options and to change the order of the fields."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:612, quick-event-manager/legacy/quick-event-manager-settings.php:1896
+msgid "Name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:613, quick-event-manager/legacy/quick-event-manager-settings.php:1899, quick-event-manager/legacy/quick-event-manager-settings.php:3269, quick-event-manager/legacy/quick-event-register.php:1027, quick-event-manager/legacy/quick-event-register.php:3256
+msgid "Email"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:614, quick-event-manager/legacy/quick-event-manager-settings.php:1905, quick-event-manager/legacy/quick-event-options.php:714, quick-event-manager/legacy/quick-event-options.php:737
+msgid "Telephone"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:616, quick-event-manager/legacy/quick-event-manager-settings.php:1912, quick-event-manager/legacy/quick-event-options.php:324
+msgid "Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:617, quick-event-manager/legacy/quick-event-manager-settings.php:1902, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:25, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:33
+msgid "Not Attending"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:618, quick-event-manager/legacy/quick-event-editor.php:619
+msgid "User defined"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:620, quick-event-manager/legacy/quick-event-extensions__premium_only.php:538, quick-event-manager/legacy/quick-event-extensions__premium_only.php:703, quick-event-manager/legacy/quick-event-manager-settings.php:1930, quick-event-manager/legacy/quick-event-register.php:2488
+msgid "Dropdown 1"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:621, quick-event-manager/legacy/quick-event-editor.php:625, quick-event-manager/legacy/quick-event-editor.php:630
+msgid "Values"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:624, quick-event-manager/legacy/quick-event-extensions__premium_only.php:542, quick-event-manager/legacy/quick-event-extensions__premium_only.php:707, quick-event-manager/legacy/quick-event-manager-settings.php:1944, quick-event-manager/legacy/quick-event-register.php:2494
+msgid "Dropdown 2"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:628, quick-event-manager/legacy/quick-event-options.php:330
+msgid "Number"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:629, quick-event-manager/legacy/quick-event-manager-settings.php:1950
+msgid "Options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:633
+msgid "Additional Info (displays as plain text)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:635, quick-event-manager/legacy/quick-event-manager-settings.php:1986
+msgid "Show box to add more names if number attending is greater than 1"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:636
+msgid "Collect email addresses for all attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:637, quick-event-manager/legacy/quick-event-manager-settings.php:1919
+msgid "Copy Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:638, quick-event-manager/legacy/quick-event-manager-settings.php:1999
+msgid "Include Terms and Conditions checkbox"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:639, quick-event-manager/legacy/quick-event-manager-settings.php:1915, quick-event-manager/legacy/quick-event-options.php:717
+msgid "Captcha"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:641
+msgid "Enable Coupon Input for this Event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:878, quick-event-manager/legacy/quick-event-options.php:530, quick-event-manager/legacy/quick-event-options.php:699, quick-event-manager/legacy/quick-event-options.php:722
+msgid "Event Details"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:879
+msgid "Event Registration Form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:880
+msgid "Registration Confirmation Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:884
+msgid "Event Description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:982
+msgid "Incorrect access level, sorry something went wrong"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:987
+msgid "No post to duplicate has been supplied!"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:1004
+msgid "Duplicate"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-editor.php:1016, quick-event-manager/ui/admin/class-admin-attendees.php:59, quick-event-manager/ui/admin/class-admin-attendees.php:60, quick-event-manager/ui/admin/class-admin-attendees.php:67, quick-event-manager/ui/admin/class-admin-attendees.php:68
+msgid "Registrations"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:312
+msgid "Message sent to %1$s selected attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:334
+msgid "Message sent to all registrants"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:352
+msgid "Email Attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:365, quick-event-manager/legacy/quick-event-manager-settings.php:2376
+msgid "From Name:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:365
+msgid "Defaults to your"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:365
+msgid "Site Title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:365, quick-event-manager/legacy/quick-event-extensions__premium_only.php:367, quick-event-manager/legacy/quick-event-manager-settings.php:2376, quick-event-manager/legacy/quick-event-manager-settings.php:2379
+msgid "if left blank"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:367, quick-event-manager/legacy/quick-event-manager-settings.php:2378
+msgid "From Email:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:367, quick-event-manager/legacy/quick-event-manager-settings.php:2378
+msgid "Defaults to the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:367, quick-event-manager/legacy/quick-event-manager-settings.php:2378
+msgid "Admin Email"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:369, quick-event-manager/legacy/quick-event-manager-settings.php:2381
+msgid "Subject:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:611, quick-event-manager/legacy/quick-event-extensions__premium_only.php:655, quick-event-manager/legacy/quick-event-extensions__premium_only.php:827
+msgid "Send to this email address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:613, quick-event-manager/legacy/quick-event-extensions__premium_only.php:659, quick-event-manager/legacy/quick-event-register.php:3231
+msgid "Email List"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:715, quick-event-manager/legacy/quick-event-register.php:2524
+msgid "Date Sent"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:836
+msgid "No registrations found"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:826
+msgid "Your Registrations"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:1166
+msgid "Everyone has been deleted"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:1179
+msgid "Delete ALL not attending records"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:1180
+msgid "Are you sure you want to delete the list?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:1181
+msgid "Send report to this email address:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:1214
+msgid "Everybody is attending"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:1321
+msgid "Warning!"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-extensions__premium_only.php:1327, quick-event-manager/legacy/quick-event-manager-settings.php:2387, quick-event-manager/legacy/quick-event-manager-settings.php:2505
+msgid "Event Editor"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:45
+msgid "Quick Event Manager"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:130
+msgid "Setup"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:132, quick-event-manager/legacy/quick-event-manager-settings.php:216
+msgid "Display"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:133, quick-event-manager/legacy/quick-event-manager-settings.php:218, quick-event-manager/legacy/quick-event-widget.php:90
+msgid "Styling"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:134, quick-event-manager/legacy/quick-event-manager-settings.php:220
+msgid "Calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:136, quick-event-manager/legacy/quick-event-manager-settings.php:224
+msgid "Auto Responder"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:137
+msgid "Event Payment"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:173
+msgid "or visit the community support forum %1$shere%2$s, if you require urgent or personalised support please upgrade to %3$sa paid plan here%2$s"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:164
+msgid "if you cannot find a solution please use the contact form %1$shere%2$s."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:183
+msgid "Setting up and using the plugin"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:184
+msgid "Important!"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:184
+msgid "If you get an error when trying to view events, resave your"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:185
+msgid "Create new events using the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:185, quick-event-manager/legacy/quick-event-manager-settings.php:232
+msgid "link on your dashboard menu"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:186
+msgid "To display a list of events on your posts or pages use the shortcode: [qem]"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:187
+msgid "If you prefer to display your events as a calendar use the shortcode"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:188
+msgid "More shortcodes on the right"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:189
+msgid "That&#39;s pretty much it. All you need to do now is"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:189
+msgid "create some events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:191
+msgid "Help and Support"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:192
+msgid "Use the Knowledge base at"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:211
+msgid "Event Manager Role"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:212
+msgid "There is a user role called <em>Event Manager</em>. Users with this role only have access to events, they cannot edit posts or pages."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:215
+msgid "Select which fields are displayed in the event list and event page. Change actions and style of each field"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:217
+msgid "Edit event messages and display options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:219
+msgid "Styling options for the date icon and overall event layout"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:221
+msgid "Show events as a calendar. Some styling and display options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:223
+msgid "Add a registration form and attendee reports to your events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:225
+msgid "Set up an email responder for event registrations"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:227
+msgid "Configure event payments"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:228
+msgid "Registration Reports"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:229
+msgid "View, edit and download event registrations"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:230
+msgid "Access using the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:235, quick-event-manager/legacy/quick-event-manager-settings.php:3259
+msgid "Template"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:236
+msgid "Create an event template based on your theme single.php"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:237
+msgid "Guest Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:238
+msgid "Let your visitors create their own events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:239
+msgid "Additional Reports"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:240
+msgid "Extensions and additional reports"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:243
+msgid "Primary Shortcodes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:248
+msgid "Standard event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:252
+msgid "Calendar view"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:256
+msgid "Set the number of events to display"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:260
+msgid "Show old events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:264
+msgid "List events by category"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:268
+msgid "There are loads more shortcode options listed on the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:270
+msgid "Plugin Website"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:271
+msgid "link opens in a new tab"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:340
+msgid "The form settings have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:346
+msgid "The event settings have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:354
+msgid "Use the check boxes to select which fields to display in the event post and the event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:355
+msgid "Drag and drop to change the order of the fields"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:359
+msgid "Show in event post"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:360
+msgid "Show in event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:361
+msgid "Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:362
+msgid "Font size"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:363
+msgid "Font attributes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:364
+msgid "Caption and display options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:402, quick-event-manager/legacy/quick-event-manager-settings.php:1107, quick-event-manager/legacy/quick-event-manager-settings.php:1379
+msgid "Bold"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:405
+msgid "Italics"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:419
+msgid "Make publication date the same as the event date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:422, quick-event-manager/legacy/quick-event-manager-settings.php:905, quick-event-manager/legacy/quick-event-manager-settings.php:1152, quick-event-manager/legacy/quick-event-manager-settings.php:1502, quick-event-manager/legacy/quick-event-manager-settings.php:2430, quick-event-manager/legacy/quick-event-manager-settings.php:2609, quick-event-manager/legacy/quick-event-manager-settings.php:2962, quick-event-manager/legacy/quick-event-manager-settings.php:3196, quick-event-manager/legacy/quick-event-manager-settings.php:3235, quick-event-manager/legacy/quick-event-manager-settings.php:3243, quick-event-manager/legacy/quick-event-manager-settings.php:3256, quick-event-manager/legacy/quick-event-manager-settings.php:3296
+msgid "Save Changes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:423, quick-event-manager/legacy/quick-event-manager-settings.php:906, quick-event-manager/legacy/quick-event-manager-settings.php:1153, quick-event-manager/legacy/quick-event-manager-settings.php:1503, quick-event-manager/legacy/quick-event-manager-settings.php:2154, quick-event-manager/legacy/quick-event-manager-settings.php:2431, quick-event-manager/legacy/quick-event-manager-settings.php:2610, quick-event-manager/legacy/quick-event-manager-settings.php:3198
+msgid "Reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:424, quick-event-manager/legacy/quick-event-manager-settings.php:907, quick-event-manager/legacy/quick-event-manager-settings.php:3198
+msgid "Are you sure you want to reset the display settings?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:427
+msgid "Shortcode and Widget Field Selection"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:428
+msgid "If you want a custom layout for a specific list you can use the shortcode [qem fields=1,2,5]."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:429
+msgid "On the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:433
+msgid "widget"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:437
+msgid "just enter the field numbers separated with commas."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:441
+msgid "The numbers correspond to the fields like this"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:443
+msgid "Short description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:450
+msgid "Full description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:451, quick-event-manager/legacy/quick-event-options.php:39
+msgid "Places Taken"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:455, quick-event-manager/legacy/quick-event-manager-settings.php:1139, quick-event-manager/legacy/quick-event-manager-settings.php:1426, quick-event-manager/legacy/quick-event-options.php:43, quick-event-manager/legacy/quick-event-options.php:62, quick-event-manager/legacy/quick-event-options.php:701
+msgid "Category"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:456, quick-event-manager/legacy/quick-event-options.php:44
+msgid "Sharing"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:458
+msgid "The order of the fields and other options is set using the drag and drop selectors above"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:464
+msgid "description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:468
+msgid "start time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:468
+msgid "end time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:471
+msgid "venue"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:474
+msgid "address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:481
+msgid "cost"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:485
+msgid "organiser"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:486
+msgid "Show organiser's contact details"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:489
+msgid "The contents of the event detail editing box."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:499
+msgid "Show names"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:501
+msgid "Show Avatar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:507
+msgid "Only show message if less than"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:508
+msgid "places available"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:511
+msgid "Enable the registration form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:513
+msgid "To add a registration form to individual events use the event editor"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:517
+msgid "category"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:602
+msgid "The display settings have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:606
+msgid "The display settings have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:630
+msgid "End Date Display"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:634
+msgid "Show end date in event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:638
+msgid "Combine Start and End dates into one box"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:642
+msgid "Show combined Start and End dates if in the same month"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:646
+msgid "Only show icon on first event if more than one event on that day"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:650
+msgid "Show start and end dates above one another"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:654
+msgid "Event Messages"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:658
+msgid "Read more caption"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:662
+msgid "No events message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:666
+msgid "Event List Options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:671
+msgid "Show full event details in the event list ( includes registration form when enabled )"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:676
+msgid "List events in reverse order (from future to past)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:681
+msgid "Show past events in the events list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:681
+msgid "If you only want to display past events use the shortcode: [qem id=\"archive\"]"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:686
+msgid "Split the list into month/year sections"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:691
+msgid "Short (Aug)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:691
+msgid "Full (August)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:696, quick-event-manager/legacy/quick-event-manager-settings.php:1325
+msgid "Order"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:701
+msgid "Show events in recent posts list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:705
+msgid "Show category"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:709
+msgid "Next to title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:709
+msgid "Next to date (if no icon styling)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:713
+msgid "Show as grid"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:713
+msgid "Using this option will disable the date icon styling, month and year sections, images and maps"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:717
+msgid "Traditional"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:717
+msgid "Show as tiled (Pinterest type)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:721
+msgid "Event Border:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:724, quick-event-manager/legacy/quick-event-options.php:65
+msgid "Download to Calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:725
+msgid "This allows users to download the event as a calendar file"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:729
+msgid "Add download button to event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:733
+msgid "Add download button to event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:737
+msgid "Button text:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:740
+msgid "Event Linking Options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:744
+msgid "Link to external website from event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:748
+msgid "Open external links in new tab/page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:752
+msgid "Open event in lightbox"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:752
+msgid "Warning: doesn't always behave as expected on small screens"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:756
+msgid "Width:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:760
+msgid "Show full event details in popup"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:764
+msgid "Remove link from event title and event image"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:768
+msgid "Hide Read More link"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:772
+msgid "Hide links to event if not logged in"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:776
+msgid "Add a link to events to go back to the event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:780
+msgid "Enter URL to link to a specific page. Leave blank to just go back one page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:785
+msgid "Link caption"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:788
+msgid "Maps and Images"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:789
+msgid "If you have an event image it will display automatically on the event page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:793
+msgid "Show event image in event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:797
+msgid "Show map on event page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:801
+msgid "Show map in event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:805
+msgid "Use featured images"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:808
+msgid "Notes:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:808
+msgid "The map will only display if you have a valid address."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:809
+msgid "To display a Google Map you need a valid "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:812
+msgid "Google API Key:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:815
+msgid "Image and Map Width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:816
+msgid "This is the maximum width of Map and Image on large screens."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:819
+msgid "Max Width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:820
+msgid "This is the maximum width of Map and Image compared to the whole event on smaller screens."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:823
+msgid "Event list width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:826
+msgid "Map Height"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:830
+msgid "Open map in new tab/window"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:835, quick-event-manager/legacy/quick-event-manager-settings.php:1469, quick-event-manager/legacy/quick-event-widget.php:97
+msgid "Categories"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:838
+msgid "Display category dropdown"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:839
+msgid "Displays a list of all categories"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:841
+msgid "Full width dropdown."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:844, quick-event-manager/legacy/quick-event-manager-settings.php:1472
+msgid "Display category key"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:845
+msgid "Show above event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:846
+msgid "Show below event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:849, quick-event-manager/legacy/quick-event-manager-settings.php:857, quick-event-manager/legacy/quick-event-manager-settings.php:1347, quick-event-manager/legacy/quick-event-manager-settings.php:1495
+msgid "Caption"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:853
+msgid "Add link back to all events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:854
+msgid "This uses the URL set on the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:854
+msgid "Event List"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:854, quick-event-manager/legacy/quick-event-manager-settings.php:862
+msgid "page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:861
+msgid "Category Colours"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:861
+msgid "Use category colours for the event border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:862
+msgid "Options are set on the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:862
+msgid "Calendar Settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:865
+msgid "Show name of current category"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:869
+msgid "Current category label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:872
+msgid "Linking"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:873, quick-event-manager/legacy/quick-event-manager-settings.php:1482
+msgid "Link keys to categories"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:874, quick-event-manager/legacy/quick-event-manager-settings.php:1483
+msgid "Show uncategorised key"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:877
+msgid "Category Linking Option"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:880
+msgid "Use this option to link from the event list to a URL for a category."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:880
+msgid "Seperate using a comma for multiple catagories"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:883
+msgid "Category slug"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:887
+msgid "URL"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:893
+msgid "Timezones"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:898
+msgid "Show timeszones on your events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:901
+msgid "timezone"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:902
+msgid "This doesn't change the time of the event, it just shows the name of the local timeszone. Set the event timezone in the event editor."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:914, quick-event-manager/legacy/quick-event-manager-settings.php:1159
+msgid "Event List Preview"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:974
+msgid "The form styles have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:978
+msgid "The style settings have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:997
+msgid "Event Width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:999
+msgid "100% (fill the available space)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1000
+msgid "Pixel (fixed)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1001
+msgid "Enter the max-width "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1001
+msgid "(Just enter the value, no need to add 'px')"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1003
+msgid "Font Options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1006
+msgid "Use your theme font styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1007
+msgid "Use Plugin font styles (enter font family and size below)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1009
+msgid "Font Family"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1012
+msgid "Font Size"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1016
+msgid "Header Size"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1017
+msgid "This the size of the title in the event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1020
+msgid "Header Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1024, quick-event-manager/legacy/quick-event-widget.php:59
+msgid "Calender Icon"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1027
+msgid "Remove styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1028
+msgid "Do not style the calendar icon"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1029
+msgid "Also removes the event border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1031
+msgid "Show the full day name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1034
+msgid "Show the full month name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1037
+msgid "Show date above event name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1040
+msgid "Size"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1042, quick-event-manager/legacy/quick-event-widget.php:66
+msgid "Small"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1043, quick-event-manager/legacy/quick-event-widget.php:70
+msgid "Medium"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1044, quick-event-manager/legacy/quick-event-widget.php:74
+msgid "Large"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1047, quick-event-manager/legacy/quick-event-manager-settings.php:1371
+msgid "Corners"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1049, quick-event-manager/legacy/quick-event-manager-settings.php:1373
+msgid "Square"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1050, quick-event-manager/legacy/quick-event-manager-settings.php:1374
+msgid "Rounded"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1053
+msgid "Border Thickness"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1057
+msgid "Border Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1059
+msgid "There is an option below to use category colours for the icon border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1062
+msgid "Calendar Icon Order"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1064
+msgid "DMY"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1065
+msgid "MDY"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1066
+msgid "YDM"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1067
+msgid "DM"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1068
+msgid "MD"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1071
+msgid "Start/Finish Labels"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1072
+msgid "Show start/finish labels"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1073
+msgid "Start"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1073
+msgid "Finish"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1077
+msgid "Day Name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1078
+msgid "Show day name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1079
+msgid "Show day name inline with date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1082
+msgid "Date Background Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1084
+msgid "Grey"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1085
+msgid "Red"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1086
+msgid "Category Border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1087, quick-event-manager/legacy/quick-event-manager-settings.php:1098, quick-event-manager/legacy/quick-event-manager-settings.php:1122, quick-event-manager/legacy/quick-event-manager-settings.php:2200
+msgid "Set your own"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1091
+msgid "Date Text Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1095
+msgid "Month Background Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1097, quick-event-manager/legacy/quick-event-manager-settings.php:1120, quick-event-manager/legacy/quick-event-manager-settings.php:2199
+msgid "White"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1102
+msgid "Month Text Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1106
+msgid "Month Text Style"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1108, quick-event-manager/legacy/quick-event-manager-settings.php:1380
+msgid "Italic"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1111
+msgid "Event Content"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1114, quick-event-manager/legacy/quick-event-manager-settings.php:1363
+msgid "Event Border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1115
+msgid "Add a border to the event post"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1116
+msgid "Thickness and colour will be the same as the calendar icon"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1119
+msgid "Event Background Colour"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1121, quick-event-manager/legacy/quick-event-manager-settings.php:2198
+msgid "Use theme colours"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1126, quick-event-manager/legacy/quick-event-manager-settings.php:2245
+msgid "Margins and Padding"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1127
+msgid "Set the margins and padding of each bit using CSS shortcodes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1130
+msgid "Event Margin"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1131
+msgid "Set the margin or each event using CSS shortcodes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1135
+msgid "Event Category Colours"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1140, quick-event-manager/legacy/quick-event-manager-settings.php:2193, quick-event-manager/legacy/quick-event-manager-settings.php:2265
+msgid "Background"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1141, quick-event-manager/legacy/quick-event-manager-settings.php:1427
+msgid "Text"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1153
+msgid "Are you sure you want to reset the style settings?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1160
+msgid "Check the event list in your site as the Wordpress Dashboard can do funny things with styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1234
+msgid "The calendar settings have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1238
+msgid "The calendar settings have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1264
+msgid "Using the Calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1265
+msgid "To add a calendar to your site use the shortcode: [qemcalendar]"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1269, quick-event-manager/legacy/quick-event-manager-settings.php:1766
+msgid "General Settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1272
+msgid "Linking to Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1273
+msgid "Link opens event page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1274
+msgid "Link opens event summary in a popup"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1275
+msgid "Show full event details in popup."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1279
+msgid "Old Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1280
+msgid "Show past events in the calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1283
+msgid "Linking Calendar to the Event List"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1284
+msgid "Link Event List to Calendar Page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1285
+msgid "You will need to create pages for the calendar and the event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1289
+msgid "Calendar link text"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1290
+msgid "Calendar page URL"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1291
+msgid "Event list link text"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1293
+msgid "Event list page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1301
+msgid "Navigation Icons"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1305, quick-event-manager/legacy/quick-event-manager-settings.php:1404
+msgid "Other"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1305
+msgid "enter"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1306
+msgid "hex code"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1306
+msgid "below"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1311
+msgid "Jump to links"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1312
+msgid "Jump to the top of the calendar when linking to a new month."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1315
+msgid "Calendar Options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1318
+msgid "Month and Date Header"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1327
+msgid "Month Year"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1327
+msgid "Year Month"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1331
+msgid "Day Border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1335
+msgid "Cellspacing"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1339
+msgid "Months"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1342
+msgid "Display 12 month navigation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1343, quick-event-manager/legacy/quick-event-manager-settings.php:1473
+msgid "Show above calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1344, quick-event-manager/legacy/quick-event-manager-settings.php:1474
+msgid "Show below calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1352
+msgid "Hide navigation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1353
+msgid "Remove Prev and Next links"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1356
+msgid "Event Options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1359
+msgid "Multi-day Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1360
+msgid "Show event on all days"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1364
+msgid "enter 'none' to remove border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1368
+msgid "Lock border colour (ignore category colours)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1377
+msgid "Text Styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1385
+msgid "Show event image on the calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1385
+msgid "Image Width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1388
+msgid "Hover Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1389
+msgid "Show full event title on hover"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1392
+msgid "Character Number"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1396, quick-event-manager/legacy/quick-event-manager-settings.php:1409
+msgid "Small Screens"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1397
+msgid "What to display on small screens"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1398
+msgid "Full message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1403, quick-event-manager/legacy/quick-event-widget.php:269
+msgid "Blank"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1404
+msgid "enter escaped"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1405
+msgid "or hex code below"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1409
+msgid "Text Size"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1411
+msgid "Trigger Width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1412
+msgid "This is the text size when the screen is below the trigger width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1415
+msgid "Flag Attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1418
+msgid "Adds a marker on the event if people have registered"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1418
+msgid "Defaults to a dot if field is left blank"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1422
+msgid "Calendar Colours"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1427
+msgid "Background XX"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1432
+msgid "Days of the Week"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1438
+msgid "Normal Day"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1444
+msgid "Event Day"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1456
+msgid "Event Hover"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1462
+msgid "Past Day"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1477
+msgid "Caption:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1486
+msgid "Category link style"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1487
+msgid "Use Category color as background color"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1488
+msgid "Use Category color as border color"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1491
+msgid "Add link back to all categories"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1492
+msgid "This uses the Calendar page URL set at the top of this page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1499
+msgid "Start the Week"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1500
+msgid "On Sunday"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1501
+msgid "On Monday"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1504
+msgid "Are you sure you want to reset the calendar settings?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1509
+msgid "Calendar Preview"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1510
+msgid "The"
+msgstr ""
+
+#. translators: prev is an abbreviation of previous in context of a back button
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1512
+msgid "prev"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1513
+msgid "and"
+msgstr ""
+
+#. translators: context is  a next button
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1515
+msgid "next"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1516
+msgid "buttons only work on your Posts and Pages - so don't click on them!"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1663
+msgid "The registration form settings have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1667
+msgid "The registration form settings have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1758
+msgid "Use the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1762
+msgid "to enable the registration form. You can then manage forms for individual events using the event editor"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1769
+msgid "Add form to all new events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1773
+msgid "Hide form until registration button is clicked"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1777
+msgid "Display the registration form on the right below the event image and map (if used)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1781
+msgid "Do not display registration form on old events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1785
+msgid "Pre-fill user name if logged in"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1789
+msgid "Only users who have logged in can register"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1793
+msgid "Allow a person to register more than once for each event ( note: if someone registers for a paid event but fails to complete payment they will still be able to re-register to complete payment)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1797
+msgid "Hide registration form when event is full"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1801, quick-event-manager/legacy/quick-event-manager-settings.php:2121
+msgid "Message to display"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1805
+msgid "Click Here for Form Styling"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1827, quick-event-manager/legacy/quick-event-manager-settings.php:1819, quick-event-manager/legacy/quick-event-manager-settings.php:1813
+msgid "Anti Spam Protection"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1829
+msgid "Protect your forms from annoying spam"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1830
+msgid "Simply install"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1832, quick-event-manager/legacy/quick-event-manager-settings.php:1822
+msgid "Fullworks' Anti Spam"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1833
+msgid "No Recaptcha, no annoying quizes or images, simply effective. Free trial available."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1821
+msgid "You have FULLWORKS ANTI SPAM installed but you need to enable the ANTI SPAM licence to get spam protection for Quick Event Manager "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1822
+msgid "Get your licence"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1815
+msgid "Brilliant - you are automatically protected from spam"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1816
+msgid "By"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1816
+msgid "Fullworks' Anti Spam - see the settings here"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1838
+msgid "Notifications"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1840
+msgid "Primary Email Address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1841
+msgid "This is where registration notifications will be sent from and sent to, make sure it is a good email address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1849, quick-event-manager/legacy/quick-event-manager-settings.php:1844
+msgid "Copy notifications"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1850
+msgid "Upgrade to a premium version to enable multiple admin registration notification addreses"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1846
+msgid "Copy of admin notifications of registrations, can be a comma separated list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1862
+msgid "Form title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1866
+msgid "Form blurb"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1870
+msgid "Check those fields you want to use. Drag and drop to change the order"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1886
+msgid "Field"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1887, quick-event-manager/legacy/quick-event-manager-settings.php:2045
+msgid "Label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1916, quick-event-manager/legacy/quick-event-manager-settings.php:2310
+msgid "Adds a maths captcha to confuse the spammers."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1922
+msgid "User defined 1"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1926
+msgid "User defined 2"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1927
+msgid "Make Textarea"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1933
+msgid "Number ( user defined input field for a number)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1936
+msgid "Additional Info"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1937
+msgid "(displays as plain text)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1941
+msgid "Only show if payment is required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1947
+msgid "Optin Checkbox"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1954
+msgid "Display as radio buttons: "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1962, quick-event-manager/legacy/quick-event-manager-settings.php:1960
+msgid "Donation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1964
+msgid "Upgrade for donation feature"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1978, quick-event-manager/legacy/quick-event-manager-settings.php:2262
+msgid "Submit Button"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1982
+msgid "Show box for more names"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1990
+msgid "More names label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:1995
+msgid "Terms and Conditions"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2003
+msgid "T&C label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2008
+msgid "T&C URL"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2013
+msgid "Open link in new Tab/Window"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2016
+msgid "Error and Thank-you messages"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2019
+msgid "Thank you message title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2023
+msgid "Thank you message blurb ( some html e.g. links permitted here )"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2027
+msgid "Error Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2031
+msgid "Already Registered"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2035
+msgid "Register without payment"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2040
+msgid "Only displays if there is a cost and the transfer to paypal option is enabled on the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2041
+msgid "Payments Page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2050
+msgid "Pay later message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2054
+msgid "Name Removal"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2058
+msgid "Use 'Not Attending' option to allow people to remove their names from the list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2058
+msgid "The plugin matches email addresses to identify the attendee"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2062
+msgid "Name Removed Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2067
+msgid "Display a 'return to event' message after registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2071
+msgid "Return to event message:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2075
+msgid "Confirmation Email"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2079
+msgid "Set default 'Copy Message' field to 'checked'"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2085
+msgid "Redirection"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2088
+msgid "This will redirect visitors to a URL instead of displaying the thank you message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2092
+msgid "Redirection URL"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2097
+msgid "Moderation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2101
+msgid "Moderate all registrations"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2105, quick-event-manager/legacy/quick-event-manager-settings.php:2127
+msgid "Message to display after registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2110
+msgid "Update places available before moderation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2114
+msgid "Waiting Lists"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2118
+msgid "Allow people to register even if there are no places available"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2132
+msgid "Attendee Lists"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2136
+msgid "Show attendees as a list"
+msgstr ""
+
+#. translators: leave [website]]
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2148
+msgid "If you want a link to a website use first used defined field and the [website] shortcode."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2153
+msgid "Save Settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2154
+msgid "Are you sure you want to reset the registration form settings?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2158, quick-event-manager/legacy/quick-event-manager-settings.php:2288
+msgid "Form Styling"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2289
+msgid "Registration Form styling is only avaialble to Pro users."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2290
+msgid "Find out more"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2162
+msgid "NOTE:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2164, quick-event-manager/legacy/quick-event-manager-settings.php:2707
+msgid "Leave fields blank if you don't want to use them"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2167
+msgid "Use theme styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2171
+msgid "Form Width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2175
+msgid "Width"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2177
+msgid "Form Border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2178
+msgid "Note: The rounded corners and shadows only work on CSS3 supported browsers and even then not in IE8. Don't blame me, blame Microsoft."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2181
+msgid "Type:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2182
+msgid "No border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2183
+msgid "Plain Border"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2184
+msgid "Round Corners (Not IE8)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2185
+msgid "Shadowed Border(Not IE8)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2186
+msgid "Rounded Shadowed Border (Not IE8)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2204
+msgid "Form Header"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2207
+msgid "Header Type"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2211
+msgid "Header Size:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2215
+msgid "Header Colour:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2219
+msgid "Input Fields"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2222, quick-event-manager/legacy/quick-event-manager-settings.php:2252
+msgid "Font Colour:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2226
+msgid "Normal Border:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2230
+msgid "Required Fields:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2234
+msgid "Background:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2238
+msgid "Focus:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2241
+msgid "Corners:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2242
+msgid "Square Corners"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2249
+msgid "Other text content"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2256, quick-event-manager/legacy/quick-event-manager-settings.php:3102
+msgid "Error Messages"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2258
+msgid "Font/Border Colour:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2269
+msgid "Hover"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2273
+msgid "Border:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2275
+msgid "Size:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2275
+msgid "Same width as the form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2280
+msgid "Position:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2280
+msgid "Right"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2282
+msgid "Save Styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2283
+msgid "Reset Styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2284
+msgid "Are you sure you want to reset the styles?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2294
+msgid "Example form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2295
+msgid "This is an example of the form. When it appears on your site it will use your theme styles."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2355
+msgid "Send only after confirmed payment - for paid events which go direct to PayPal (set if %1$sPayPal IPN%2$s is active), this will also defer admin notifications until after payment. Free Events and Events that do not redirect to payment automatically will still be notified immediately."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2363
+msgid "Send only after confirmed payment - for paid events which go direct to payment gateway (set if using Stripe or %1$sPayPal IPN%2$s is active), this will also defer admin notifications until after payment. Free Events and Events that do not redirect to payment automatically will still be notified immediately."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2370
+msgid "Auto responder settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2371
+msgid "The Auto Responder will send an email to the Registrant if enabled of if they choose to recieve a copy of their details"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2373
+msgid "Enable Auto Responder"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2383
+msgid "Show event title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2384
+msgid "Show date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2385
+msgid "Message Content"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2386
+msgid "To create individual event messages use the 'Registration Confirmation Message' option at the bottom of the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2388
+msgid "If you are taking payments on some events you can create a message for those events on the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2389
+msgid "Payments settings page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2396
+msgid "You can use the following shortcodes in the message body:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2398
+msgid "Replacement Text"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2399
+msgid "The registrants name from the form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2400
+msgid "Event title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2401
+msgid "Date of the event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2402
+msgid "Number of places required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2403
+msgid "Event location (not the address)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2404
+msgid "Start time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2405
+msgid "Finish time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2410
+msgid "Upgrade to any pro plan to use the following"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2411, quick-event-manager/legacy/quick-event-manager-settings.php:2407, quick-event-manager/legacy/quick-event-manager-settings.php:2416
+msgid "Total Amount for the registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2412, quick-event-manager/legacy/quick-event-manager-settings.php:2408
+msgid "User selected donation amount"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2418
+msgid "Upgrade to GOLD plan to use the following"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2419, quick-event-manager/legacy/quick-event-manager-settings.php:2415
+msgid "Auto generated ticket number"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2423
+msgid "Add registration details to the email"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2424
+msgid "Registration details blurb"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2426
+msgid "Add event details to the email"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2427
+msgid "Event details blurb"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2429
+msgid "Include link to event page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2432
+msgid "Are you sure you want to reset the auto responder settings?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2477
+msgid "The payment form settings have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2481
+msgid "The payment form settings have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2490
+msgid "Event Payments"
+msgstr ""
+
+#. translators: leave place holder they apply emphasic mark up
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2493
+msgid "This setting only works if you have a simple cost on your event. This means %1$sEntry $10%2$s will be OK but %1$s&pound;5 for adults and &pound;3 for children%2$s may cause problems."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2501
+msgid "Transfer to Payment Provider after registration"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2504
+msgid "After registration the plugin will link to a payment provider using the event title, cost and number of places for the payment details."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2505
+msgid "You can also select payments on individual events using the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2506
+msgid "The free version of the plugin only permits payment using PayPal Standard. Upgrading to Pro gives you the option to use Stripe"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2509
+msgid "PayPal"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2512
+msgid "Your PayPal Email Address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2516
+msgid "Currency"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2519
+msgid "Currency code"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2520
+msgid "(For example: GBP, USD, EUR)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2523
+msgid "Variable Payments"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2526, quick-event-manager/legacy/quick-event-widget.php:49
+msgid "Title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2530
+msgid "Currency symbol"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2534
+msgid "Item label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2539
+msgid "Total label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2543
+msgid "Handling"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2546
+msgid "Add processing fee"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2547
+msgid "Percentage of the total"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2548
+msgid "Fixed amount"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2551
+msgid "Captions and Messages"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2554
+msgid "Submit Label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2558
+msgid "Waiting Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2563
+msgid "Coupons"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2564
+msgid "Discounts are applied at checkout before any processing fees are calculated. The coupon field will appear just before the submission button on the registration form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2565
+msgid "Use Coupons on all events ( or you can enable on a per event basis)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2565
+msgid "Set coupon codes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2566
+msgid "Coupon code label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2570
+msgid "Instant Payment Notification"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2571
+msgid "IPN only works if you have a PayPal Business or Premier account and IPN has been set up on that account"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2572, quick-event-manager/legacy/quick-event-manager-settings.php:2600
+msgid "See the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2572
+msgid "PayPal IPN Integration Guide"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2572
+msgid "for more information on how to set up IPN"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2574
+msgid "The IPN listener URL you will need is"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2575
+msgid "To see the Payments Report click on the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2575
+msgid "link in your dashboard menu or"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2575
+msgid "click here"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2576
+msgid "Enable IPN"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2577
+msgid "Abandoned Cart Payment Processing"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2579
+msgid "Pending payments, for events with a cost that that immediately redirect to payment can be cleared after a short while automatically."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2584
+msgid "Enable auto clearing of pending payments"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2586
+msgid "Hide registration details for pending payments ( Warning: if you limit number attending, hiding pending bookings can result in those limits being breached, so use with care with limited events )"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2588
+msgid "Send a message when clearing down a pending payments (blank not to send)."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2591
+msgid "Payment Report"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2593
+msgid "Payment Report Column header"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2595
+msgid "Payment Complete Label"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2599
+msgid "Payments Autoresponder"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2600
+msgid "This is the message that will be sent for events linked to payments"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2601
+msgid "Autoresponder settings page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2602
+msgid "for all other options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2611
+msgid "Are you sure you want to reset the settings?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2612
+msgid "Use Paypal sandbox (developer use only)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2617
+msgid "IPN Simulation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2618
+msgid "IPN can be blocked or restricted by your server settings, theme or other plugins"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2618
+msgid "The good news is you can simulate the notifications to check if all is working"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2619
+msgid "To carry out a simulation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2621
+msgid "Enable IPN and the PayPal Sandbox on the left"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2622
+msgid "Register for an event that has the link to paypal option selected"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2623
+msgid "Go to the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2624, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:10, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:9
+msgid "Registration Report"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2624
+msgid "find the event and copy the long number in the last column)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2626
+msgid "Go to the IPN simulation page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2627
+msgid "Login and enter the IPN listener URL"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2629
+msgid "Select 'Express Checkout' from the drop down"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2631
+msgid "Scroll to the bottom of the page and enter the long number you copied at step 3 into the 'Custom' field"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2632
+msgid "Click 'Send IPN'. Scroll up the page and you should see an 'IPN Verified' message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2633
+msgid "Go back to your Registration Report, you should now see the payment completed message on the event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2705
+msgid "Coupons Codes"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2710
+msgid "Coupon Code"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2711
+msgid "Percentage"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2712
+msgid "Fixed Amount"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2725
+msgid "Are you sure you want to reset the coupon codes?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2752
+msgid "ERROR: Unable to create new theme file"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2756
+msgid "Event Templates"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2774
+msgid "Your theme doesn't appear to have the 'single.php' file needed to create an event template. To create an event template follow the instructions on the right."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2759
+msgid "If your theme adds posting dates and other unwanted features to your event page you can set up and edit a template for single events."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2760
+msgid "This function clones the 'single.php' theme file and saves it as 'single-event.php'."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2762
+msgid "If you aren't confident editing theme files it may be prudent to read the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2763
+msgid "first"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2766
+msgid "An Event Template already exists. Clicking the button below will overwrite the existing file."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2767
+msgid "View Template file"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2770
+msgid "Create Event Template"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2778
+msgid "The DIY Option"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2779
+msgid "It's very easy to create your own template if you have FTP access to your theme"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2780
+msgid "1. Connect to your domain using FTP"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2781
+msgid "2. Navigate to the theme directory. Normally wp-content/themes/your theme"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2782
+msgid "3. Download the file called single.php to your computer"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2783
+msgid "4. Open the file using a text editor"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2784
+msgid "5. Add the following to the very top of the file"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2792
+msgid "6. Save as"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2794
+msgid "7. Upload the file to your theme directory"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2795
+msgid "The event manager will detect the new template and use it for single events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2862
+msgid "The API Settings have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2868
+msgid "The API settings have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2873
+msgid "The messages have been reset"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2898
+msgid " *** PayPal Sandbox is turned on, turn off to allow Stripe ***"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2910
+msgid ""
+"The Stripe API lets people pay for their events without going off site. \n"
+"				Instructions on where to get your API credentials is given on the right."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2912
+msgid "Use Stripe."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2916
+msgid "Stripe API Settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2919
+msgid "Publishable Key"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2923
+msgid "Secret Key"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2927
+msgid "Webhook Secret Key"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2931
+msgid "Messages"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2934
+msgid "Validating"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2938
+msgid "Waiting"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2942
+msgid "Cancel and Return Title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2946
+msgid "Cancel and Return Blurb"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2950
+msgid "Try Again Anchor"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2954
+msgid "Payment Confirmation Title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2958
+msgid "Payment Confirmation Blurb"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2964
+msgid "Reset API"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2964
+msgid "Are you sure you want to reset the API settings?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2966
+msgid "Reset Messages"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2967
+msgid "Are you sure you want to reset the messages?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2979
+msgid "To Use Stripe"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2981
+msgid "Login to your Stripe account (or create an account if you don't have one)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2983
+msgid "For detailed how-to - see %1$sknowledgebase article%2$s"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2987
+msgid "Copy and paste the Secret and Publishable keys into the appropriate fields on the left"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2989
+msgid "Set up a Webhook for 'checkout.session.completed' pointing to %1$s"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2992
+msgid "Copy and paste the Webhook Secret into field on the left"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2993
+msgid "Make sure the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2994
+msgid "Use Stripe"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:2995
+msgid "box is checked and save the settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3069
+msgid "Guest Event Settings"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3071
+msgid "Adding the guest event form to your site"
+msgstr ""
+
+#. translators: leave the shortcode [qemguest] as is
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3074
+msgid "Use the shortcode: [qemguest]."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3075
+msgid "Admin Message"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3076
+msgid "Send an email message when new guest post is published"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3077
+msgid "Email Address:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3077
+msgid "Multiple emails separate with commas."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3078
+msgid "Moderation and New User Creation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3079
+msgid "Moderate guest events before publication."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3080
+msgid "Only allow logged in users to add guest events. "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3081
+msgid "Submission creates new user (subscriber). If you want to let them edit the event change their role to contributor"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3082
+msgid "Form Title and Introduction"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3083
+msgid "Form title (leave blank if you don't want a heading):"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3085
+msgid "This is the information that will appear below the heading and above the form (leave blank if you don't want any):"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3087
+msgid "Thank-you Title and Blurb"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3088
+msgid "Thank You title (leave blank if you don't want a heading):"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3090
+msgid "This is the information that will appear below the thank you title for registered users  (leave blank if you don't want any):"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3092
+msgid "This is the link to the event list (leave blank if you don't want a link):"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3094
+msgid "This is the blurb that will appear below the thank you title for pending events  (leave blank if you don't want any blurb):"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3096
+msgid "Image Upload"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3097
+msgid "Allow guests to upload images"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3098
+msgid "Maximum file size. Only use numbers, eg: 100000 not 100kB."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3100
+msgid "Repeat Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3101
+msgid "Allow guests to publish repeat events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3105
+msgid "Missing Information"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3109
+msgid "Duplicate Title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3113
+msgid "Image Errors"
+msgstr ""
+
+#. translators: Captcha is a proper noun
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3119
+msgid "Captcha Error"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3123
+msgid "End date problems"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3129
+msgid "Form Fields"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3130
+msgid "U = Use this field. R = Required field (must be completed)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3136
+msgid "Label (what your visitor's see)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3199
+msgid "Remove all jQuery  styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3219
+msgid "The settings have been updated."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3224
+msgid "The settings for have been reset."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3232
+msgid "Notify organiser"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3233
+msgid "Also send registration details to the event organiser"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3234
+msgid "You need to add the organiser's email address when creating an event for this to work."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3248, quick-event-manager/legacy/quick-event-manager-settings.php:3239
+msgid "Link QEM events to Display Eventbrite Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3249
+msgid "You can Merge with Eventbrite events via the Display Eventbrite front end"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3250
+msgid "You will need to install and enable the Display Eventbrite plugin"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3251
+msgid "Get Display Eventbrite plugin"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3241
+msgid "This will enable the QEM Events to Merge with Eventbrite Event on the Display Eventbrite front end"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3242
+msgid "You will need to set Event times if you have not already."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3255
+msgid "Add pagination to the event list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3260
+msgid "Create a theme template for your events."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3261
+msgid "Click here for instructions"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3264
+msgid "Event Importer"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3265
+msgid "Upload and import events from a CSV."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3266
+msgid "Upload and Import Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3270
+msgid "Send an email to selected registrants."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3271
+msgid "Shortcode: None"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3272
+msgid "Send an email"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3275, quick-event-manager/ui/admin/class-admin-attendees.php:75, quick-event-manager/ui/admin/class-admin-attendees.php:76, quick-event-manager/ui/admin/class-admin-attendees.php:83, quick-event-manager/ui/admin/class-admin-attendees.php:84
+msgid "Premium Reports"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3276
+msgid "Visit the premium reports dashboard"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3277
+msgid "to see reports available."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3278
+msgid "Dashboard"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3281
+msgid "Individual Registrations"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3282
+msgid "Visitors can enter their email address to see what events they have registered for"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3283, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:12, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:17, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:22, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:27, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:11, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:19, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:27, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:35
+msgid "Shortcode"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3286
+msgid "Add to Mailchimp"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3287
+msgid "This will only work if you are collecting names and email addresses and have the optin field enabled in the registration from or have selected the optout below"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3288
+msgid "The list merge field used are"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3289
+msgid "Help Setting Up Mailchimp"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3290
+msgid "Mailchimp list ID"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3292
+msgid "Mailchimp API Key"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3294
+msgid "Optin not required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3295
+msgid "Create New User"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3354, quick-event-manager/legacy/quick-event-manager-settings.php:3355
+msgid "Event Manager"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-manager-settings.php:3370
+msgid "Documentation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:35
+msgid "Event Website"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:38
+msgid "Full Description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:45
+msgid "Allow variable donations"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:60
+msgid "per person"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:63
+msgid "Share on Facebook"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:64
+msgid "Share on Twitter"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:66
+msgid "From"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:67
+msgid "until"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:68
+msgid "At"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:72, quick-event-manager/legacy/quick-event-options.php:346
+msgid "Look who's coming: "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:73, quick-event-manager/legacy/quick-event-options.php:75, quick-event-manager/legacy/quick-event-options.php:347, quick-event-manager/legacy/quick-event-options.php:349
+msgid "There are"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:74, quick-event-manager/legacy/quick-event-options.php:348
+msgid "places available."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:76, quick-event-manager/legacy/quick-event-options.php:350
+msgid "people coming."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:77
+msgid "There is one place available"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:78
+msgid "There is one person coming"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:174
+msgid "Starts"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:175
+msgid "Ends"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:230
+msgid "View as calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:232
+msgid "View as a list of events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:239
+msgid "Prev"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:240
+msgid "Next"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:249
+msgid "Event Key:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:265
+msgid "Select Month:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:312
+msgid "New registration for"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:313
+msgid "Register for this event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:314
+msgid "Enter your details below"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:315
+msgid "Thank you for registering"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:316
+msgid "We will be in contact soon"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:317
+msgid "Please ensure you bring the registration fee to the event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:318, quick-event-manager/legacy/quick-event-options.php:743
+msgid "Your Name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:319
+msgid "Email Address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:320
+msgid "Telephone Number"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:321
+msgid "Places required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:322, quick-event-manager/legacy/quick-event-register.php:2516
+msgid "Donation Amount"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:325
+msgid "I will not be attending this event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:326, quick-event-manager/legacy/quick-event-options.php:327
+msgid "More Information"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:328, quick-event-manager/legacy/quick-event-options.php:329
+msgid "Separate,With,Commas"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:331
+msgid "Fill in this field"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:332
+msgid "Answer the sum"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:333
+msgid "Sign me up for email messages"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:334
+msgid "Select options"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:335
+msgid "Option 1,Option 4,Option 3"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:337
+msgid "Enter all names:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:339
+msgid "I agree to the Terms and Conditions"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:343
+msgid "Please complete the form"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:344
+msgid "Register"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:353
+msgid "Registration is closed"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:355
+msgid "Your name has been added to the waiting list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:356
+msgid "But you can register for the waiting list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:358
+msgid "Your registration is awaiting approval"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:359
+msgid "Return to the event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:366
+msgid "Send registration details to your email address"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:367
+msgid "You are already registered for this event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:368
+msgid "You have been removed from the list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:370
+msgid "Your Details have been flagged as spam"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:376, quick-event-manager/legacy/quick-event-options.php:466
+msgid "Coupon code"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:378
+msgid "Pay on arrival"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:453
+msgid "Thank you for registering. Please bring proof of payment to the event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:454
+msgid "Waiting for PayPal"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:458
+msgid "Register and Pay"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:462
+msgid "Complete"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:465
+msgid "Your payment for this event did not complete, please try again. If you have any issues please contact us"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:467
+msgid "Enter number of places required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:468
+msgid "at"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:468
+msgid "each"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:469
+msgid "Total"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:525
+msgid "You have registered for "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:528
+msgid "Thank you for registering, we will be in contact soon. If you have any questions please reply to this email."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:532
+msgid "Your registration details"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:589
+msgid "Validating payment information..."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:590
+msgid "Waiting for Payment Gateway..."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:591
+msgid "There is a problem"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:592
+msgid "Your payment could not be processed. Please try again"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:593
+msgid "There seems to be a technical issue, contact an administrator!"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:594
+msgid "Order Failure"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:595
+msgid "The payment has not been completed."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:596
+msgid "Try again"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:597
+msgid "Payment Pending"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:598
+msgid "The payment has been processed, but confimration is currently pending. Refresh this page for real-time changes to this order."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:599
+msgid "Refresh This Page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:600
+msgid "Registration Confirmation"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:601
+msgid "The transaction has been completed successfully. Keep this information for your records."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:602
+msgid "Payment Reference:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:603
+msgid "Amount Paid:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:604
+msgid "Register another person"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:639
+msgid "Create an Event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:640
+msgid "Complete the form below to add your own event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:641
+msgid "Thank you for submitting your event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:642
+msgid "View all current events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:645
+msgid "Your event is awaiting review and will be published soon."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:646
+msgid "Please complete all marked fields"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:647
+msgid "An Event with that Title already exists..."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:648
+msgid "The captcha answer is incorrect"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:649
+msgid "There is an error with the chosen image"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:650
+msgid "The event ends before it starts"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:698, quick-event-manager/legacy/quick-event-options.php:721, quick-event-manager/legacy/quick-event-widget.php:75
+msgid "Event Title"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:700, quick-event-manager/legacy/quick-event-options.php:723
+msgid "Tags"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:702, quick-event-manager/legacy/quick-event-options.php:725
+msgid "Start Date"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:704, quick-event-manager/legacy/quick-event-options.php:727
+msgid "Start Time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:705, quick-event-manager/legacy/quick-event-options.php:728
+msgid "End Time"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:706, quick-event-manager/legacy/quick-event-options.php:729
+msgid "Description"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:707
+msgid "Location"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:718
+msgid "Author Name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:720, quick-event-manager/legacy/quick-event-options.php:738
+msgid "Event Forms"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:733
+msgid "Website Name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:735
+msgid "Is a Donation?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:739
+msgid "Add a registration form to your event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:740
+msgid "jpg, gif or png only. Max file size 100kb"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:741
+msgid "Event Image (jpg, gif or png only. Max file size 100kb)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:742
+msgid "Anti spam Captcha"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-options.php:744
+msgid "Your Email"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:528
+msgid "Issue with Stripe settings - contact web admin"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:526
+msgid "Error - shown to admins: "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:530
+msgid "System Error"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:985
+msgid "Invalid Coupon Code"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1025
+msgid "Names"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1367
+msgid "Enter the word YES in the box:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1527
+msgid "Your are not already attending"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1549, quick-event-manager/legacy/quick-event-register.php:1544, quick-event-manager/legacy/quick-event-register.php:1538
+msgid "Name required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1567, quick-event-manager/legacy/quick-event-register.php:1572
+msgid "Valid email required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1563, quick-event-manager/legacy/quick-event-register.php:1557, quick-event-manager/legacy/quick-event-register.php:1645, quick-event-manager/legacy/quick-event-register.php:1653, quick-event-manager/legacy/quick-event-register.php:1661, quick-event-manager/legacy/quick-event-register.php:1672, quick-event-manager/legacy/quick-event-register.php:1676
+msgid "Required input"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1578
+msgid "Valid phone number required"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1603
+msgid "No places selected"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1598
+msgid "Total Maximum places (%1$s) per registration exceeded"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1591
+msgid "Maximum places (%1$s) per registration exceeded"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1621
+msgid "Insufficient amount"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1633
+msgid "Unknown Coupon Code"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1680
+msgid "Incorrect value try again"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1688, quick-event-manager/legacy/quick-event-register.php:1709
+msgid "You have selected zero tickets"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1706, quick-event-manager/legacy/quick-event-register.php:1699
+msgid "Not enough places left"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:1956
+msgid "New Registration for "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2077, quick-event-manager/legacy/quick-event-register.php:2081, quick-event-manager/legacy/quick-event-register.php:2134, quick-event-manager/legacy/quick-event-register.php:2140
+msgid "on"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2134
+msgid "Registration Replacement for "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2139
+msgid "registration pending payment was removed by a new re-registration for the same email that requires payment - please ignore any early notifications as they are no longer valid for "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2529
+msgid "Select"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2937, quick-event-manager/legacy/quick-event-register.php:2966
+msgid "No event selected"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2964
+msgid "Nobody has registered for"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2964
+msgid "yet"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:2997
+msgid "Selected registrations have been deleted."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3014
+msgid "New attendee added."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3032
+msgid "Blanks registrations have been deleted."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3054
+msgid "Selected registrations have been approved."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3113
+msgid "Attendees for"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3113
+msgid "have been updated"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3181
+msgid "Registration list has been sent to"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3208
+msgid "Event Registration Report"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3214
+msgid "Show"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3215, quick-event-manager/ui/user/templates__premium_only/show-registrations-form.php:10
+msgid "All Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3216, quick-event-manager/ui/user/templates__premium_only/show-registrations-form.php:14
+msgid "Current Events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3230
+msgid "Export to CSV"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3232
+msgid "Delete All Attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3232
+msgid "Are you sure you want to delete all the attendees for %s?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3233
+msgid "Delete Selected"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3233
+msgid "Are you sure you want to delete the selected attendees?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3234
+msgid "Delete Blanks"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3234
+msgid "Are you sure you want to delete the blanks?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3235
+msgid "Add Attendee"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3235
+msgid "Are you sure you want to manually add an attendee? The number of free places will not be checked here. They WILL NOT get an auto email so you may need to email them details manually"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3246
+msgid "Sort by:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3251
+msgid "Last Name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3259
+msgid "Date Added (Ascending)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3261
+msgid "Date Added (Decending)"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3269
+msgid "Edit Attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3270
+msgid "Edit Selected"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3267
+msgid "Update Attendees"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3274
+msgid "Approve Selected"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3275
+msgid "Are you sure you want to approve the selected attendees?"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-register.php:3315
+msgid "Select an Event"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:8
+msgid "Quick Event List"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:9
+msgid "Add an event list to your sidebar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:55
+msgid "Number of posts to display "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:63
+msgid "Strip styling from date icon."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:82
+msgid "Fields"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:83
+msgid "Enter the"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:85
+msgid "field numbers you want to display. Enter -none- to hide all fields."
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:94
+msgid "Use plugin styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:95
+msgid "View styles"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:101
+msgid "All Categories"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:109
+msgid "Show category colours"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:113, quick-event-manager/legacy/quick-event-widget.php:220
+msgid "Show category key above list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:117, quick-event-manager/legacy/quick-event-widget.php:224
+msgid "Show category key below list"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:119
+msgid "Links"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:123
+msgid "Show links to events"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:127
+msgid "Link to Event List"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:129
+msgid "Anchor text:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:134
+msgid "URL of list page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:139, quick-event-manager/legacy/quick-event-widget.php:280
+msgid "All other options are changed on the "
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:140, quick-event-manager/legacy/quick-event-widget.php:282
+msgid "settings page"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:184
+msgid "Quick Event Calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:185
+msgid "Add an event calendar to your sidebar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:210
+msgid "Event Calendar"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:214
+msgid "Title:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:226
+msgid "Month and Date Style"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:238
+msgid "Header CSS:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:242
+msgid "Event Symbol"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:243
+msgid ""
+"If there is no room on narrow sidebars for the full calendar details select an alternate\n"
+"            symbol below:"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:249
+msgid "Event name"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:273
+msgid " Other (enter escaped"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:275
+msgid "unicode"
+msgstr ""
+
+#: quick-event-manager/legacy/quick-event-widget.php:276
+msgid "or hex code below)"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-attendees.php:50, quick-event-manager/ui/admin/class-admin-attendees.php:51
+msgid "Event Attendees"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-attendees.php:91, quick-event-manager/ui/admin/class-admin-attendees.php:92
+msgid "Email to Attendees"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-email-attendees.php:24
+msgid "QEM Email Attendees"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports-dashboard.php:24
+msgid "QEM Reports Dashboard"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:33, quick-event-manager/ui/admin/class-admin-reports__premium_only.php:34
+msgid "Registration Report - All Events"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:41, quick-event-manager/ui/admin/class-admin-reports__premium_only.php:42
+msgid "Registration Report - Past Events"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:49, quick-event-manager/ui/admin/class-admin-reports__premium_only.php:50
+msgid "Registration Report - Future Events"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:57, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:15, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:17
+msgid "Registrations by Name"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:58
+msgid "Registration by Name"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:65, quick-event-manager/ui/admin/class-admin-reports__premium_only.php:66, quick-event-manager/ui/admin/templates__free/reports_dashboard.php:20, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:25
+msgid "Registrations by Email"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:73
+msgid "Registrations Not Attending"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin-reports__premium_only.php:74
+msgid "Registration  Not Attending"
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin.php:88
+msgid "Quick Event Manager:  your PHP version: "
+msgstr ""
+
+#: quick-event-manager/ui/admin/class-admin.php:90
+msgid " is no longer supported, to enjoy future versions of this plugin upgrade your PHP "
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/email_attendees.php:8
+msgid "Email selected attendees directly from the dashboard.  Available in the premium version"
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/reports_dashboard.php:8
+msgid "These reports are available in the premium version"
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/reports_dashboard.php:11
+msgid "Displays all events and registrations."
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/reports_dashboard.php:16, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:18
+msgid "Displays the registrations sorted by name."
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/reports_dashboard.php:21, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:26
+msgid "Displays the registrations sorted by email address."
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/reports_dashboard.php:26, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:34
+msgid "Displays a list of everyone who is not coming."
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:10
+msgid "Displays all events with registrations."
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:12
+msgid "Show Future Events (including no registrations)"
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:13
+msgid "Show Past Events"
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:14
+msgid "Show All Events"
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:20, quick-event-manager/ui/admin/templates__premium_only/reports_dashboard.php:28
+msgid "Show report"
+msgstr ""
+
+#: quick-event-manager/ui/user/templates__premium_only/show-registrations-form.php:5
+msgid "Enter your email address below to find out what events you are registered for"
+msgstr ""
+
+#. translators: %s: Price per month.
+#: quick-event-manager/ui/admin/templates__free/parts/upgrade_cta.php:9
+msgid "Upgrade QEM from just %s per month"
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/parts/upgrade_cta.php:10
+msgid "Upgrading gives you access the  CSV uploader, a range of registration reports and downloads, Mailchimp subscriber, Guest Event creator, and Stripe Checkout."
+msgstr ""
+
+#: quick-event-manager/ui/admin/templates__free/parts/upgrade_cta.php:11
+msgid "Click to find out more"
+msgstr ""
