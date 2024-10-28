@@ -1,8 +1,8 @@
 === Quick Event Manager ===
 Contributors: Fullworks
 Tags: event manager, calendar, events, event booking, event calendar
-Tested up to: 6.6
-Stable tag: 9.12
+Tested up to: 6.7
+Stable tag: 9.12.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Type: freemium
@@ -94,6 +94,9 @@ Well OK yes you can add more fields if you want but you are going to have to fid
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/quick-event-manager)
 
 == Changelog ==
+= 9.12.1 =
+* Update libraries
+
 = 9.12 =
 * Improve Display Eventbrite integration ( Pro only )
 
