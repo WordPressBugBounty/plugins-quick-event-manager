@@ -5,7 +5,12 @@ function qem_category_key( $cal, $style, $calendar ) {
 	$cat      = array( 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' );
 	$arr      = get_categories();
 	$display  = event_get_stored_display();
+    $category = false;
+	if ( isset( $_GET['category'] ) ) {
+		$category = sanitize_text_field( $_GET['category'] );
+	}
 	$pageurl  = qem_current_page_url();
+	$pageurl = remove_query_arg( 'category', $pageurl );
 	$parts    = explode( "&", $pageurl );
 	$pageurl  = $parts['0'];
 	$link     = ( strpos( $pageurl, '?' ) ? '&' : '?' );
@@ -43,7 +48,7 @@ function qem_category_key( $cal, $style, $calendar ) {
 	}
 
 
-	$class = 'class="qem-category qem-key"';
+
 	foreach ( $cat as $i ) {
 		foreach ( $arr as $option ) {
 			if ( $style[ 'cat' . $i ] == $option->slug ) {
@@ -52,6 +57,10 @@ function qem_category_key( $cal, $style, $calendar ) {
 			} else {
 				$thecat = '';
 			}
+		}
+		$class = 'class="qem-category qem-key"';
+		if ( $thecat === $category ) {
+			$class = 'class="qem-category qem-key qem-active-category"';
 		}
 
 		if ( ! empty( $style[ 'cat' . $i ] ) ) {

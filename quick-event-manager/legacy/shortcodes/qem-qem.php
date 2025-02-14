@@ -37,6 +37,7 @@ function qem_event_shortcode_esc(  $atts, $widget  ) {
         'eventfull'        => '',
         'widget'           => '',
         'grid'             => '',
+        'tag'              => '',
     ), $atts, 'qem' );
     global $post;
     $category = $atts['category'];

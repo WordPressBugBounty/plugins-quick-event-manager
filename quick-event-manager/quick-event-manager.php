@@ -25,9 +25,9 @@
  *
  *     Plugin URI: https://fullworksplugins.com/products/quick-event-manager/
  *     Description: A quick and easy to use Event Manager
- *     Version: 9.12.1
- *     Requires at least: 4.6
- *     Requires PHP: 5.6
+ *     Version: 9.14
+ *     Requires at least: 5.6
+ *     Requires PHP: 7.4
  *     Author: Fullworks
  *     Author URI: https://fullworksplugins.com/
  *     Text Domain: quick-event-manager
@@ -50,7 +50,7 @@ define( 'QUICK_EVENT_MANAGER_PLUGIN_DIR', trailingslashit( plugin_dir_path( __FI
 define( 'QUICK_EVENT_MANAGER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_NAME', 'quick-event-manager' );
-define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.12.1' );
+define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.14' );
 // Include the autoloaders so we can dynamically include the classes.
 require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'control/autoloader.php';
 require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'vendor/autoload.php';

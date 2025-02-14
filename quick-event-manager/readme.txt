@@ -2,7 +2,9 @@
 Contributors: Fullworks
 Tags: event manager, calendar, events, event booking, event calendar
 Tested up to: 6.7
-Stable tag: 9.12.1
+Stable tag: 9.14
+Requires at least: 5.6
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Type: freemium
@@ -94,116 +96,5 @@ Well OK yes you can add more fields if you want but you are going to have to fid
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/quick-event-manager)
 
 == Changelog ==
-= 9.12.1 =
-* Update libraries
 
-= 9.12 =
-* Improve Display Eventbrite integration ( Pro only )
-
-= 9.11.2 =
-* Add extra field to integration with Display Eventbrite ( Pro only )
-
-= 9.11.1 =
-* update Stripe library ( Pro only )
-
-= 9.11 =
-* fix to the auto option ( Pro Only )
-* better handling of free when installing pro
-
-= 9.10.1 =
-* update sStripe library ( Pro only )
-
-= 9.10 =
-* add option for calendar to auto start on first future month when there is an event ( Pro only )
-
-= 9.9.10 =
-* Fix broken images
-
-= 9.9.9 =
-* further fix to post IPN processing
-
-= 9.9.8 =
-* fix issue with php 8.2 cutoff date
-
-= 9.9.7 =
-* fix missing image issue
-
-= 9.9.6 =
-* update Italian translations
-
-= 9.9.5 =
-* Fix post PayPal IPN message when variable tickets used
-* Fix date in cutoff date message
-
-
-= 9.9.4 =
-* Fix issue with admin notification on PayPal IPN
-
-= 9.9.3 =
-* Enable submit to work on multiple forms on same page
-
-= 9.9.2 =
-* Ensure string cost is converted properly to avoid possibility of issues on PHP8.+
-
-= 9.9.1 =
-* improve settings description
-
-= 9.9.0 =
-* Fix cutoff date not displaying on event list
-* Add total value and donation amount shortcodes for auto responders (Pro Only)
-
-= 9.8.9 =
-* Fix style on wait list attendees
-
-= 9.8.8 =
-* Fix fatal error for some scenarios on PHP 8.1 and various notices
-
-= 9.8.7 =
-* Fix Thank you page message on grid layout
-
-= 9.8.6 =
-* Fix for shortcode qemsendemail (Pro Only)
-
-= 9.8.5.9 =
-* remove attempt to load missing un-needed files
-
-= 9.8.5.8 =
-* check for not null freemius when detecting plugin already installed
-
-= 9.8.5.7 =
-* Javascript fix for incompatible themes
-* Fix for 8.1 compatability
-
-= 9.8.5.6 =
-* Fix pay later logic
-* Add notification if a user re registers for a pending payment
-
-= 9.8.5.5 =
-* Fix pay later thank you
-
-
-= 9.8.5.4 =
-* Improve data feed to Display Eventbrite plugin ( Pro Only )
-* Fix rounding on Stripe prices ( Pro Only )
-
-= 9.8.5.3 =
-* Allow html in payment auto responder
-
-= 9.8.5.2 =
-* Fix registration form not showing
-
-= 9.8.5.1 =
-* Fix individual email sending and sort into date (Pro Only)
-* Fix missing form preview
-* Make popup responsive
-
-= 9.8.5 =
-* Permit multiple guest notification emails (Pro Only)
-* Fix some missing columns on reports
-* set print css to print all qem admin pages
-
-
-
-
-
-[Full Change History](https://plugins.trac.wordpress.org/browser/quick-event-manager/trunk/changelog.txt)
+[Change Log](https://fullworksplugins.com/docs/quick-event-manager/installation-quick-event-manager/change-log-qem/)

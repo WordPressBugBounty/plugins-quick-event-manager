@@ -1,4 +1,17 @@
 == Changelog ==
+= 9.14 =
+* Add class to active categories buttons
+
+=9.13=
+* Enable optin in custom forms
+
+=9.12.2
+* Improve guest registration form ( Pro only )
+* Update libraries
+
+= 9.12.1 =
+* Update libraries
+
 = 9.12 =
 * Improve Display Eventbrite integration ( Pro only )
 

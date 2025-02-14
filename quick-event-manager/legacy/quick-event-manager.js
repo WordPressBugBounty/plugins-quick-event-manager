@@ -179,15 +179,20 @@ var qem_dont_cancel;
             $.post(ajaxurl,
                 fd,
                 function (e) {
+                console.log('success');
                     qem_handle_regular(e, f);
                     $('.qem_validating_form[data-form-id="' + formid + '"]').hide();
                 },
                 'json'
-            ).done(function () {
+            ).done(function (e) {
+                console.log('success 2');
                 // second success
-            }).fail(function () {
+            }).fail(function (e) {
+                console.log('fail');
+                console.log(e);
                 // ajax fail
-            }).always(function () {
+            }).always(function (e) {
+                console.log('always');
                 $('input[name=qemregister' + formid + ']').prop("disabled", false);
                 // alert("finished");
             });

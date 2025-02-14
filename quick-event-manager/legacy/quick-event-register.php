@@ -382,6 +382,7 @@ function get_custom_registration_form(  $id  ) {
             'useselector',
             'usenumber1',
             'usechecks',
+            'useoptin',
             'useaddinfo',
             'addinfo',
             'usemorenames',

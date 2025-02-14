@@ -2,6 +2,7 @@
 
 global $qem_fs;
 // requires
+use Quick_Event_Manager\Plugin\Legacy\QEM_Event_Guest;
 require_once plugin_dir_path( __FILE__ ) . 'quick-event-options.php';
 require_once plugin_dir_path( __FILE__ ) . 'quick-event-register.php';
 require_once plugin_dir_path( __FILE__ ) . 'quick-event-payments.php';

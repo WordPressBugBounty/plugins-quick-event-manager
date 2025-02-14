@@ -471,6 +471,7 @@ function event_details_reg() {
     <input type="text" name= "addinfo" class="qem_input" value="' . esc_attr( qem_get_event_field( "addinfo" ) ) . '"></br>
     <input type="checkbox" name="usemorenames" value="checked" ' . esc_attr( qem_get_event_field( "usemorenames" ) ) . '> ' . esc_html__( 'Show box to add more names if number attending is greater than 1', 'quick-event-manager' ) . '<br>
     <input type="checkbox" name="moreemails" value="checked" ' . esc_attr( qem_get_event_field( "moreemails" ) ) . '> ' . esc_html__( 'Collect email addresses for all attendees', 'quick-event-manager' ) . '<br>
+    <input type="checkbox" name="useoptin" value="checked" ' . esc_attr( qem_get_event_field( "useoptin" ) ) . '> ' . esc_html__( 'Opt-in checkbox', 'quick-event-manager' ) . '<br>
     <input type="checkbox" name="usecopy" value="checked" ' . esc_attr( qem_get_event_field( "usecopy" ) ) . '>' . esc_html__( 'Copy Message', 'quick-event-manager' ) . '<br>
     <input type="checkbox" name="useterms" value="checked" ' . esc_attr( qem_get_event_field( "useterms" ) ) . '> ' . esc_html__( 'Include Terms and Conditions checkbox', 'quick-event-manager' ) . '<br>
     <input type="checkbox" name="usecaptcha" value="checked" ' . esc_attr( qem_get_event_field( "usecaptcha" ) ) . '>' . esc_html__( 'Captcha', 'quick-event-manager' ) . '<br>';
@@ -625,6 +626,7 @@ function save_event_details() {
         'usemorenames',
         'moreemails',
         'usecopy',
+        'useoptin',
         'useterms',
         'usecaptcha',
         'usecoupon',

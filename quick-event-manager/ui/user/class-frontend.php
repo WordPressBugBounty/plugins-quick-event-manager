@@ -40,5 +40,50 @@ class FrontEnd {
 	}
 
 	public function hooks() {
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+		//	add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		//	add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_filter( 'fwas_registered_forms', array( $this, 'register_forms' ), 10, 1 );
+
+
+	}
+
+	public function register_forms( $forms ) {
+		$forms['qem_guest'] =
+			array(
+				'name'             => 'QEM Guest events',
+				'selectors'        => '.qem-guest-event-form',
+				'protection_level' => 1,
+			);
+
+		return $forms;
+	}
+
+
+	public function enqueue_styles() {
+
+		wp_enqueue_style( $this->plugin_name . '-user-style', QUICK_EVENT_MANAGER_PLUGIN_URL . 'ui/user/css/style.css', array(), $this->version, 'all' );
+	}
+
+	public function enqueue_scripts() {
+		wp_enqueue_script( $this->plugin_name . '-user-script', QUICK_EVENT_MANAGER_PLUGIN_URL . 'ui/user/js/script.js', array(
+			'wp-api',
+			'wp-api-fetch'
+		), $this->version, true );
+		// localize
+		$register = qem_get_stored_register();
+		wp_localize_script( $this->plugin_name . '-user-script', 'qem_data', array(
+			'register' => $register,
+		) );
+	}
+
+	public function admin_enqueue_scripts() {
+		global $current_screen;
+		// if $current_screen->base contains 'qem' or quick-event-manager enqueue the scripts
+		if ( false !== strpos( $current_screen->base, 'qem' ) || false !== strpos( $current_screen->base, 'quick-event-manager' ) ) {
+			$this->enqueue_styles();
+			$this->enqueue_scripts();
+		}
 	}
 }
