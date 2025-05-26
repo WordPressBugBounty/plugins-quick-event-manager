@@ -605,7 +605,7 @@ function qem_display_form_unprotected_esc(  $values, $errors, $registered  ) {
                     }
                     break;
                 case 'field3':
-                    if ( qem_get_element( $register, 'useattend', false ) ) {
+                    if ( qem_get_element( $register, 'useattend', false ) && qem_get_element( $register, 'checkremoval', false ) ) {
                         $content_escaped .= '<p><input type="checkbox" name="notattend" value="checked" ' . esc_attr( qem_get_element( $values, 'notattend' ) ) . ' /> ' . qem_wp_kses_post( qem_get_element( $register, 'yourattend' ) ) . '</p>';
                     }
                     break;
@@ -1920,16 +1920,18 @@ function qem_build_registration_table_esc(
                         );
                         break;
                     case 'field3':
-                        $content_escaped .= qem_build_reg_input_esc(
-                            'type="text"',
-                            'useattend',
-                            'yourattend',
-                            $register,
-                            $selected,
-                            $i_array,
-                            $value,
-                            $qem_edit
-                        );
+                        if ( $register['checkremoval'] ) {
+                            $content_escaped .= qem_build_reg_input_esc(
+                                'type="text"',
+                                'useattend',
+                                'yourattend',
+                                $register,
+                                $selected,
+                                $i_array,
+                                $value,
+                                $qem_edit
+                            );
+                        }
                         break;
                     case 'field4':
                         $content_escaped .= qem_build_reg_input_esc(

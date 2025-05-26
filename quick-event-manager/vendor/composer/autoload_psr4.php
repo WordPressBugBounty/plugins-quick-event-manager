@@ -6,4 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Fullworks_Template_Loader_Lib\\' => array($vendorDir . '/alanef/fullworks-template-loader-lib/src'),
 );

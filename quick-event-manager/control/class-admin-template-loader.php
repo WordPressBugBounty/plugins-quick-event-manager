@@ -23,8 +23,8 @@
  */
 namespace Quick_Event_Manager\Plugin\Control;
 
-use Gamajo_Template_Loader;
-class Admin_Template_Loader extends Gamajo_Template_Loader {
+use Fullworks_Template_Loader_Lib\BaseLoader;
+class Admin_Template_Loader extends BaseLoader {
     public static $html_output = '';
 
     protected $filter_prefix = 'quick-event-manager-admin';

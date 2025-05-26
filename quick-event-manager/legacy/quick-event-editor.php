@@ -256,7 +256,7 @@ function event_details_meta() {
     <td width="20%"><label>' . esc_html__( 'Organiser Contact Details', 'quick-event-manager' ) . ': </label></td>
     <td width="80%"><input type="text" class="qem_input" style="border:1px solid #415063;" name="event_telephone" value="' . esc_attr( qem_get_event_field( "event_telephone" ) ) . '" /></td>
     </tr>
-    
+
     <tr>
     <td width="20%"><label>' . esc_html__( 'Registration Form', 'quick-event-manager' ) . ': </label></td>
     <td width="80%"><input type="checkbox" style="" name="event_register" value="checked" ' . esc_attr( $useform ) . '> ' . esc_html__( 'Add registration form to this event.', 'quick-event-manager' ) . ' <a href="options-general.php?page=' . esc_attr( QUICK_EVENT_MANAGER_PLUGIN_NAME ) . '&tab=register">' . esc_html__( 'Registration form settings', 'quick-event-manager' ) . '</a></td>
@@ -274,7 +274,7 @@ function event_details_meta() {
     <td width="20%"><label>' . esc_html__( 'Places Available', 'quick-event-manager' ) . ': </label></td>
     <td><input type="text" class="qem_input" style="width:3em;border:1px solid #415063;" name="event_number" value="' . esc_attr( qem_get_event_field( "event_number" ) ) . '" /></td>
     </tr>
-    
+
     <tr>
     <td width="20%"><label>' . esc_html__( 'Maximum number of places per registration', 'quick-event-manager' ) . ': </label></td>
     <td><input type="text" class="qem_input" style="width:3em;border:1px solid #415063;" name="event_maxplaces" value="' . esc_attr( qem_get_event_field( "event_maxplaces" ) ) . '" /> <input type="checkbox" style="" name="event_requiredplaces" value="checked" ' . esc_attr( qem_get_event_field( "event_requiredplaces" ) ) . '> ' . esc_html__( 'Make this required number', 'quick-event-manager' ) . ' <input type="checkbox" style="" name="event_getnames" value="checked" ' . esc_attr( qem_get_event_field( "event_getnames" ) ) . '> ' . esc_html__( 'Tick if you want only a single name/email to reserve multi places', 'quick-event-manager' ) . ' <input type="checkbox" style="" name="event_getemails" value="checked" ' . esc_attr( qem_get_event_field( "event_getemails" ) ) . '> ' . esc_html__( 'Collect emails - if you have made emails mandatory on the registration form - you need to tick this otherwise users will not be able to submit the form', 'quick-event-manager' ) . '</td>
@@ -312,12 +312,12 @@ function event_details_meta() {
     <td width="20%"><label>' . esc_html__( 'Payment', 'quick-event-manager' ) . ': </label></td>
     <td><input type="checkbox" name="event_paypal" value="checked" ' . esc_attr( $usepaypal ) . ' /> ' . esc_html__( 'Link to payment after registration', 'quick-event-manager' ) . '. <a href="options-general.php?page=' . esc_attr( QUICK_EVENT_MANAGER_PLUGIN_NAME ) . '&tab=payment">' . esc_html__( 'Payment settings', 'quick-event-manager' ) . '</a>.</td>
     </tr>
-    
+
     <tr>
     <td>Cost table</td>
     <td><input type="checkbox" name="event_products" value="checked" ' . esc_attr( qem_get_event_field( "event_products" ) ) . ' /> ' . esc_html__( 'Use variable prices', 'quick-event-manager' ) . '.</td>
     <tr>
-    
+
     <tr>
     <td></td><td>';
     $productlist = qem_get_event_field( "event_productlist" );
@@ -360,36 +360,36 @@ function event_details_meta() {
  </table>';
     echo '</td>
     </tr>
-    
+
     <tr>
     <td width="20%"><label>' . esc_html__( 'Redirect to a URL after registration', 'quick-event-manager' ) . ': </label></td>
     <td width="80%"><input type="text" class="qem_input" style="border:1px solid #415063;" name="event_redirect" value="' . esc_attr( qem_get_event_field( "event_redirect" ) ) . '" /><br>
     <input type="checkbox" style="" name="event_redirect_id" value="checked" ' . esc_attr( qem_get_event_field( "event_redirect_id" ) ) . ' /> ' . esc_html__( 'Add event ID to redirect URL', 'quick-event-manager' ) . '</td>
     </tr>
-    
+
     <tr>
     <td width="20%"><label>' . esc_html__( 'Read More Label', 'quick-event-manager' ) . ': </label></td>
     <td><input type="text" class="qem_input" style="border:1px solid #415063;" name="event_readmore" value="' . esc_attr( qem_get_event_field( "event_readmore" ) ) . '" /></td>
     </tr>
-    
+
     <tr>
     <td width="20%"><label>' . esc_html__( 'Password protection', 'quick-event-manager' ) . ': </label></td>
     <td width="80%"><input type="checkbox" style="" name="event_password_details" value="checked" ' . esc_attr( qem_get_event_field( "event_password_details" ) ) . '> ' . esc_html__( 'Whole event ( also set Visibility: Password protected in Publish box)', 'quick-event-manager' ) . '</td>
     </tr>
-    
-    
+
+
     <tr>
     <td width="20%"><label>' . esc_html__( 'Hide Event', 'quick-event-manager' ) . ': </label></td>
     <td width="80%"><input type="checkbox" style="" name="hide_event" value="checked" ' . esc_attr( qem_get_event_field( "hide_event" ) ) . '> ' . esc_html__( 'Hide this event in the event list (only display on the calendar)', 'quick-event-manager' ) . '.</td>
     </tr>
-    
-    
+
+
     <tr>
     <td style="vertical-align:top;"><label>' . esc_html__( 'Event Image', 'quick-event-manager' ) . ': </label></td>';
     if ( qem_get_event_field( "event_image" ) ) {
-        echo '<td><img class="qem-image qem-no-image"  alt="' . esc_html__( 'placeholder image', 'quick-event-manager' ) . '" src=' . esc_url( qem_get_event_field( "event_image" ) ) . '></td>';
+        echo '<td><img class="qem-image qem-no-image"  alt="' . esc_html__( 'placeholder image', 'quick-event-manager' ) . '" src="' . esc_url( qem_get_event_field( "event_image" ) ) . '" rel="' . esc_url( QUICK_EVENT_MANAGER_PLUGIN_URL ) . 'legacy/images/no_image.png"></td>';
     } else {
-        echo '<td><img class="qem-image qem-no-image"  alt="' . esc_html__( 'event image', 'quick-event-manager' ) . '" srcr="' . esc_url( QUICK_EVENT_MANAGER_PLUGIN_URL ) . 'legacy/images/no_image.png"></td>';
+        echo '<td><img class="qem-image qem-no-image"  alt="' . esc_html__( 'event image', 'quick-event-manager' ) . '" src="' . esc_url( QUICK_EVENT_MANAGER_PLUGIN_URL ) . 'legacy/images/no_image.png" rel="' . esc_url( QUICK_EVENT_MANAGER_PLUGIN_URL ) . 'legacy/images/no_image.png"></td>';
     }
     echo '</tr>
     <tr>
@@ -427,6 +427,7 @@ function event_details_meta() {
         <td><a href="admin.php?page=qem-registration&event=' . esc_attr( $event ) . '&title=' . esc_attr( $title ) . '">' . esc_html__( 'View Full Registration Details', 'quick-event-manager' ) . '</a></td>
         <tr>';
     }
+    echo esc_html__( 'Upgrade to premium for event overides, hide registration details and attendee list fields', 'quick-event-manager' ) . '<br>';
     echo '<tr>
         <td>' . esc_html__( 'Notes', 'quick-event-manager' ) . ':</td>
         <td><textarea style="width:100%;height:100px;" name="event_notes">' . qem_wp_kses_post( qem_get_event_field( "event_notes" ) ) . '</textarea></td>
@@ -599,7 +600,7 @@ function save_event_details() {
     }
     global $qem_fs;
     // not 100% sure of why  but these dont have any saved meta if blank, I assume it is used later in logic - but  the logic of missing meta is blank anyway
-    // they appear to be all  either checkboxes or numbers
+    // they appear to be all  either checkboxes or numbers  mainly to remove  checked I think
     $arr = array(
         'hide_event',
         'event_number',

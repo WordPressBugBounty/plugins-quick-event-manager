@@ -25,7 +25,7 @@
  *
  *     Plugin URI: https://fullworksplugins.com/products/quick-event-manager/
  *     Description: A quick and easy to use Event Manager
- *     Version: 9.14
+ *     Version: 9.15
  *     Requires at least: 5.6
  *     Requires PHP: 7.4
  *     Author: Fullworks
@@ -46,11 +46,15 @@ use Quick_Event_Manager\Plugin\Control\Freemius_Config;
 if ( !defined( 'WPINC' ) ) {
     die;
 }
+/**
+ * Print full stack trace when WordPress triggers an error
+ * Specifically captures _doing_it_wrong() calls related to text domains
+ */
 define( 'QUICK_EVENT_MANAGER_PLUGIN_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_NAME', 'quick-event-manager' );
-define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.14' );
+define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.15' );
 // Include the autoloaders so we can dynamically include the classes.
 require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'control/autoloader.php';
 require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'vendor/autoload.php';

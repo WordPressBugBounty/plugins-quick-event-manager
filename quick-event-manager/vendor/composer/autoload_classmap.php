@@ -42,5 +42,5 @@ return array(
     'Composer\\Installers\\WordPressInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/WordPressInstaller.php',
     'Composer\\Installers\\ZendInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/ZendInstaller.php',
     'Composer\\Installers\\ZikulaInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/ZikulaInstaller.php',
-    'Gamajo_Template_Loader' => $vendorDir . '/gamajo/template-loader/class-gamajo-template-loader.php',
+    'Fullworks_Template_Loader_Lib\\BaseLoader' => $vendorDir . '/alanef/fullworks-template-loader-lib/src/BaseLoader.php',
 );

@@ -1728,14 +1728,16 @@ function qem_register() {
                 );
                 break;
             case 'field3':
-                qem_reg_fields_td_e(
-                    $name,
-                    $register,
-                    'useattend',
-                    '',
-                    esc_html__( 'Not Attending', 'quick-event-manager' ),
-                    'yourattend'
-                );
+                if ( qem_get_element( $register, 'checkremoval', false ) ) {
+                    qem_reg_fields_td_e(
+                        $name,
+                        $register,
+                        'useattend',
+                        '',
+                        esc_html__( 'Not Attending', 'quick-event-manager' ),
+                        'yourattend'
+                    );
+                }
                 break;
             case 'field4':
                 qem_reg_fields_td_e(
@@ -2366,10 +2368,6 @@ function qem_payment() {
 
 function qem_extend_notcoming() {
     qem_extend_notcoming_report( null );
-}
-
-function qem_extend_registrations_setup__premoium_only() {
-    qem_extend_show_registrations();
 }
 
 function event_delete_options() {

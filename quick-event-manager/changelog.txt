@@ -1,4 +1,13 @@
 == Changelog ==
+
+= 9.15 =
+* add ability to override attendee list per event ( Pro only )
+* add CSS to handle featured image sizing when used
+* fix issue with remove image button
+
+= 9.14.1 =
+* Improve image upload to guest events and fix some minor bugs in it ( Pro only )
+
 = 9.14 =
 * Add class to active categories buttons
 

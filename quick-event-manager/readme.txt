@@ -2,7 +2,7 @@
 Contributors: Fullworks
 Tags: event manager, calendar, events, event booking, event calendar
 Tested up to: 6.7
-Stable tag: 9.14
+Stable tag: 9.15
 Requires at least: 5.6
 Requires PHP: 7.4
 License: GPLv2 or later

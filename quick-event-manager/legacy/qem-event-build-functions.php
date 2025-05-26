@@ -650,7 +650,12 @@ function qem_build_event(
                                     $url = ' <a href="' . $item['yourblank1'] . '">' . $url . '</a>';
                                 }
                             }
-                            $msg = qem_get_element( $register, 'listblurb' );
+                            $msg = get_post_meta( $post->ID, 'custom_listblurb', true );
+                            // Check for custom override
+                            if ( !$msg ) {
+                                $msg = qem_get_element( $register, 'listblurb' );
+                                // Fallback to default
+                            }
                             $msg = str_replace( '[name]', qem_get_element( $item, 'yourname' ), $msg );
                             $msg = str_replace( '[email]', qem_get_element( $item, 'youremail' ), $msg );
                             $msg = str_replace( '[mailto]', '<a href="mailto:' . qem_get_element( $item, 'youremail' ) . '">' . qem_get_element( $item, 'youremail' ) . '</a>', $msg );
