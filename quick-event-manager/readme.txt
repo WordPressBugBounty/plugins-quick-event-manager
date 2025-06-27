@@ -1,58 +1,89 @@
 === Quick Event Manager ===
-Contributors: Fullworks
+Contributors: brightvesseldev, kleinmannbrightvessel
 Tags: event manager, calendar, events, event booking, event calendar
 Tested up to: 6.7
-Stable tag: 9.15
+Stable tag: 9.16
 Requires at least: 5.6
 Requires PHP: 7.4
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Type: freemium
 
 Simple event manager. No messing about, just add events and a shortcode and the plugin does the rest for you.
 
-
 == Description ==
 
-A quick and easy to use event creator. Just add new events and publish. The shortcode lists all the events. The settings pages let you select how you want the event displayed.
+A lightweight event manager for WordPress. Add events from your dashboard and display them however you want — calendar, list, or shortcode. No fuss. Just works.
+The settings panel lets you decide how your events should look and behave.
 
 = Features =
 
-*   Event posts created from your dashboard
-*   Loads of layout and styling options
-*   Show events as a list or a calendar
-*   Built in event registration form
-*   Accepts payments and IPN
-*   Download events to your calendar
-*   Download attendee report to email/CSV
-*   Event maps with Google Maps
-*   Widgets and lots of shortcode options
+*   Event posts added directly from your dashboard
+*   Multiple layout and styling options
+*   Display as list or calendar
+*   Built-in registration form
+*   Payment support via IPN
+*   Download attendee reports to CSV or email
+*   One-click add to calendar
+*   Google Maps support for locations
+*   Widgets and shortcodes to embed events anywhere
 
 = Developers plugin page =
 
-[Quick Event Manager](https://fullworksplugins.com/products/quick-event-manager/).
+[Quick Event Manager](https://brightplugins.com/product/quick-event-manager/).
 
 = Pro Version =
-lots of additional features
-* Stripe payments
-* Mailchimp Integration
-* Event Imports
-* Additional reports
-* Guest Events, allow visitors to create their own events
-* Use variable donation amounts for event pricing
-* Allow discount coupons, overall or per event
-* Link to Events ticketed elsewhere e.g. Eventbrite, Ticket Tailor, Ticket Master, Zoom Events, Facebook Events, Eventbee etc, so you can have a mixture with your own QEM events
-* Merge QEM events into Eventbrite events and display through [Display Eventbrite Events Plugin](https://fullworksplugins.com/products/quick-event-manager/).
-* Set time of registration ending
-* Set date and time that registration opens
-* Premium support
+
+The Pro upgrade unlocks a truckload of extras:
+*   Stripe payment integration
+*   Mailchimp sync
+*   Event imports (CSV)
+*   Advanced reporting
+*   Guest events — let visitors submit their own
+*   Sliding scale pricing via donation fields
+*   Discount codes (global or per-event)
+*   Link to third-party platforms (Eventbrite, Ticket Tailor, Zoom, Facebook Events, etc.)
+*   Merge with Eventbrite feeds via Display Eventbrite Events Plugin
+*   Control when registration opens and closes
+*   Set end dates and visibility rules
+*   Priority support
 
 = Demo Pages =
 
-[Event list](https://fullworksplugins.com/docs/quick-event-manager/demos-quick-event-manager/event-list-demo/).
-[Calendar](https://fullworksplugins.com/docs/quick-event-manager/demos-quick-event-manager/event-calendar-demo/).
-[Guest Events](https://fullworksplugins.com/docs/quick-event-manager/demos-quick-event-manager/).
+You want to see it live before committing? Check the demo pages [here](https://brightplugins.com/docs/event-list-demo/)
 
+= Support =
+
+**Using the free version?**
+    Post your issue on the [support tab](https://brightplugins.com/support/) . We read every message and improve regularly.
+**Using the Pro version?**
+    Due to policy, we can't offer direct forum support for paid versions. Get help [on our site](https://brightplugins.com/support/).
+
+= What people are saying= 
+
+>   “Easy to install and configure. Works as expected.”
+>   – Every person who hates bloated event plugins
+
+>   “I moved to this after two other event plugins failed. Setup took 5 minutes. No regrets.”
+>   – Smart move, random stranger
+
+>   “Had an issue, sent a message, got a fix in less than 24 hours. That’s service.”
+>   – Not making this up, either
+
+## 🔥 SOME OF OUR PREMIUM PLUGINS ##
+
+[Additional Variation Images for WooCommerce](https://brightplugins.com/additional-variation-images-for-woocommerce/)
+[Min/Max Quantities for WooCommerce](https://brightplugins.com/min-max-quantities-for-woocommerce-review/)
+[Preorders for WooCommerce PRO](https://brightplugins.com/woocommerce-preorder-plugin-review/)
+[Deposits for WooCommerce PRO](https://brightplugins.com/deposits-for-woocommerce/)
+
+## 🔥 SOME OF OUR FREE PLUGINS ##
+
+[Custom Order Status Manager for WooCommerce](https://wordpress.org/plugins/bp-custom-order-status-for-woocommerce/) allows you to create, delete and edit order statuses to control the flow of your orders better.
+[Order Delivery Date Time & Pickup for WooCommerce](https://wordpress.org/plugins/bp-order-date-time-for-woocommerce/) During the checkout process, customers can effortlessly choose a delivery date and time for their orders.
+[Show Stock for WooCommerce](https://wordpress.org/plugins/woo-show-stock/)
+[Order Status Control for WooCommerce](https://wordpress.org/plugins/order-status-control-for-woocommerce/)
+[Disable Email Notifications for WooCommerce](https://wordpress.org/plugins/woo-disable-email-notifications/)
 
 == Screenshots ==
 
@@ -97,4 +128,4 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-[Change Log](https://fullworksplugins.com/docs/quick-event-manager/installation-quick-event-manager/change-log-qem/)
+[Change Log](https://brightplugins.com/docs/change-log/)

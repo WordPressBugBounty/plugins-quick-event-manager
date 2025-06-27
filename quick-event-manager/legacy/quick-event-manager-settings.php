@@ -139,7 +139,7 @@ function qem_setup() {
     <p>' . esc_html__( 'That&#39;s pretty much it. All you need to do now is', 'quick-event-manager' ) . ' <a href="edit.php?post_type=event">' . esc_html__( 'create some events', 'quick-event-manager' ) . '</a>.</p>
     
     <h2>' . esc_html__( 'Help and Support', 'quick-event-manager' ) . '</h2>
-    <p>' . esc_html__( 'Use the Knowledge base at', 'quick-event-manager' ) . ' <a href="https://fullworksplugins.com/docs/quick-event-manager/" target="_blank">fullworksplugins.com/docs/quick-event-manager</a><p>' . qem_wp_kses_post( $support_text ) . '</p></p>
+    <p>' . esc_html__( 'Use the Knowledge base at', 'quick-event-manager' ) . ' <a href="https://brightplugins.com/docs-category/quick-event-manager/" target="_blank">brightplugins.com/docs-category/quick-event-manager/</a><p>' . qem_wp_kses_post( $support_text ) . '</p></p>
     </div>
     <div class="qem-options">';
     if ( !$qem_fs->can_use_premium_code() ) {
@@ -195,7 +195,7 @@ function qem_setup() {
     </tr>
     </tbody>
     </table>
-    <p>' . esc_html__( 'There are loads more shortcode options listed on the', 'quick-event-manager' ) . ' <a href="https://fullworksplugins.com/docs/quick-event-manager/usage-quick-event-manager/all-the-shortcodes/" target="_blank">' . esc_html__( 'Plugin Website', 'quick-event-manager' ) . '</a> (' . esc_html__( 'link opens in a new tab', 'quick-event-manager' ) . ').';
+    <p>' . esc_html__( 'There are loads more shortcode options listed on the', 'quick-event-manager' ) . ' <a href="https://brightplugins.com/docs/all-the-shortcodes/" target="_blank">' . esc_html__( 'Plugin Website', 'quick-event-manager' ) . '</a> (' . esc_html__( 'link opens in a new tab', 'quick-event-manager' ) . ').';
     echo '</div></div>';
 }
 
@@ -2424,7 +2424,7 @@ function qem_admin_notice(  $message = ''  ) {
 
 function qem_plugin_row_meta(  $links, $file = ''  ) {
     if ( $file == QUICK_EVENT_MANAGER_PLUGIN_FILE ) {
-        $new_links = array('<a href="https://fullworksplugins.com/docs/quick-event-manager/"><strong>' . esc_html__( 'Documentation', 'quick-event-manager' ) . '</strong></a>');
+        $new_links = array('<a href="https://brightplugins.com/docs-category/quick-event-manager/"><strong>' . esc_html__( 'Documentation', 'quick-event-manager' ) . '</strong></a>');
         $links = array_merge( $links, $new_links );
     }
     return $links;

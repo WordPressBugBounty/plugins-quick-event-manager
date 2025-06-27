@@ -1,43 +1,41 @@
 <?php
 
 /**
- * @copyright (c) 2020.
- * @author            Alan Fuller (support@fullworksplugins.com)
- * @licence           GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
- * @link                  https://fullworksplugins.com
+ * Quick Event Manager
  *
- * This file is part of  a Fullworks plugin.
+ * @author    Bright Plugins
+ * @copyright 2025 Bright Plugins
+ * @license   GPL-3.0-or-later
  *
- *   This plugin is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     This plugin is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with  this plugin.  https://www.gnu.org/licenses/gpl-3.0.en.html
- *
- *     Plugin Name: Quick Event Manager
- *
- *     Plugin URI: https://fullworksplugins.com/products/quick-event-manager/
- *     Description: A quick and easy to use Event Manager
- *     Version: 9.15
- *     Requires at least: 5.6
- *     Requires PHP: 7.4
- *     Author: Fullworks
- *     Author URI: https://fullworksplugins.com/
- *     Text Domain: quick-event-manager
- *     License:           GPL v2 or later
- *     License URI:       https://www.gnu.org/licenses/gpl-2.0.htm
- *     Domain Path: /languages
- *
- *     Original Author: Aerin
- *
+ * @wordpress-plugin
+ * Plugin Name: Quick Event Manager
+ * Plugin URI: https://brightplugins.com/
+ * Description: A quick and easy to use Event Manager
+ * Version: 9.16
+ * Requires at least: 5.6
+ * Requires PHP: 7.4
+ * Author: Bright Plugins
+ * Author URI: https://brightplugins.com/
+ * Text Domain: quick-event-manager
+ * License: GPLv3 or later
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+ * Domain Path: /languages
  */
+
+ /*
+    Quick Event Manager is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    any later version.
+
+    Quick Event Manager is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Quick Event Manager. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
+*/
 namespace Quick_Event_Manager\Plugin;
 
 use Quick_Event_Manager\Plugin\Control\Plugin;
