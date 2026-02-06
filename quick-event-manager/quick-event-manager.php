@@ -11,7 +11,7 @@
  * Plugin Name: Quick Event Manager
  * Plugin URI: https://brightplugins.com/
  * Description: A quick and easy to use Event Manager
- * Version: 9.16
+ * Version: 9.17
  * Requires at least: 5.6
  * Requires PHP: 7.4
  * Author: Bright Plugins
@@ -36,44 +36,64 @@
     You should have received a copy of the GNU General Public License
     along with Quick Event Manager. If not, see http://www.gnu.org/licenses/gpl-3.0.txt.
 */
+
 namespace Quick_Event_Manager\Plugin;
 
 use Quick_Event_Manager\Plugin\Control\Plugin;
-use Quick_Event_Manager\Plugin\Control\Freemius_Config;
+
 // If this file is called directly, abort.
-if ( !defined( 'WPINC' ) ) {
-    die;
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 /**
  * Print full stack trace when WordPress triggers an error
  * Specifically captures _doing_it_wrong() calls related to text domains
  */
+
 define( 'QUICK_EVENT_MANAGER_PLUGIN_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_NAME', 'quick-event-manager' );
-define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.15' );
+define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.17' );
+define( 'QEMBP_ADMIN_ASSETS', plugins_url( '', __FILE__ ) . '/ui/admin' );
+
 // Include the autoloaders so we can dynamically include the classes.
 require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'control/autoloader.php';
 require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'vendor/autoload.php';
-/** @var \Freemius $qem_fs Freemius global object. */
-global $qem_fs;
-$freemius = new Freemius_Config();
-$freemius->init();
-if ( !function_exists( 'Quick_Event_Manager\\Plugin\\run_quick_event_manager' ) ) {
-    function run_quick_event_manager() {
-        /** @var \Freemius $qem_fs Freemius global object. */
-        global $qem_fs;
-        // Signal that SDK was initiated.
-        do_action( 'quick_event_manager_fs_loaded' );
-        register_activation_hook( __FILE__, array('\\Quick_Event_Manager\\Plugin\\Control\\Activator', 'activate') );
-        register_deactivation_hook( __FILE__, array('\\Quick_Event_Manager\\Plugin\\Control\\Deactivator', 'deactivate') );
-        $qem_fs->add_action( 'after_uninstall', array('\\Quick_Event_Manager\\Plugin\\Control\\Uninstall', 'uninstall') );
-        $plugin = new Plugin('quick-event-manager', QUICK_EVENT_MANAGER_PLUGIN_VERSION, $qem_fs);
-        $plugin->run();
-    }
 
-    run_quick_event_manager();
+
+if ( ! function_exists( 'Quick_Event_Manager\Plugin\run_quick_event_manager' ) ) {
+	function run_quick_event_manager() {
+
+		$plugin = new Plugin( 'quick-event-manager', QUICK_EVENT_MANAGER_PLUGIN_VERSION, null );
+		$plugin->run();
+
+		if ( Plugin::can_use_premium_code__premium_only() ) {
+			require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'vendor/namespaced__premium_only/lib/autoload.php';
+		}
+		// Signal that SDK was initiated.
+		do_action( 'quick_event_manager_fs_loaded' );
+
+		register_activation_hook( __FILE__, array( '\Quick_Event_Manager\Plugin\Control\Activator', 'activate' ) );
+
+		register_deactivation_hook(
+			__FILE__,
+			array(
+				'\Quick_Event_Manager\Plugin\Control\Deactivator',
+				'deactivate',
+			)
+		);
+
+		/* $qem_fs->add_action(
+			'after_uninstall',
+			array(
+				'\Quick_Event_Manager\Plugin\Control\Uninstall',
+				'uninstall',
+			)
+		); */
+	}
+
+	run_quick_event_manager();
 } else {
-    $qem_fs->set_basename( true, __FILE__ );
+	//$qem_fs->set_basename( true, __FILE__ );
 }

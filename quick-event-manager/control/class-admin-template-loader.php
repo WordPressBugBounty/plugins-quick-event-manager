@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @copyright (c) 2020.
  * @author            Alan Fuller (support@fullworks)
@@ -21,51 +20,63 @@
  *     You should have received a copy of the GNU General Public License
  *     along with  this plugin.  https://www.gnu.org/licenses/gpl-3.0.en.html
  */
+
 namespace Quick_Event_Manager\Plugin\Control;
 
 use Fullworks_Template_Loader_Lib\BaseLoader;
+
+
+
 class Admin_Template_Loader extends BaseLoader {
-    public static $html_output = '';
 
-    protected $filter_prefix = 'quick-event-manager-admin';
+	public static $html_output = '';
 
-    protected $theme_template_directory = 'quick-event-manager-admin';
+	protected $filter_prefix = 'quick-event-manager-admin';
 
-    protected $plugin_directory = QUICK_EVENT_MANAGER_PLUGIN_DIR;
+	protected $theme_template_directory = 'quick-event-manager-admin';
 
-    protected $plugin_template_directory = 'ui/admin/templates';
+	protected $plugin_directory = QUICK_EVENT_MANAGER_PLUGIN_DIR;
 
-    public function __construct() {
-        add_filter( $this->filter_prefix . '_template_paths', function ( $file_paths ) {
-            $root = trailingslashit( dirname( dirname( QUICK_EVENT_MANAGER_PLUGIN_DIR ) ) ) . trailingslashit( $this->filter_prefix );
-            if ( isset( $file_paths[1] ) ) {
-                $file_paths[2] = trailingslashit( $file_paths[1] ) . 'parts';
-                $file_paths[3] = trailingslashit( $file_paths[1] ) . 'loops';
-                $file_paths[4] = trailingslashit( $file_paths[1] ) . 'reports';
-            }
-            $file_paths[11] = trailingslashit( $file_paths[10] ) . 'parts';
-            $file_paths[12] = trailingslashit( $file_paths[10] ) . 'loops';
-            $file_paths[13] = trailingslashit( $file_paths[10] ) . 'reports';
-            $file_paths[20] = $root . 'quick-event-manager';
-            $file_paths[21] = $root . 'quick-event-manager/parts';
-            $file_paths[22] = $root . 'quick-event-manager/loops';
-            $file_paths[23] = $root . 'quick-event-manager/reports';
-            global $qem_fs;
-            $file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free';
-            $file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free/parts';
-            $file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free/loops';
-            $file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free/reports';
-            ksort( $file_paths );
-            return $file_paths;
-        }, 0 );
+	protected $plugin_template_directory = 'ui/admin/templates';
+
+	public function __construct() {
+
+		add_filter( $this->filter_prefix . '_template_paths', function ( $file_paths ) {
+			$root = trailingslashit( dirname( dirname( QUICK_EVENT_MANAGER_PLUGIN_DIR ) ) ) . trailingslashit( $this->filter_prefix );
+			if ( isset( $file_paths[1] ) ) {
+				$file_paths[2] = trailingslashit( $file_paths[1] ) . 'parts';
+				$file_paths[3] = trailingslashit( $file_paths[1] ) . 'loops';
+				$file_paths[4] = trailingslashit( $file_paths[1] ) . 'reports';
+			}
+			$file_paths[11] = trailingslashit( $file_paths[10] ) . 'parts';
+			$file_paths[12] = trailingslashit( $file_paths[10] ) . 'loops';
+			$file_paths[13] = trailingslashit( $file_paths[10] ) . 'reports';
+			$file_paths[20] = $root . 'quick-event-manager';
+			$file_paths[21] = $root . 'quick-event-manager/parts';
+			$file_paths[22] = $root . 'quick-event-manager/loops';
+			$file_paths[23] = $root . 'quick-event-manager/reports';
+			global $qem_fs;
+			if ( Plugin::can_use_premium_code__premium_only() ) {
+				$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__premium_only';
+				$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__premium_only/parts';
+				$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__premium_only/loops';
+				$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__premium_only/reports';
+			}
+			$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free';
+			$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free/parts';
+			$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free/loops';
+			$file_paths[] = dirname( $this->plugin_directory . $this->plugin_template_directory ) . '/templates__free/reports';
+
+			ksort( $file_paths );
+
+			return $file_paths;
+		}, 0 );
+	}
+
+	public function set_output($html) {
+		self::$html_output.=$html;
     }
-
-    public function set_output( $html ) {
-        self::$html_output .= $html;
-    }
-
-    public function get_output() {
-        return self::$html_output;
-    }
-
+	public function get_output() {
+		return self::$html_output;
+	}
 }

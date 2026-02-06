@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbb5de37c2290cde1e74306a8f6388981
+class ComposerStaticInit070976280e97fcba3f58bd348aeb5e9d
 {
     public static $files = array (
         '8d50dc88e56bace65e1e72f6017983ed' => __DIR__ . '/..' . '/freemius/wordpress-sdk/start.php',
@@ -15,12 +15,25 @@ class ComposerStaticInitbb5de37c2290cde1e74306a8f6388981
         array (
             'Fullworks_Template_Loader_Lib\\' => 30,
         ),
+        'B' => 
+        array (
+            'BrightPlugins\\Dependencies\\QEMBP\\' => 33,
+            'BMFBP_License_Module\\' => 21,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Fullworks_Template_Loader_Lib\\' => 
         array (
             0 => __DIR__ . '/..' . '/alanef/fullworks-template-loader-lib/src',
+        ),
+        'BrightPlugins\\Dependencies\\QEMBP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/Dependencies/src',
+        ),
+        'BMFBP_License_Module\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brightplugins/bp-license-module/src',
         ),
     );
 
@@ -35,6 +48,12 @@ class ComposerStaticInitbb5de37c2290cde1e74306a8f6388981
     );
 
     public static $classMap = array (
+        'BMFBP_License_Module\\License' => __DIR__ . '/..' . '/brightplugins/bp-license-module/src/License.php',
+        'BMFBP_License_Module\\LicenseBase' => __DIR__ . '/..' . '/brightplugins/bp-license-module/src/LicenseBase.php',
+        'BMFBP_License_Module\\Utils' => __DIR__ . '/..' . '/brightplugins/bp-license-module/src/Utils.php',
+        'BrightPlugins\\Dependencies\\QEMBP\\QEMBP_License_Module\\License' => __DIR__ . '/..' . '/Dependencies/src/QEMBP_License_Module/License.php',
+        'BrightPlugins\\Dependencies\\QEMBP\\QEMBP_License_Module\\LicenseBase' => __DIR__ . '/..' . '/Dependencies/src/QEMBP_License_Module/LicenseBase.php',
+        'BrightPlugins\\Dependencies\\QEMBP\\QEMBP_License_Module\\Utils' => __DIR__ . '/..' . '/Dependencies/src/QEMBP_License_Module/Utils.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Composer\\Installers\\AglInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/AglInstaller.php',
         'Composer\\Installers\\AnnotateCmsInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/AnnotateCmsInstaller.php',
@@ -77,10 +96,10 @@ class ComposerStaticInitbb5de37c2290cde1e74306a8f6388981
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbb5de37c2290cde1e74306a8f6388981::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbb5de37c2290cde1e74306a8f6388981::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitbb5de37c2290cde1e74306a8f6388981::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitbb5de37c2290cde1e74306a8f6388981::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit070976280e97fcba3f58bd348aeb5e9d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit070976280e97fcba3f58bd348aeb5e9d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit070976280e97fcba3f58bd348aeb5e9d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit070976280e97fcba3f58bd348aeb5e9d::$classMap;
 
         }, null, ClassLoader::class);
     }

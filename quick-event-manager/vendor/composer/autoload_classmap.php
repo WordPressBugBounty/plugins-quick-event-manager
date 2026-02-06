@@ -6,6 +6,12 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'BMFBP_License_Module\\License' => $vendorDir . '/brightplugins/bp-license-module/src/License.php',
+    'BMFBP_License_Module\\LicenseBase' => $vendorDir . '/brightplugins/bp-license-module/src/LicenseBase.php',
+    'BMFBP_License_Module\\Utils' => $vendorDir . '/brightplugins/bp-license-module/src/Utils.php',
+    'BrightPlugins\\Dependencies\\QEMBP\\QEMBP_License_Module\\License' => $vendorDir . '/Dependencies/src/QEMBP_License_Module/License.php',
+    'BrightPlugins\\Dependencies\\QEMBP\\QEMBP_License_Module\\LicenseBase' => $vendorDir . '/Dependencies/src/QEMBP_License_Module/LicenseBase.php',
+    'BrightPlugins\\Dependencies\\QEMBP\\QEMBP_License_Module\\Utils' => $vendorDir . '/Dependencies/src/QEMBP_License_Module/Utils.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Composer\\Installers\\AglInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/AglInstaller.php',
     'Composer\\Installers\\AnnotateCmsInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/AnnotateCmsInstaller.php',

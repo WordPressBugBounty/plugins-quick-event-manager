@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @copyright (c) 2020.
  * @author            Alan Fuller (support@fullworks)
@@ -21,8 +20,10 @@
  *     You should have received a copy of the GNU General Public License
  *     along with  this plugin.  https://www.gnu.org/licenses/gpl-3.0.en.html
  */
+
 namespace Quick_Event_Manager\Plugin\Control;
 
+use BrightPlugins\Dependencies\QEMBP\QEMBP_License_Module\Utils;
 use Quick_Event_Manager\Plugin\Business\Display_Eventbrite_Integration;
 use Quick_Event_Manager\Plugin\UI\Admin\Admin;
 use Quick_Event_Manager\Plugin\UI\Admin\Admin_Attendees;
@@ -30,65 +31,113 @@ use Quick_Event_Manager\Plugin\UI\Admin\Admin_Reports;
 use Quick_Event_Manager\Plugin\UI\Admin\Admin_Settings;
 use Quick_Event_Manager\Plugin\UI\User\FrontEnd;
 use Quick_Event_Manager\Plugin\Business\Business;
+
 class Plugin {
-    private $plugin_name;
 
-    private $version;
+	const PREFIX_ = '';
+	const PLUGIN_NAME  = 'Quick Event Manager PRO';
+	const PAGE_SLUG    = 'quick-event-manager';
+	const SUPPORT_LINK = 'https://brightplugins.com/support';
 
-    /**
-     * @param \Freemius $freemius Object for freemius.
-     */
-    private $freemius;
+	const UPGRADE_LINK = 'https://brightplugins.com/product/quick-event-manager/?utm_source=freemium&utm_medium=settings_page&utm_campaign=upgrade_quick_event_manager';
 
-    public function __construct( $plugin_name, $version, $freemius ) {
-        $this->plugin_name = $plugin_name;
-        $this->version = $version;
-        $this->freemius = $freemius;
-    }
+	static $license_utils = null;
 
-    public function run() {
-        require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'legacy/quick-event-manager.php';
-        $this->set_locale();
-        $this->define_admin_hooks();
-        $this->define_admin_attendees_hooks();
-        $this->define_business_hooks();
-        $this->define_integration_hooks();
-        $this->define_public_hooks();
-        $this->version_upgrades();
-    }
+	private $plugin_name;
+	private $version;
+	/**
+	 * @param \Freemius $freemius Object for freemius.
+	 */
+	private $freemius;
 
-    private function version_upgrades() {
-        $version = get_option( 'qem_version' );
-        update_option( 'qem_version', $this->version );
-    }
+	public static function can_use_premium_code__premium_only() {
+		return self::can_use_premium_code();
+	}
 
-    private function set_locale() {
-        add_action( 'init', function () {
-            load_plugin_textdomain( $this->plugin_name, false, basename( QUICK_EVENT_MANAGER_PLUGIN_DIR ) . '/languages/' );
-        } );
-    }
+	public static function is__premium_only() {
+		return false;
+	}
 
-    private function define_admin_hooks() {
-        $admin = new Admin($this->plugin_name, $this->version, $this->freemius);
-        $admin->hooks();
-    }
+	public static function can_use_premium_code() {
 
-    private function define_admin_attendees_hooks() {
-        $admin_attendees = new Admin_Attendees($this->plugin_name, $this->version, $this->freemius);
-        $admin_attendees->hooks();
-    }
+		if( is_null( self::$license_utils ) ) {
+			return false;
+		}
 
-    private function define_public_hooks() {
-        $public = new FrontEnd($this->plugin_name, $this->version, $this->freemius);
-        $public->hooks();
-    }
+		return false;
+	}
 
-    private function define_business_hooks() {
-        $business = new Business($this->plugin_name, $this->version, $this->freemius);
-        $business->hooks();
-    }
+	public static function is_plan_or_trial__premium_only() {
+		return false;
+	}
 
-    private function define_integration_hooks() {
-    }
+	public static function is_plan( $plan_type ) {
+		return false;
+	}
 
+
+	public function __construct( $plugin_name, $version, $freemius ) {
+		$this->plugin_name = $plugin_name;
+		$this->version     = $version;
+		$this->freemius    = $freemius;
+	}
+
+	public function run() {
+		require_once QUICK_EVENT_MANAGER_PLUGIN_DIR . 'legacy/quick-event-manager.php';
+		$this->set_locale();
+		$this->define_admin_hooks();
+		$this->define_admin_attendees_hooks();
+		$this->define_business_hooks();
+		$this->define_integration_hooks();
+		$this->define_public_hooks();
+		$this->version_upgrades();
+	}
+
+	private function version_upgrades() {
+		$version = get_option( 'qem_version' );
+		update_option( 'qem_version', $this->version );
+	}
+
+	private function set_locale() {
+		add_action( 'init', function () {
+			load_plugin_textdomain(
+				$this->plugin_name,
+				false,
+				basename( QUICK_EVENT_MANAGER_PLUGIN_DIR ) . '/languages/'
+			);
+		}
+		);
+	}
+
+
+	private function define_admin_hooks() {
+		$admin = new Admin( $this->plugin_name, $this->version, $this->freemius );
+		$admin->hooks();
+	}
+
+	private function define_admin_attendees_hooks() {
+		$admin_attendees = new Admin_Attendees( $this->plugin_name, $this->version, $this->freemius );
+		$admin_attendees->hooks();
+		if ( Plugin::can_use_premium_code__premium_only() ) {
+			$reports = new Admin_Reports( $this->plugin_name, $this->version, $this->freemius );
+			$reports->hooks();
+		}
+	}
+
+	private function define_public_hooks() {
+		$public = new FrontEnd( $this->plugin_name, $this->version, $this->freemius );
+		$public->hooks();
+	}
+
+	private function define_business_hooks() {
+		$business = new Business( $this->plugin_name, $this->version, $this->freemius );
+		$business->hooks();
+	}
+
+	private function define_integration_hooks() {
+		if ( Plugin::can_use_premium_code__premium_only() ) {
+			$integration = new Display_Eventbrite_Integration( $this->plugin_name, $this->version, $this->freemius );
+			$integration->hooks();
+		}
+	}
 }

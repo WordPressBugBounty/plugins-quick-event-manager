@@ -1,8 +1,11 @@
 <?php
-
 global $qem_fs;
+
 // requires
+
+use Quick_Event_Manager\Plugin\Control\Plugin;
 use Quick_Event_Manager\Plugin\Legacy\QEM_Event_Guest;
+
 require_once plugin_dir_path( __FILE__ ) . 'quick-event-options.php';
 require_once plugin_dir_path( __FILE__ ) . 'quick-event-register.php';
 require_once plugin_dir_path( __FILE__ ) . 'quick-event-payments.php';
@@ -23,49 +26,47 @@ require_once plugin_dir_path( __FILE__ ) . '/qem-csv-functions.php';
 require_once plugin_dir_path( __FILE__ ) . '/qem-user-functions.php';
 require_once plugin_dir_path( __FILE__ ) . '/qem-event-cpt-functions.php';
 if ( is_admin() ) {
-    require_once plugin_dir_path( __FILE__ ) . '/quick-event-manager-settings.php';
+	require_once plugin_dir_path( __FILE__ ) . '/quick-event-manager-settings.php';
+}
+/* if( function_exists( 'qembp_can_use_premium_code__premium_only' ) ) {
+	echo '<pre>';var_dump( 'YES' );'</pre>';die;
+}
+else {
+	echo '<pre>';var_dump( 'NO' );'</pre>';die;
+} */
+if ( Plugin::can_use_premium_code__premium_only() ) {
+	require_once plugin_dir_path( __FILE__ ) . '/qem-mailchimp-functions__premium_only.php';
+	require_once plugin_dir_path( __FILE__ ) . '/qem-navi-functions__premium_only.php';
+	require_once plugin_dir_path( __FILE__ ) . '/quick-event-extensions__premium_only.php';
+	require_once plugin_dir_path( __FILE__ ) . '/qem-event-guest__premium_only.php';
+
 }
 // add admin body class filter
 // get the current admin page hook
 global $pagenow;
+
 add_filter( 'admin_body_class', function ( $classes ) {
-    global $page_hook;
-    if ( !empty( $page_hook ) && false !== strpos( $page_hook, 'qem' ) ) {
-        $classes .= ' qem-admin-page';
-    }
-    return $classes;
+	global $page_hook;
+	if ( ! empty( $page_hook ) && false !== strpos( $page_hook, 'qem' ) ) {
+		$classes .= ' qem-admin-page';
+	}
+
+	return $classes;
 } );
+
+
 // filters
-add_filter(
-    'use_block_editor_for_post_type',
-    function ( $bool, $post_type ) {
-        if ( 'event' === $post_type ) {
-            return false;
-        }
-        return $bool;
-    },
-    10,
-    2
-);
+add_filter( 'use_block_editor_for_post_type', function ( $bool, $post_type ) {
+	if ( 'event' === $post_type ) {
+		return false;
+	}
+
+	return $bool;
+}, 10, 2 );
 add_filter( 'pre_get_posts', 'qem_add_custom_types' );
-add_filter(
-    'qem_short_desc',
-    'qem_short_desc_filter',
-    10,
-    3
-);
-add_filter(
-    'qem_description',
-    'qem_description_filter',
-    10,
-    1
-);
-add_filter(
-    'plugin_action_links',
-    'event_plugin_action_links',
-    10,
-    2
-);
+add_filter( 'qem_short_desc', 'qem_short_desc_filter', 10, 3 );
+add_filter( 'qem_description', 'qem_description_filter', 10, 1 );
+add_filter( 'plugin_action_links', 'event_plugin_action_links', 10, 2 );
 add_filter( 'wp_dropdown_users', 'qem_users' );
 add_filter( 'the_content', 'get_event_content' );
 // actions - calendar
@@ -79,11 +80,42 @@ add_shortcode( 'qem', 'qem_event_shortcode_esc' );
 add_shortcode( 'qem-calendar', 'qem_show_calendar_esc' );
 add_shortcode( 'qemcalendar', 'qem_show_calendar_esc' );
 add_shortcode( 'qemregistration', 'qem_loop_esc' );
+
+if ( Plugin::can_use_premium_code__premium_only() ) {
+	add_shortcode( 'qemregistrations', function ( $attrs ) {
+		$attrs = shortcode_atts( array(
+			'sortby' => 'name',
+		), $attrs );
+		if ( isset( $attrs['sortby'] ) ) {
+			$attrs['sortby'] = sanitize_text_field( $attrs['sortby'] );
+		}
+
+		return qem_extend_show_registrations( false, $attrs );
+	} );
+	$guest = new QEM_Event_Guest();
+	add_shortcode( 'qemguest', array( $guest, 'qem_guest_loop' ) );
+	add_shortcode( 'qemguest_button', array( $guest, 'qem_guest_button' ) );
+	add_shortcode( 'qemreport', function ( $atts ) {
+		return qem_extend_show_report( $atts, false );;
+	} );
+	add_shortcode( 'qemsendemail', function ( $atts ) {
+		ob_start();
+		qem_extend_registration_send_email( true, $atts );
+		$output = ob_get_clean();
+
+		return $output;
+	} );
+	add_shortcode( 'qemnames', function () {
+		return qem_extend_sortby_name( false );
+	} );
+	add_shortcode( 'qememail', function () {
+		return qem_extend_sortby_email( false );
+	} );
+}
 // actions - scripts and styles
 add_action( 'wp_enqueue_scripts', 'qem_enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', 'qem_enqueue_scripts' );
-add_action( 'wp_head', 'qem_head_ic' );
-// some meta and some that probably should be enqueued
+add_action( 'wp_head', 'qem_head_ic' );  // some meta and some that probably should be enqueued
 // actions - custom post types
 add_action( 'init', 'event_register' );
 // actions - widgets ( legacy )
@@ -100,11 +132,11 @@ add_action( 'template_redirect', 'qem_ipn' );
 register_activation_hook( __FILE__, 'qem_flush_rules' );
 register_activation_hook( __FILE__, 'qem_add_role' );
 // theme support
-add_theme_support( 'post-thumbnails', array('post', 'page', 'event') );
-add_action( 'init', function () {
-    $display = event_get_stored_display();
-    if ( $display['recentposts'] ) {
-        add_action( 'pre_get_posts', 'qem_add_custom_post_type_to_query' );
-    }
+add_theme_support( 'post-thumbnails', array( 'post', 'page', 'event' ) );
+add_action('init', function() {
+	$display = event_get_stored_display();
+	if ( $display['recentposts'] ) {
+		add_action( 'pre_get_posts', 'qem_add_custom_post_type_to_query' );
+	}
 } );
 add_action( 'pre_get_posts', 'qem_admin_edit_table_order' );

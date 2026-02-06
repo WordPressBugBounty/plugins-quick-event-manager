@@ -27,7 +27,7 @@
             "time": "2025-04-27T20:32:07+00:00",
             "default-branch": true,
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Fullworks_Template_Loader_Lib\\": "src/"
@@ -49,6 +49,46 @@
                 "source": "https://github.com/alanef/fullworks-template-loader-lib/tree/master"
             },
             "install-path": "../alanef/fullworks-template-loader-lib"
+        },
+        {
+            "name": "brightplugins/bp-license-module",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Bright-Plugins/bp-license-module.git",
+                "reference": "8684ba39c9cf38496862c677eb55d1d6319568ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Bright-Plugins/bp-license-module/zipball/8684ba39c9cf38496862c677eb55d1d6319568ad",
+                "reference": "8684ba39c9cf38496862c677eb55d1d6319568ad",
+                "shasum": ""
+            },
+            "time": "2025-01-16T19:49:08+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "BMFBP_License_Module\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bright Plugins",
+                    "email": "support@brightplugins.com"
+                }
+            ],
+            "description": "BP license module",
+            "support": {
+                "source": "https://github.com/Bright-Plugins/bp-license-module/tree/main",
+                "issues": "https://github.com/Bright-Plugins/bp-license-module/issues"
+            },
+            "install-path": "../brightplugins/bp-license-module"
         },
         {
             "name": "composer/installers",
@@ -80,7 +120,7 @@
                     "dev-master": "1.0-dev"
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Composer\\Installers\\": "src/"
@@ -170,7 +210,7 @@
             },
             "time": "2025-05-11T07:07:09+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "files": [
                     "start.php"

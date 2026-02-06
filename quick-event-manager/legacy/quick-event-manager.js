@@ -274,7 +274,24 @@ var qem_dont_cancel;
 
                             return;
                         }
-                        
+                        /* <fs_premium_only> */
+                        if (!data.ignore && data.stripe.use) {
+                            $('.qem_validating[data-form-id="' + formid + '"]').hide();
+                            $('.qem_processing[data-form-id="' + formid + '"]').show();
+                            var stripe = Stripe(data.stripe.publishable_key);
+                            stripe.redirectToCheckout({
+                                // Make the id field from the Checkout Session creation API response
+                                // available to this file, so you can provide it as argument here
+                                // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+                                sessionId: data.stripe.session_id
+                            }).then(function (result) {
+                                // If `redirectToCheckout` fails due to a browser or network
+                                // error, display the localized error message to your customer
+                                // using `result.error.message`.
+                                alert(result.error.message);
+                            });
+                        }
+                        /* </fs_premium_only> */
                     },
                     error: function (data) {
                         console.log(data);
@@ -284,7 +301,8 @@ var qem_dont_cancel;
 
                 return false;
             });
-            
+            /* <fs_premium_only> */
+            /* </fs_premium_only> */
         }
 
         $('.qem-multi-product').on('input', function () {
