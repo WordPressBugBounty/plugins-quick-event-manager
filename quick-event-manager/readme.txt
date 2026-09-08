@@ -1,8 +1,8 @@
 === Quick Event Manager ===
 Contributors: brightvesseldev, kleinmannbrightvessel
 Tags: event manager, calendar, events, event booking, event calendar
-Tested up to: 6.8.3
-Stable tag: 9.17
+Tested up to: 7.1
+Stable tag: 9.18
 Requires at least: 5.6
 Requires PHP: 7.4
 License: GPLv3 or later
@@ -126,6 +126,9 @@ Well OK yes you can add more fields if you want but you are going to have to fid
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/quick-event-manager)
 
 == Changelog ==
+
+= 9.18 - 08 Sept 2026 =  
+* Support for WordPress 7.1
 
 = 9.17 - 28 Oct 2025 =  
 * Support for WordPress 6.8.3
