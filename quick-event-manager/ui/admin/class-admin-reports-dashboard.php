@@ -37,6 +37,7 @@ class Admin_Reports_Dashboard {
 			)
 		);
 		$template_loader->get_template_part( 'reports_dashboard' );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $template_loader->get_output() );
 
 	}

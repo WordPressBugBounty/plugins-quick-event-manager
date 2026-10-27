@@ -8,7 +8,9 @@ function qem_block_init() {
 	wp_register_script(
 		'qem_block',
 		plugins_url( 'block.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor' )
+		array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor' ),
+		QUICK_EVENT_MANAGER_PLUGIN_VERSION,
+		true
 	);
 
 	register_block_type(

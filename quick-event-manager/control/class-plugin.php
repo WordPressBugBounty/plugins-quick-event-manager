@@ -99,14 +99,11 @@ class Plugin {
 	}
 
 	private function set_locale() {
-		add_action( 'init', function () {
-			load_plugin_textdomain(
-				$this->plugin_name,
-				false,
-				basename( QUICK_EVENT_MANAGER_PLUGIN_DIR ) . '/languages/'
-			);
-		}
-		);
+		/*
+		 * Translations are loaded automatically by WordPress for plugins hosted on
+		 * WordPress.org since version 4.6 (and for all plugins since 6.7), so a manual
+		 * load_plugin_textdomain() call is no longer required.
+		 */
 	}
 
 

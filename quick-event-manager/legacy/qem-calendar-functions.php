@@ -1,8 +1,7 @@
 <?php
 function qem_ajax_calendar() {
-	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- user front end actions nonce no required no update
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_show_calendar_esc function is used as shortcode and display widget, ajax refreshes and more so escaped as the return is escaped inside the function https://developer.wordpress.org/apis/security/escaping/#toc_4
-	echo qem_show_calendar_esc( qem_sanitize_text_or_array_field( $_POST['atts'] ) );
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- qem_show_calendar_esc() escapes its own return value; public read-only AJAX calendar nav (no state change); atts sanitized via qem_sanitize_text_or_array_field().
+	echo qem_show_calendar_esc( isset( $_POST['atts'] ) ? qem_sanitize_text_or_array_field( wp_unslash( $_POST['atts'] ) ) : '' );
 	exit;
 }
 

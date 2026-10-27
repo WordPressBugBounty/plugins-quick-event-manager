@@ -74,7 +74,9 @@ spl_autoload_register(
 			}
 		}
 		// changed to be translatable
+		/* translators: %1$s: the file path and class name that could not be loaded. */
 		$msg = sprintf( __( 'The system file attempting to be loaded at %1$s does not exist.', 'quick-event-manager' ),  $filepath . ' ' . $class_name );
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Intentional surfacing of a fatal autoloader failure before wp_die().
 		trigger_error( esc_html($msg), E_USER_NOTICE );
 		wp_die( esc_html($msg) );
 

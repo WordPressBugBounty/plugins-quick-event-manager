@@ -93,6 +93,7 @@ class Admin {
 
 		// Output notice HTML.
 		if ( ! empty( $notice ) ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 			printf( '<div id="message" class="notice notice-warning" style="overflow:hidden;font-size: 150%%;"><p>%1$s</p></div>', qem_wp_kses_post($notice) );
 		}
 

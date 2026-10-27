@@ -71,7 +71,7 @@ function qem_event_construct_esc( $atts ) {
 	$atts['usereg'] = get_post_meta( $post->ID, 'event_register', true );
 
 	$rightcontent = $notfullpop = $hideattendance = '';
-	$today        = strtotime( date( 'Y-m-d' ) );
+	$today        = strtotime( gmdate( 'Y-m-d' ) );
 	$grid         = $cat = $clear = $eventfull = $cutoff = $fullcontent = $titlecat = $datecat = $linkopen = $linkclose = $regform = $nomap = '';
 
 	if ( ! is_singular( 'event' ) && ! qem_get_element( $atts, 'widget', false ) && ( qem_get_element( $display, 'eventgrid', false ) || $atts['grid'] ) ) {
@@ -711,7 +711,7 @@ function qem_build_event( $name, $event, $display, $custom, $atts, $register, $p
 							if ( isset( $item['yourblank1'] ) ) {
 								$url = preg_replace( '/(?:https?:\/\/)?(?:www\.)?(.*)\/?$/i', '$1', $item['yourblank1'] );
 								if ( $url ) {
-									$url = ' <a href="' . $item['yourblank1'] . '">' . $url . '</a>';
+									$url = ' <a href="' . esc_url( $item['yourblank1'] ) . '">' . esc_html( $url ) . '</a>';
 								}
 							}
 
@@ -719,19 +719,19 @@ function qem_build_event( $name, $event, $display, $custom, $atts, $register, $p
 							if ( ! $msg ) {
 								$msg = qem_get_element( $register, 'listblurb' ); // Fallback to default
 							}
-							$msg = str_replace( '[name]', qem_get_element( $item, 'yourname' ), $msg );
-							$msg = str_replace( '[email]', qem_get_element( $item, 'youremail' ), $msg );
-							$msg = str_replace( '[mailto]', '<a href="mailto:' . qem_get_element( $item, 'youremail' ) . '">' . qem_get_element( $item, 'youremail' ) . '</a>', $msg );
-							$msg = str_replace( '[places]', qem_get_element( $item, 'yourplaces' ), $msg );
-							$msg = str_replace( '[telephone]', qem_get_element( $item, 'telephone' ), $msg );
-							$msg = str_replace( '[user1]', qem_get_element( $item, 'yourblank1' ), $msg );
-							$msg = str_replace( '[user2]', qem_get_element( $item, 'yourblank2' ), $msg );
+							$msg = str_replace( '[name]', esc_html( qem_get_element( $item, 'yourname' ) ), $msg );
+							$msg = str_replace( '[email]', esc_html( qem_get_element( $item, 'youremail' ) ), $msg );
+							$msg = str_replace( '[mailto]', '<a href="' . esc_url( 'mailto:' . qem_get_element( $item, 'youremail' ) ) . '">' . esc_html( qem_get_element( $item, 'youremail' ) ) . '</a>', $msg );
+							$msg = str_replace( '[places]', esc_html( qem_get_element( $item, 'yourplaces' ) ), $msg );
+							$msg = str_replace( '[telephone]', esc_html( qem_get_element( $item, 'telephone' ) ), $msg );
+							$msg = str_replace( '[user1]', esc_html( qem_get_element( $item, 'yourblank1' ) ), $msg );
+							$msg = str_replace( '[user2]', esc_html( qem_get_element( $item, 'yourblank2' ) ), $msg );
 							$msg = str_replace( '[website]', $url, $msg );
 							if ( Plugin::can_use_premium_code__premium_only() ) {
-								$msg = str_replace( '[dropdown1]', qem_get_element( $item, 'yourdropdown' ), $msg );
-								$msg = str_replace( '[dropdown2]', qem_get_element( $item, 'yourselector' ), $msg );
-								$msg = str_replace( '[options]', qem_get_element( $item, 'checkslist' ), $msg );
-								$msg = str_replace( '[number]', qem_get_element( $item, 'yournumber1' ), $msg );
+								$msg = str_replace( '[dropdown1]', esc_html( qem_get_element( $item, 'yourdropdown' ) ), $msg );
+								$msg = str_replace( '[dropdown2]', esc_html( qem_get_element( $item, 'yourselector' ) ), $msg );
+								$msg = str_replace( '[options]', esc_html( qem_get_element( $item, 'checkslist' ) ), $msg );
+								$msg = str_replace( '[number]', esc_html( qem_get_element( $item, 'yournumber1' ) ), $msg );
 							}
 							if ( qem_get_element( $item, 'yourname', false ) ) {
 								$str = $str . '<li>' . $msg . '</li>';

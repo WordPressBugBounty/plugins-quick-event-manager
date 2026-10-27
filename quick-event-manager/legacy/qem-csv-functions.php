@@ -5,10 +5,10 @@ use Quick_Event_Manager\Plugin\Control\Plugin;
 function qem_download_files() {
 	global $qem_fs;
 	if ( isset( $_POST['qem_download_csv'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event = (int) $_POST['qem_download_form'];
+		$event = isset( $_POST['qem_download_form'] ) ? (int) $_POST['qem_download_form'] : 0;
 		// get slug of $event
 		$title = get_post_field( 'post_name', $event );
 		//$register = qem_get_stored_register();
@@ -123,6 +123,7 @@ function qem_download_files() {
 			// add commas except last one
 			$row .= (next( $headerrow )) ? qem_csv_a_cell($header) . ',' : qem_csv_a_cell($header);
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $row ). PHP_EOL;
 
 		foreach ( $message as $value ) {
@@ -226,6 +227,7 @@ function qem_download_files() {
 					$row .= ',';
 				}
 			}
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 			echo qem_wp_kses_post( $row ). PHP_EOL;
 		}
 		exit;

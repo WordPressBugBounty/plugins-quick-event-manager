@@ -78,7 +78,7 @@ function qem_duplicate_new_post( $posts, $post_id, $publish ) {
 
 		qem_create_post( $time, $post_id, $publish, false );
 
-		$dates[] = array( 'time' => $time, 'date' => date( 'l F jS, Y', $time ) );
+		$dates[] = array( 'time' => $time, 'date' => gmdate( 'l F jS, Y', $time ) );
 	}
 }
 

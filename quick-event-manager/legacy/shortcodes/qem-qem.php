@@ -4,7 +4,8 @@ use Quick_Event_Manager\Plugin\Control\Plugin;
 
 function qem_event_shortcode_esc( $atts, $widget ) {
 	global $qem_fs;
-	$remaining = $all = $i = $monthnumber = $archive = $yearnumber = $daynumber   = $notthisyear = '';
+	$remaining = $all = $monthnumber = $archive = $yearnumber = $daynumber   = $notthisyear = '';
+	$i         = 0; // Count of events displayed, compared against $atts['posts'].
 	$atts     = shortcode_atts( array(
 		'id'               => '',
 		'posts'            => '99',
@@ -46,7 +47,7 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- front end user selection of category - no update processing or security implication
 	if ( isset( $_GET['category'] ) ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- front end user selection of category - no update processing or security implication
-		$category = sanitize_text_field($_GET['category']);
+		$category = sanitize_text_field( wp_unslash( $_GET['category'] ) );
 	}
 	$display        = event_get_stored_display();
 	$atts['popup']  = qem_get_element( $display, 'linkpopup', false );
@@ -81,14 +82,14 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 		$args = array(
 			'post_type'      => 'event',
 			'orderby'        => 'meta_value_num',
-			'meta_key'       => 'event_date',
+			'meta_key'       => 'event_date', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Intentional event meta query.
 			'posts_per_page' => - 1,
 		);
 	} else {
 		$args = array(
 			'post_type'      => 'event',
 			'orderby'        => 'meta_value_num',
-			'meta_key'       => 'event_date',
+			'meta_key'       => 'event_date', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Intentional event meta query.
 			'order'          => 'asc',
 			'posts_per_page' => - 1,
 		);
@@ -104,11 +105,11 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 			$args = array(
 				'post_type'      => 'event',
 				'orderby'        => 'meta_value_num',
-				'meta_key'       => 'event_date',
+				'meta_key'       => 'event_date', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Intentional event meta query.
 				'order'          => $order,
 				'posts_per_page' => $atts['posts'],
 				'paged'          => get_query_var( 'paged', 1 ),
-				'meta_query'     => array(
+				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Intentional event meta query.
 					array(
 						'key'     => 'event_date',
 						'value'   => time(),
@@ -131,9 +132,9 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 
 	$the_query   = new WP_Query( $args );
 	$event_found = false;
-	$today       = strtotime( date( 'Y-m-d' ) );
+	$today       = strtotime( gmdate( 'Y-m-d' ) );
 	$catlabel    = str_replace( ',', ', ', $category );
-	$currentyear = date( 'Y' );
+	$currentyear = gmdate( 'Y' );
 	if ( $atts['usecategory'] ) {
 		$atts['cb'] = 'checked';
 	}
@@ -164,14 +165,14 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 		$all = 'all';
 	}
 	if ( $atts['id'] == 'current' ) {
-		$monthnumber = date( 'n' );
+		$monthnumber = gmdate( 'n' );
 	}
 	$nextweek = 0;
 	if ( $atts['id'] == 'nextweek' ) {
 		$nextweek = strtotime( "+7 day", $today );
 	}
 	if ( $atts['id'] == 'remaining' ) {
-		$remaining = date( 'n' );
+		$remaining = gmdate( 'n' );
 	}
 	if ( $atts['id'] == 'archive' ) {
 		$archive = 'archive';
@@ -189,16 +190,16 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- front end user selection of category - no update processing or security implication
 		if ( isset( $_GET['qemmonth'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- front end user selection of category - no update processing or security implication
-			$monthnumber = sanitize_text_field($_GET['qemmonth']);
+			$monthnumber = sanitize_text_field( wp_unslash( $_GET['qemmonth'] ) );
 		} else {
-			$monthnumber = date( 'n' );
+			$monthnumber = gmdate( 'n' );
 		}
 	}
-	$thisyear     = date( 'Y' );
-	$thismonth    = date( "M" );
-	$currentmonth = date( "M" );
+	$thisyear     = gmdate( 'Y' );
+	$thismonth    = gmdate( "M" );
+	$currentmonth = gmdate( "M" );
 	if ( $atts['id'] == 'today' ) {
-		$daynumber  = date( "d" );
+		$daynumber  = gmdate( "d" );
 		$todaymonth = $thismonth;
 	}
 	if ( strpos( $atts['id'], 'D' ) !== false ) {
@@ -229,12 +230,12 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 			}
 			$enddate          = get_post_meta( $post->ID, 'event_end_date', true );
 			$hide_event       = get_post_meta( $post->ID, 'hide_event', true );
-			$day              = date( "d", $unixtime );
-			$monthnow         = date( "n", $unixtime );
-			$eventmonth       = date( "M", $unixtime );
-			$eventmonthnumber = date( "m", $unixtime );
+			$day              = gmdate( "d", $unixtime );
+			$monthnow         = gmdate( "n", $unixtime );
+			$eventmonth       = gmdate( "M", $unixtime );
+			$eventmonthnumber = gmdate( "m", $unixtime );
 			$month            = ( $display['monthtype'] == 'short' ? date_i18n( "M", $unixtime ) : date_i18n( "F", $unixtime ) );
-			$year             = date( "Y", $unixtime );
+			$year             = gmdate( "Y", $unixtime );
 
 			$monthheading = $display['monthheadingorder'] == 'ym' ? $year . ' ' . $month : $month . ' ' . $year;
 
@@ -370,12 +371,12 @@ function qem_event_shortcode_esc( $atts, $widget ) {
 		$output_escaped .= "<h2>" . qem_wp_kses_post($display['noevent']) . "</h2>";
 	}
 	wp_reset_postdata();
-	wp_reset_query();
 
 	return $output_escaped;
 }
 
 function qem_category_dropdown( $display ) {
+	// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Excludes the default 'Uncategorized' category (ID 1) from a category dropdown; not a post query.
 	$args    = array( 'exclude' => 1 );
 	$arr     = get_categories( $args );
 	$width   = $display['categorydropdownwidth'] ? ' style="width:100%"' : '';
@@ -387,7 +388,8 @@ function qem_category_dropdown( $display ) {
 		$thecat   = $option->name;
 		$selected = '';
 
-		if ( isset( $_REQUEST['category'] ) && ( $_REQUEST['category'] == $thecat ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend filter; no state change.
+		if ( isset( $_REQUEST['category'] ) && ( sanitize_text_field( wp_unslash( $_REQUEST['category'] ) ) == $thecat ) ) {
 			$selected = 'selected';
 		}
 

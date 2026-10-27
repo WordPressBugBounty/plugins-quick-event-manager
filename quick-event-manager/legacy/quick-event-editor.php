@@ -31,6 +31,7 @@ function event_custom_columns( $column ) {
 			echo esc_html( qem_get_element( qem_get_element( $custom, "event_cost" ), 0 ) );
 			break;
 		case "number_coming":
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 			echo qem_wp_kses_post( qem_attending( $event ) );
 			break;
 		case 'categories' :
@@ -85,9 +86,9 @@ function event_edit_columns( $columns ) {
 		"event_start"    => esc_html__( 'Event Time', 'quick-event-manager' ),
 		"event_location" => esc_html__( 'Venue', 'quick-event-manager' ),
 		"number_coming"  => esc_html__( 'Attending', 'quick-event-manager' ) . ' <br>/ ' . esc_html__( 'Places', 'quick-event-manager' ),
-		"categories"     => esc_html__( 'Categories' ),
-		"author"         => esc_html__( 'Author' ),
-		"date"           => esc_html__( 'Date' ),
+		"categories"     => esc_html__( 'Categories', 'quick-event-manager' ),
+		"author"         => esc_html__( 'Author', 'quick-event-manager' ),
+		"date"           => esc_html__( 'Date', 'quick-event-manager' ),
 	);
 
 	return $columns;
@@ -553,11 +554,13 @@ function event_details_meta() {
 			$event_names .= $item['yourname'] . ', ';
 		}
 		$event_names = substr( $event_names, 0, - 2 );
-		echo '<tr>
+	echo '<tr>
         <td>' . esc_html__( 'Attendees', 'quick-event-manager' ) . ' (' . esc_html__( 'names and emails collected from the', 'quick-event-manager' ) .
 		     ' <a href="options-general.php?page=' . esc_attr( QUICK_EVENT_MANAGER_PLUGIN_NAME ) . '&tab=register">' .
 		     esc_html__( 'registration form', 'quick-event-manager' ) . '</a>)</td>
-        <td>' . qem_wp_kses_post( $event_names ) . '</td>
+        <td>' .
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
+			qem_wp_kses_post( $event_names ) . '</td>
         </tr>
         <tr>
         <td></td>
@@ -578,7 +581,9 @@ function event_details_meta() {
 
 	echo '<tr>
         <td>' . esc_html__( 'Notes', 'quick-event-manager' ) . ':</td>
-        <td><textarea style="width:100%;height:100px;" name="event_notes">' . qem_wp_kses_post( qem_get_event_field( "event_notes" ) ) . '</textarea></td>
+        <td><textarea style="width:100%;height:100px;" name="event_notes">' .
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
+			qem_wp_kses_post( qem_get_event_field( "event_notes" ) ) . '</textarea></td>
         </tr>
         </table>';
 	wp_nonce_field( 'qem_nonce', 'save_qem' );
@@ -594,6 +599,7 @@ function event_details_meta() {
 		);
 
 		$template_loader->get_template_part( 'upgrade_cta' );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $template_loader->get_output() );
 	}
 }
@@ -684,13 +690,13 @@ function save_event_details() {
 		return;
 	}
 
-	if ( ! isset( $_POST['save_qem'] ) || ! wp_verify_nonce( $_POST['save_qem'], 'qem_nonce' ) ) {
+	if ( ! isset( $_POST['save_qem'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['save_qem'] ) ), 'qem_nonce' ) ) {
 		return;
 	}
 
 	if ( isset( $_POST["event_date"] ) ) {
-		$startdate = strtotime( sanitize_text_field( $_POST["event_date"] ) );
-		$starttime = qem_time( sanitize_text_field( $_POST["event_start"] ) );
+		$startdate = strtotime( sanitize_text_field( wp_unslash( $_POST["event_date"] ) ) );
+		$starttime = isset( $_POST["event_start"] ) ? qem_time( sanitize_text_field( wp_unslash( $_POST["event_start"] ) ) ) : qem_time( '' );
 		if ( ! $startdate ) {
 			$startdate = time();
 		}
@@ -702,8 +708,8 @@ function save_event_details() {
 		if ( empty( $_POST["event_end_date"] ) ) {
 			delete_post_meta( $post->ID, "event_end_date" );
 		}
-		$enddate    = strtotime( sanitize_text_field( $_POST["event_end_date"] ) );
-		$endtime    = qem_time( sanitize_text_field( $_POST["event_finish"] ) );
+		$enddate    = strtotime( sanitize_text_field( wp_unslash( $_POST["event_end_date"] ) ) );
+		$endtime    = isset( $_POST["event_finish"] ) ? qem_time( sanitize_text_field( wp_unslash( $_POST["event_finish"] ) ) ) : qem_time( '' );
 		$newenddate = ( $enddate ? $enddate + $endtime : '' );
 		update_post_meta( $post->ID, "event_end_date", $newenddate );
 	}
@@ -713,8 +719,8 @@ function save_event_details() {
 		if ( empty( $_POST["event_cutoff_date"] ) ) {
 			delete_post_meta( $post->ID, "event_cutoff_date" );
 		} else {
-			$date = sanitize_text_field( $_POST["event_cutoff_date"] );
-			$time = ( isset( $_POST['qem_cutoff_time'] ) ) ? sanitize_text_field( $_POST['qem_cutoff_time'] ) : '';
+			$date = sanitize_text_field( wp_unslash( $_POST["event_cutoff_date"] ) );
+			$time = ( isset( $_POST['qem_cutoff_time'] ) ) ? sanitize_text_field( wp_unslash( $_POST['qem_cutoff_time'] ) ) : '';
 
 			$timestamp = strtotime( $date . ' ' . $time );
 			if ( $timestamp !== false ) {
@@ -730,8 +736,8 @@ function save_event_details() {
 			if ( empty( $_POST["qem_reg_start_date"] ) ) {
 				delete_post_meta( $post->ID, "qem_reg_start_date" );
 			} else {
-				$date = sanitize_text_field( $_POST["qem_reg_start_date"] );
-				$time = ( isset( $_POST['qem_reg_start_time'] ) ) ? sanitize_text_field( $_POST['qem_reg_start_time'] ) : '';
+				$date = sanitize_text_field( wp_unslash( $_POST["qem_reg_start_date"] ) );
+				$time = ( isset( $_POST['qem_reg_start_time'] ) ) ? sanitize_text_field( wp_unslash( $_POST['qem_reg_start_time'] ) ) : '';
 
 				$timestamp = strtotime( $date . ' ' . $time );
 				if ( $timestamp !== false ) {
@@ -749,12 +755,12 @@ function save_event_details() {
 	save_event_field( "event_finish", 'sanitize_text_field' );
 	save_event_field( "event_timezone", 'sanitize_text_field' );
 	if ( isset ( $_POST["event_timezone"] ) ) {
-		if ( sanitize_text_field( $_POST["event_timezone"] ) == "Eastern Australia, Guam, Vladivostok" ) {
+		if ( sanitize_text_field( wp_unslash( $_POST["event_timezone"] ) ) == "Eastern Australia, Guam, Vladivostok" ) {
 			$sel = "Aus";
-		} elseif ( sanitize_text_field( $_POST["event_timezone"] ) == "Mid-Atlantic" ) {
+		} elseif ( sanitize_text_field( wp_unslash( $_POST["event_timezone"] ) ) == "Mid-Atlantic" ) {
 			$sel = "Mia";
 		} else {
-			$sel = substr( sanitize_text_field( $_POST["event_timezone"] ), 0, 3 );
+			$sel = substr( sanitize_text_field( wp_unslash( $_POST["event_timezone"] ) ), 0, 3 );
 		}
 		update_post_meta( $post->ID, "selected_timezone", $sel );
 	}
@@ -880,8 +886,10 @@ function save_event_field( $event_field, $sanitize_function ) {
 	global $post;
 	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce validatioon performed in calling function
 	if ( isset( $_POST[ $event_field ] ) ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce validatioon performed in calling function
-		update_post_meta( $post->ID, $event_field, $sanitize_function( $_POST[ $event_field ] ) );
+		// $sanitize_function is the caller-supplied sanitizer for this field (e.g. qem_wp_kses_post for rich-text
+		// descriptions, sanitize_text_field for plain fields); applying it alone preserves each field's intended format.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce checked in calling function; value sanitized by the caller-supplied $sanitize_function.
+		update_post_meta( $post->ID, $event_field, $sanitize_function( wp_unslash( $_POST[ $event_field ] ) ) );
 	}
 }
 
@@ -940,22 +948,22 @@ function qem_build_email_list( $register, $message, $report, $pid ) {
 			switch ( $name ) {
 				case 'field1':
 					if ( $register['usename'] ) {
-						$content .= '<td>' . $value['yourname'] . '</td>';
+						$content .= '<td>' . esc_html( $value['yourname'] ) . '</td>';
 					}
 					break;
 				case 'field2':
 					if ( $register['usemail'] ) {
-						$content .= '<td>' . $value['youremail'] . '</td>';
+						$content .= '<td>' . esc_html( $value['youremail'] ) . '</td>';
 					}
 					break;
 				case 'field4':
 					if ( $register['usetelephone'] ) {
-						$content .= '<td>' . $value['yourtelephone'] . '</td>';
+						$content .= '<td>' . esc_html( $value['yourtelephone'] ) . '</td>';
 					}
 					break;
 				case 'field5':
 					if ( $register['useplaces'] && empty( $value['notattend'] ) ) {
-						$content .= '<td>' . $value['yourplaces'] . '</td>';
+						$content .= '<td>' . esc_html( $value['yourplaces'] ) . '</td>';
 					}
 					break;
 			}
@@ -986,7 +994,7 @@ function rcm_meta_box( $post ) {
 
 function qem_duplicate() {
 
-	if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'qem-duplicate-event' ) ) {
+	if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'qem-duplicate-event' ) ) {
 		wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 	}
 

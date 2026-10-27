@@ -10,7 +10,7 @@ function qem_calc_money_values( $values, $val = array()) {
 
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce not required user action.
 	if ( isset( $_REQUEST['action'] ) && "qem_validate_form" == $_REQUEST['action'] ) {
-		$page_url = sanitize_url( $_SERVER["HTTP_REFERER"] );
+		$page_url = isset( $_SERVER["HTTP_REFERER"] ) ? esc_url_raw( wp_unslash( $_SERVER["HTTP_REFERER"] ) ) : '';
 	} else {
 		$page_url = qem_current_page_url();
 	}
@@ -19,7 +19,7 @@ function qem_calc_money_values( $values, $val = array()) {
 	$cost                       = get_post_meta( $post->ID, 'event_cost', true );
 	$register['event_donation'] = get_post_meta( $post->ID, 'event_donation', true );
 
-	$quantity = ( $values['yourplaces'] < 1 ? 1 : strip_tags( $values['yourplaces'] ) );
+	$quantity = ( $values['yourplaces'] < 1 ? 1 : wp_strip_all_tags( $values['yourplaces'] ) );
 
 	$useproducts = get_post_meta( $post->ID, 'event_products', true );
 
@@ -57,6 +57,8 @@ function qem_calc_money_values( $values, $val = array()) {
 
 	$redirect = qem_get_redirect( $post->ID, $register, $page_url );
 
+	$percentprocess = 0;
+	$fixedprocess   = 0;
 	if ( qem_get_element( $payments, 'useprocess', false ) && qem_get_element( $payments, 'processpercent', false ) ) {
 		$percent        = preg_replace( '/[^.,0-9]/', '', $payments['processpercent'] ) / 100;
 		$percentprocess = $cost * $quantity * $percent;
@@ -133,6 +135,7 @@ function qem_build_paypal_form_esc($values, $val) {
 	}
 
 	$payments = qem_get_stored_payment();
+	$register = get_custom_registration_form( $post->ID );
 	$paypalurl = 'https://www.paypal.com/cgi-bin/webscr';
 	if ( $payments['sandbox'] ) {
 		$paypalurl = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
@@ -153,7 +156,7 @@ function qem_build_paypal_form_esc($values, $val) {
 	$content_escaped = '<h2 id="qem_reload">' . qem_wp_kses_post( $payments['waiting'] ) . '</h2>
     <form action="' . esc_url_raw( $paypalurl ) . '" method="post" name="qempay" id="qempay">
     <input type="hidden" name="cmd" value="_xclick">
-    <input type="hidden" name="item_name" value="' . esc_html__( 'Event', 'quick-event-manager' ) . ': ' . $val['name'] . ' [ ' . strip_tags( $val['item_number'] ) . $privacy . ' ]"/>
+    <input type="hidden" name="item_name" value="' . esc_html__( 'Event', 'quick-event-manager' ) . ': ' . $val['name'] . ' [ ' . wp_strip_all_tags( $val['item_number'] ) . $privacy . ' ]"/>
     <input type="hidden" name="business" value="' . esc_html( $payments['paypalemail'] ) . '">
     <input type="hidden" name="bn" value="quickplugins_SP">
     <input type="hidden" name="return" value="' . esc_url_raw( $val['return'] ) . '">
@@ -209,10 +212,13 @@ function qem_current_page_url() {
 		}
 	}
 	$pageURL .= "://";
-	if ( $_SERVER["SERVER_PORT"] != "80" ) {
-		$pageURL .= sanitize_text_field( $_SERVER["SERVER_NAME"] ) . ":" . sanitize_text_field( $_SERVER["SERVER_PORT"] ) . sanitize_text_field( $_SERVER["REQUEST_URI"] );
+	$server_port = isset( $_SERVER["SERVER_PORT"] ) ? absint( wp_unslash( $_SERVER["SERVER_PORT"] ) ) : 0;
+	$server_name = isset( $_SERVER["SERVER_NAME"] ) ? sanitize_text_field( wp_unslash( $_SERVER["SERVER_NAME"] ) ) : '';
+	$request_uri = isset( $_SERVER["REQUEST_URI"] ) ? sanitize_text_field( wp_unslash( $_SERVER["REQUEST_URI"] ) ) : '';
+	if ( $server_port != 80 ) {
+		$pageURL .= $server_name . ":" . $server_port . $request_uri;
 	} else {
-		$pageURL .= sanitize_text_field( $_SERVER["SERVER_NAME"] ) . sanitize_text_field( $_SERVER["REQUEST_URI"] );
+		$pageURL .= $server_name . $request_uri;
 	}
 
 	return $pageURL;

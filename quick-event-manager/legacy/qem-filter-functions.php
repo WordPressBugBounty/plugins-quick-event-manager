@@ -24,7 +24,7 @@ function qem_enqueue_scripts() {
 			$ic = qem_get_incontext();
 			if ( qem_get_element( $ic, 'useincontext' ) ) {
 				if ( $ic['useapi'] == 'stripe' ) {
-					wp_register_script( 'stripe_checkout', '//js.stripe.com/v3/', array(), false, true );
+					wp_register_script( 'stripe_checkout', '//js.stripe.com/v3/', array(), QUICK_EVENT_MANAGER_PLUGIN_VERSION, true );
 				}
 			}
 		}
@@ -34,7 +34,7 @@ function qem_enqueue_scripts() {
 	if ( Plugin::can_use_premium_code__premium_only() ) {
 		$guest = qem_stored_guest();
 		if ( ! $guest['noui'] ) {
-			wp_enqueue_style( 'jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+			wp_enqueue_style( 'jquery-style', plugins_url( 'jquery-ui-datepicker.css', __FILE__ ), array(), QUICK_EVENT_MANAGER_PLUGIN_VERSION );
 		}
 	}
 }

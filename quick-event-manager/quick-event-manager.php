@@ -11,7 +11,7 @@
  * Plugin Name: Quick Event Manager
  * Plugin URI: https://brightplugins.com/
  * Description: A quick and easy to use Event Manager
- * Version: 9.18
+ * Version: 9.19
  * Tested up to: 7.1
  * Requires at least: 5.6
  * Requires PHP: 7.4
@@ -55,7 +55,7 @@ define( 'QUICK_EVENT_MANAGER_PLUGIN_DIR', trailingslashit( plugin_dir_path( __FI
 define( 'QUICK_EVENT_MANAGER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'QUICK_EVENT_MANAGER_PLUGIN_NAME', 'quick-event-manager' );
-define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.18' );
+define( 'QUICK_EVENT_MANAGER_PLUGIN_VERSION', '9.19' );
 define( 'QEMBP_ADMIN_ASSETS', plugins_url( '', __FILE__ ) . '/ui/admin' );
 
 // Include the autoloaders so we can dynamically include the classes.

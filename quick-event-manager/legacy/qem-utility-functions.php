@@ -6,8 +6,10 @@ function qem_category_key( $cal, $style, $calendar ) {
 	$arr      = get_categories();
 	$display  = event_get_stored_display();
     $category = false;
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only request; no state change.
 	if ( isset( $_GET['category'] ) ) {
-		$category = sanitize_text_field( $_GET['category'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only request; no state change.
+		$category = sanitize_text_field( wp_unslash( $_GET['category'] ) );
 	}
 	$pageurl  = qem_current_page_url();
 	$pageurl = remove_query_arg( 'category', $pageurl );
@@ -182,15 +184,19 @@ function qem_places( $register, $pid, $event_number_max, $event = array() ) {
 	Added function to normalize this action across most functions
 */
 function qem_actual_link() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only request; no state change.
 	if ( isset( $_REQUEST['action'] ) ) {
-		$actual_link = explode( '?', sanitize_text_field( $_SERVER['HTTP_REFERER'] ) );
+		$referer     = isset( $_SERVER['HTTP_REFERER'] ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
+		$actual_link = explode( '?', $referer );
 		$actual_link = $actual_link[0];
 	} else {
 		$prefix = 'http://';
 		if ( is_ssl() ) {
 			$prefix = 'https://';
 		}
-		$actual_link = $prefix . sanitize_text_field($_SERVER['HTTP_HOST']) . sanitize_text_field($_SERVER['REQUEST_URI']);
+		$host        = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+		$actual_link = $prefix . $host . $request_uri;
 	}
 
 	return $actual_link;
@@ -224,7 +230,7 @@ function get_event_popup( $atts ) {
 
 function dateToCal( $timestamp ) {
 	if ( $timestamp ) {
-		return date( 'Ymd\THis', $timestamp );
+		return gmdate( 'Ymd\THis', $timestamp );
 	}
 }
 
@@ -277,11 +283,11 @@ function qem_wp_mail( $type, $qem_email, $title, $content, $headers ) {
 	add_action( 'wp_mail_failed', function ( $wp_error ) {
 		/**  @var $wp_error \WP_Error */
 		if ( defined( 'WP_DEBUG' ) && true == WP_DEBUG && is_wp_error( $wp_error ) ) {
-			trigger_error( 'QEM Email - wp_mail error msg : ' . esc_html( $wp_error->get_error_message() ), E_USER_WARNING );
+			trigger_error( 'QEM Email - wp_mail error msg : ' . esc_html( $wp_error->get_error_message() ), E_USER_WARNING ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Intentional developer-facing notice.
 		}
 	}, 10, 1 );
 	if ( defined( 'WP_DEBUG' ) && true == WP_DEBUG ) {
-		trigger_error( 'QEM Email message about to send: ' . esc_html( $type ) . ' To: ' . esc_html( $qem_email ), E_USER_NOTICE );
+		trigger_error( 'QEM Email message about to send: ' . esc_html( $type ) . ' To: ' . esc_html( $qem_email ), E_USER_NOTICE ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Intentional developer-facing notice.
 	}
 	$decode_title = html_entity_decode( $title, ENT_QUOTES );
 	$headers .=  "X-Entity-Ref-ID: " . uniqid() . "\r\n";
@@ -291,9 +297,9 @@ function qem_wp_mail( $type, $qem_email, $title, $content, $headers ) {
 	$res          = wp_mail( $qem_email, $decode_title, $content, $headers );
 	if ( defined( 'WP_DEBUG' ) && true == WP_DEBUG ) {
 		if ( true === $res ) {
-			trigger_error( 'QEM Email - wp_mail responded OK : ' . esc_html( $type ) . ' To: ' . esc_html( $qem_email ), E_USER_NOTICE );
+			trigger_error( 'QEM Email - wp_mail responded OK : ' . esc_html( $type ) . ' To: ' . esc_html( $qem_email ), E_USER_NOTICE ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Intentional developer-facing notice.
 		} else {
-			trigger_error( 'QEM Email - wp_mail responded FAILED to send : ' . esc_html( $type ) . ' To: ' . esc_html( $qem_email ), E_USER_WARNING );
+			trigger_error( 'QEM Email - wp_mail responded FAILED to send : ' . esc_html( $type ) . ' To: ' . esc_html( $qem_email ), E_USER_WARNING ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Intentional developer-facing notice.
 		}
 	}
 }

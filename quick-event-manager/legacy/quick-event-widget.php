@@ -42,7 +42,7 @@ class qem_widget extends WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( 'Event List', 'text_domain' );
+			$title = __( 'Event List', 'quick-event-manager' );
 		}
 		?>
         <p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -99,7 +99,7 @@ class qem_widget extends WP_Widget {
                    name="<?php echo esc_attr( $this->get_field_name( 'category' ) ); ?>" class="widefat"
                    style="width:100%;">
                 <option value="0"><?php esc_html_e( 'All Categories', 'quick-event-manager' ); ?></option>
-				<?php foreach ( get_terms( 'category', 'parent=0&hide_empty=0' ) as $term ) { ?>
+				<?php foreach ( get_terms( array( 'taxonomy' => 'category', 'parent' => 0, 'hide_empty' => 0 ) ) as $term ) { ?>
                     <option <?php selected( $instance['category'], $term->term_id ); ?>
                             value="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_attr( $term->name ); ?></option>
 				<?php } ?>
@@ -166,12 +166,15 @@ class qem_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args, EXTR_SKIP );
 		$title = apply_filters( 'widget_title', $instance['title'] );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $args['before_widget'] );
 		if ( ! empty( $title ) ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 			echo qem_wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
 		}
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --  qem_event_shortcode_esc function returns escaped outputs as used in multiple places shortcode, widget admin previews etc https://developer.wordpress.org/apis/security/escaping/#toc_4
 		echo qem_event_shortcode_esc( $instance, 'widget' );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $args['after_widget'] );
 	}
 }
@@ -301,8 +304,10 @@ class qem_calendar_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args, EXTR_SKIP );
 		$title = apply_filters( 'widget_title', $instance['title'] );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $args['before_widget'] );
 		if ( ! empty( $title ) ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 			echo qem_wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
 		}
 
@@ -328,6 +333,7 @@ class qem_calendar_widget extends WP_Widget {
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_strip_all_tags is a WP security function, qem_show_calendar_esc returns escaped data https://developer.wordpress.org/apis/security/escaping/#toc_4
 		echo '<div id="qem-calendar-widget"><style>' . wp_strip_all_tags( $smallicon . ' ' . $headerstyle ) . '</style>' . qem_show_calendar_esc( $instance ) . '</div>' . "\r\n";
 
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $args['after_widget'] );
 	}
 }

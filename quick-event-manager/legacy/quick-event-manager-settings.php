@@ -46,9 +46,11 @@ function qem_tabbed_page()
 {
 	global $qem_fs;
 	echo '<h1>' . esc_html__('Quick Event Manager', 'quick-event-manager') . '</h1>';
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab navigation, no state change.
 	if (isset($_GET['tab'])) {
-		qem_admin_tabs($_GET['tab']);
-		$tab = sanitize_text_field($_GET['tab']);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab navigation, no state change.
+		$tab = sanitize_text_field(wp_unslash($_GET['tab']));
+		qem_admin_tabs($tab);
 	} else {
 		qem_admin_tabs('setup');
 		$tab = 'setup';
@@ -144,7 +146,7 @@ function qem_admin_tabs($current = 'settings')
 		'register' => esc_html__('Registration', 'quick-event-manager'),
 		'auto'     => esc_html__('Auto Responder', 'quick-event-manager'),
 		'payment'  => esc_html__('Event Payment', 'quick-event-manager'),
-		'membership_plan'  => '<span style="rotate: -15deg;position: absolute;z-index: 1;left: 0;top: -13px;background-color: #8951A5;padding: .2em .5em;border-radius: 6px;color: white;">New</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128274 Upgrade to Club Membership',
+		'membership_plan'  => '<span style="rotate: -15deg;position: absolute;z-index: 1;left: 0;top: -13px;background-color: #8951A5;padding: .2em .5em;border-radius: 6px;color: white;">New</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128274; Upgrade to Club Membership',
 	);
 	if (Plugin::is__premium_only()) {
 		if (Plugin::can_use_premium_code()) {
@@ -163,7 +165,7 @@ function qem_admin_tabs($current = 'settings')
 			continue;
 		}
 		$class = ($tab == $current) ? ' nav-tab-active' : '';
-		echo '<a style="position: relative;" class="nav-tab' . esc_attr($class) . '" href="?page=' . esc_attr(QUICK_EVENT_MANAGER_PLUGIN_NAME) . '&tab=' . esc_attr($tab) . '">' . ($name) . '</a>';
+		echo '<a style="position: relative;" class="nav-tab' . esc_attr($class) . '" href="?page=' . esc_attr(QUICK_EVENT_MANAGER_PLUGIN_NAME) . '&tab=' . esc_attr($tab) . '">' . wp_kses_post($name) . '</a>';
 	}
 	echo '</h2>';
 }
@@ -173,6 +175,7 @@ function qem_setup()
 	global $qem_fs;
 	if (Plugin::can_use_premium_code__premium_only()) {
 		$support_text = sprintf(
+			/* translators: 1: opening anchor tag to the support link, 2: closing anchor tag. */
 			__(
 				'if you cannot find a solution please use the contact form %1$shere%2$s.',
 				'quick-event-manager'
@@ -182,6 +185,7 @@ function qem_setup()
 		);
 	} else {
 		$support_text = sprintf(
+			/* translators: 1: opening anchor tag to the community forum, 2: closing anchor tag, 3: opening anchor tag to the upgrade link. */
 			__(
 				'or visit the community support forum %1$shere%2$s, if you require urgent or personalised support please upgrade to %3$sa paid plan here%2$s',
 				'quick-event-manager'
@@ -203,6 +207,7 @@ function qem_setup()
     <h2>' . esc_html__('Help and Support', 'quick-event-manager') . '</h2>
     <p>' . esc_html__('Use the Knowledge base at', 'quick-event-manager') .
 		' <a href="https://brightplugins.com/docs-category/quick-event-manager/" target="_blank">https://brightplugins.com/docs-category/quick-event-manager/</a><p>' .
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		qem_wp_kses_post($support_text) . '</p></p>
     </div>
     <div class="qem-options">';
@@ -218,6 +223,7 @@ function qem_setup()
 		);
 
 		$template_loader->get_template_part('upgrade_cta');
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post($template_loader->get_output());
 	}
 	echo '<h2>' . esc_html__('Event Manager Role', 'quick-event-manager') . '</h2>
@@ -298,7 +304,7 @@ function qem_membership_plan()
 
 	echo wp_kses_post( $upsale_notice );
 
-	echo '<p><a href="' . $CLUB_MEMBERSHIP_LINK . '"> <img style="max-width: 100%" src="' . QEMBP_ADMIN_ASSETS . '/img/pro-bp-plugins.png' . '"> </a></p>';
+	echo '<p><a href="' . esc_url($CLUB_MEMBERSHIP_LINK) . '"> <img style="max-width: 100%" src="' . esc_url(QEMBP_ADMIN_ASSETS . '/img/pro-bp-plugins.png') . '"> </a></p>';
 
 }
 
@@ -332,7 +338,7 @@ function qem_event_settings()
 			$event['size'][$item]           = filter_var(qem_get_element($_POST, 'size_' . $item), FILTER_SANITIZE_STRING);
 
 			if (isset($_POST['label_' . $item]) && ! empty($_POST['label_' . $item])) {
-				$event['label'][$item] = sanitize_text_field(stripslashes($_POST['label_' . $item]));
+				$event['label'][$item] = sanitize_text_field(wp_unslash($_POST['label_' . $item]));
 				$event['label'][$item] = filter_var($event['label'][$item], FILTER_SANITIZE_STRING);
 			}
 		}
@@ -1367,7 +1373,7 @@ Header CSS:<br>
 
     <tr>
     <td width="30%">' . esc_html__('Day Border', 'quick-event-manager') . '</td>
-    <td><input type="text" style="width:12em;" label="tdborder" name="tdborder" value="' . esc_attr(qem_get_element($calendar, 'tdborder')) . '" /> ' . esc_html__('Example', 'qiock-event-manager') . ': 1px solid red</td>
+    <td><input type="text" style="width:12em;" label="tdborder" name="tdborder" value="' . esc_attr(qem_get_element($calendar, 'tdborder')) . '" /> ' . esc_html__('Example', 'quick-event-manager') . ': 1px solid red</td>
     </tr>
     <tr>
     <td width="30%">' . esc_html__('Cellspacing', 'quick-event-manager') . '</td>
@@ -1890,7 +1896,7 @@ function qem_register()
 	}
 	echo '</tr><tr>
     <td width="5%"><input type="checkbox" name="nonotifications" ' . esc_attr(qem_get_element($register, 'nonotifications')) . ' value="checked" /></td>
-    <td colspan="2">' . esc_html__('Do not send notifications') . '</td>
+    <td colspan="2">' . esc_html__('Do not send notifications', 'quick-event-manager') . '</td>
     </tr>
 
     <tr>
@@ -2031,7 +2037,7 @@ function qem_register()
     </tr>
 
     <tr>
-    <td colspan="3"><h2>' . esc_html__('Terms and Conditions', 'quick-event-manager', 'quick-event-manager') . '</h2></td>
+    <td colspan="3"><h2>' . esc_html__('Terms and Conditions', 'quick-event-manager') . '</h2></td>
     </tr>
     <tr>
     <td width="5%"><input type="checkbox" name="useterms" ' . esc_attr(qem_get_element($register, 'useterms')) . ' value="checked" /></td>
@@ -2060,7 +2066,9 @@ function qem_register()
     </tr>
     <tr>
     <td colspan="2">' . esc_html__('Thank you message blurb ( some html e.g. links permitted here )', 'quick-event-manager') . '</td>
-    <td><textarea style="width:100%;height:100px;" name="replyblurb">' . qem_wp_kses_post(qem_get_element($register, 'replyblurb')) . '</textarea></td>
+    <td><textarea style="width:100%;height:100px;" name="replyblurb">' .
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
+			qem_wp_kses_post(qem_get_element($register, 'replyblurb')) . '</textarea></td>
     </tr>
     <tr>
     <td colspan="2">' . esc_html__('Error Message', 'quick-event-manager') . '</td>
@@ -2075,7 +2083,7 @@ function qem_register()
     </tr>
     <tr>
     <td width="5%"><input type="checkbox" name="ignorepayment" ' . esc_attr(qem_get_element($register, 'ignorepayment')) . ' value="checked" /></td>
-    <td colspan="2">' . esc_html__('Allow registration without payment') . '<br>
+    <td colspan="2">' . esc_html__('Allow registration without payment', 'quick-event-manager') . '<br>
     <span class="description">' . esc_html__('Only displays if there is a cost and the transfer to paypal option is enabled on the', 'quick-event-manager') .
 		' <a href="?page=' . esc_attr(QUICK_EVENT_MANAGER_PLUGIN_NAME) . '&tab=payment">' . esc_html__('Payments Page', 'quick-event-manager') . '</a></span>.</td>
     </tr>
@@ -2282,7 +2290,7 @@ function qem_register()
     </tr>
     <tr>
     <td style="vertical-align:top;">' . esc_html__('Margins and Padding', 'quick-event-manager') . '</td>
-    <td><span class="description">' . esc_html__('Set the margins and padding of each bit using CSS shortcodes', 'quick-contact-form') . ':</span><br><input type="text" label="line margin" name="line_margin" value="' . esc_attr(qem_get_element($style, 'line_margin')) . '" /></td>
+    <td><span class="description">' . esc_html__('Set the margins and padding of each bit using CSS shortcodes', 'quick-event-manager') . ':</span><br><input type="text" label="line margin" name="line_margin" value="' . esc_attr(qem_get_element($style, 'line_margin')) . '" /></td>
     </tr>
     <tr>
     <td colspan="2"><h2>' . esc_html__('Other text content', 'quick-event-manager') . '</h2></td>
@@ -2392,6 +2400,7 @@ function qem_autoresponse_page()
 	${$auto['whenconfirm']} = 'checked';
 	$message                = $auto['message'];
 	$after_msg              = sprintf(
+		/* translators: 1: opening anchor tag to the PayPal IPN settings, 2: closing anchor tag. */
 		esc_html__('Send only after confirmed payment - for paid events which go direct to PayPal (set if %1$sPayPal IPN%2$s is active), this will also defer admin notifications until after payment. Free Events and Events that do not redirect to payment automatically will still be notified immediately.', 'quick-event-manager'),
 		'<a href="?page=' . QUICK_EVENT_MANAGER_PLUGIN_NAME . '&tab=payment">',
 		'</a>'
@@ -2400,7 +2409,8 @@ function qem_autoresponse_page()
 	if (Plugin::is__premium_only()) {
 		if (Plugin::can_use_premium_code()) {
 			$after_msg = sprintf(
-				esc_html__('Send only after confirmed payment - for paid events which go direct to payment gateway (set if using Stripe or %1$sPayPal IPN%2$s is active), this will also defer admin notifications until after payment. Free Events and Events that do not redirect to payment automatically will still be notified immediately.', 'quick-event-manager'),
+				/* translators: 1: opening anchor tag to the PayPal IPN settings, 2: closing anchor tag. */
+			esc_html__('Send only after confirmed payment - for paid events which go direct to payment gateway (set if using Stripe or %1$sPayPal IPN%2$s is active), this will also defer admin notifications until after payment. Free Events and Events that do not redirect to payment automatically will still be notified immediately.', 'quick-event-manager'),
 				'<a href="?page=' . QUICK_EVENT_MANAGER_PLUGIN_NAME . '&tab=payment">',
 				'</a>'
 			);
@@ -2413,7 +2423,7 @@ function qem_autoresponse_page()
     <p><input type="checkbox" name="enable"' . esc_attr(qem_get_element($auto, 'enable')) . ' value="checked" /> ' . esc_html__('Enable Auto Responder', 'quick-event-manager') . '.</p>
  <p><input style="width:20px; margin: 0; padding: 0; border: none;" type="radio" name="whenconfirm" value="aftersubmission" ' . esc_attr($aftersubmission) . ' /> Send immediately after registration<br>
     <input style="width:20px; margin: 0; padding: 0; border: none;" type="radio" name="whenconfirm" value="afterpayment" ' . esc_attr($afterpayment) . ' /> ' . esc_html($after_msg) . '</span></p>
-    <p>' . esc_html__('From Name:', 'quick-event-manager') . ' (<span class="description">' . esc_html__('Defaults to your', 'k-event-manager') . '</a> ' . esc_html__('if left blank', 'quick-event-manager') . '.</span>):<br>
+    <p>' . esc_html__('From Name:', 'quick-event-manager') . ' (<span class="description">' . esc_html__('Defaults to your', 'quick-event-manager') . '</a> ' . esc_html__('if left blank', 'quick-event-manager') . '.</span>):<br>
     <input type="text" style="width:50%" name="fromname" value="' . esc_attr(qem_get_element($auto, 'fromname')) . '" /></p>
     <p>' . esc_html__('From Email:', 'quick-event-manager') . ' (<span class="description">' . esc_html__('Defaults to the', 'quick-event-manager') . ' <a href="' . esc_attr(get_admin_url()) . 'options-general.php">' . esc_html__('Admin Email', 'quick-event-manager') .
 		'</a> ' . esc_html__('if left blank', 'quick-event-manager') . '.</span>):<br>
@@ -2628,7 +2638,9 @@ function qem_payment()
    <p class="description">' .
 		esc_html__('Send a message when clearing down a pending payments (blank not to send).', 'quick-event-manager') .
 		'</p>
-    <p><textarea name="pendingcleardownmsg" rows ="5">' . qem_wp_kses_post(qem_get_element($payment, 'pendingcleardownmsg')) . '</textarea></p>
+    <p><textarea name="pendingcleardownmsg" rows ="5">' .
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
+			qem_wp_kses_post(qem_get_element($payment, 'pendingcleardownmsg')) . '</textarea></p>
     <h2>' . esc_html__('Payment Report', 'quick-event-manager') . '</h2>
    
     <p>' . esc_html__('Payment Report Column header', 'quick-event-manager') . ':<br>
@@ -2780,19 +2792,25 @@ Template Name: Single Event
 */
 ?>
 ';
-		$templateDirectory  = get_template_directory() . '/single.php';
-		$newFilePath        = get_stylesheet_directory() . '/single-event.php';
-		$currentFile        = fopen($templateDirectory, "r");
-		$pageTemplate       = fread($currentFile, filesize($templateDirectory));
-		fclose($currentFile);
-		$newTemplateFile = fopen($newFilePath, "w");
-		fwrite($newTemplateFile, $templateIdentifier);
-		$written = fwrite($newTemplateFile, $pageTemplate);
-		fclose($newTemplateFile);
-		if ($written != false) {
-			qem_admin_notice('The template has been created. <a href="' . admin_url('theme-editor.php?file=single-event.php') . '">Edit Template</a>.');
+		$templateDirectory = get_template_directory() . '/single.php';
+		$newFilePath       = get_stylesheet_directory() . '/single-event.php';
+
+		global $wp_filesystem;
+		if (! function_exists('WP_Filesystem')) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+		}
+		WP_Filesystem();
+
+		$pageTemplate = $wp_filesystem->get_contents($templateDirectory);
+		if (false === $pageTemplate) {
+			qem_admin_notice('<strong>' . esc_html__('ERROR: Unable to read the theme template file', 'quick-event-manager') . '</strong>');
 		} else {
-			qem_admin_notice('<strong>' . esc_html__('ERROR: Unable to create new theme file', 'quick-event-manager') . '</strong>');
+			$written = $wp_filesystem->put_contents($newFilePath, $templateIdentifier . $pageTemplate, FS_CHMOD_FILE);
+			if ($written !== false) {
+				qem_admin_notice('The template has been created. <a href="' . admin_url('theme-editor.php?file=single-event.php') . '">Edit Template</a>.');
+			} else {
+				qem_admin_notice('<strong>' . esc_html__('ERROR: Unable to create new theme file', 'quick-event-manager') . '</strong>');
+			}
 		}
 	}
 	echo '<div class="qem-settings"><div class="qem-options">
@@ -2801,7 +2819,11 @@ Template Name: Single Event
 	if (file_exists($new)) {
 		echo '<p>' . esc_html__('If your theme adds posting dates and other unwanted features to your event page you can set up and edit a template for single events.', 'quick-event-manager') . '</p>
         <p>' . esc_html__('This function clones the \'single.php\' theme file and saves it as \'single-event.php\'.', 'quick-event-manager') . '</p>
-        <p>' . esc_html__('Once created you can edit the file in your <a href="' . admin_url('theme-editor.php') . '">appearance editor', 'quick-event-manager') . '</a>.</p>
+        <p>' . sprintf(
+			/* translators: %s: URL of the appearance theme editor. */
+			esc_html__('Once created you can edit the file in your <a href="%s">appearance editor', 'quick-event-manager'),
+			esc_url(admin_url('theme-editor.php'))
+		) . '</a>.</p>
         <p>' . esc_html__('If you aren\'t confident editing theme files it may be prudent to read the', 'quick-event-manager') .
 			' <a href="http://codex.wordpress.org/Page_Templates">WordPress documentation</a> ' . esc_html__('first', 'quick-event-manager') . '.</p>';
 		$new = get_stylesheet_directory() . '/single-event.php';
@@ -3023,12 +3045,14 @@ function qem_stripe__premium_only()
         <ol>
         <li>' . esc_html__('Login to your Stripe account (or create an account if you don\'t have one)', 'quick-event-manager') . '</li>
         <li>' . sprintf(
+		/* translators: 1: opening anchor tag to the knowledgebase article, 2: closing anchor tag. */
 		esc_html__('For detailed how-to - see %1$sknowledgebase article%2$s', 'quick-event-manager'),
 		'<a href="https://brightplugins.com/docs/quick-event-manager/installation-quick-event-manager/get-stripe-api-keys/" target="_blank">',
 		'</a>'
 	) . '</li>
         <li>' . esc_html__('Copy and paste the Secret and Publishable keys into the appropriate fields on the left', 'quick-event-manager') . '</li>
         <li>' . sprintf(
+		/* translators: %1$s: REST API endpoint URL for the Stripe webhook. */
 		esc_html__('Set up a Webhook for \'checkout.session.completed\' pointing to %1$s', 'quick-event-manager'),
 		esc_url(get_home_url()) . '/wp-json/quick-event-manager/v1/stripe'
 	)
@@ -3038,7 +3062,7 @@ function qem_stripe__premium_only()
 		esc_html__('Use Stripe', 'quick-event-manager') . '</strong> ' .
 		esc_html__('box is checked and save the settings', 'quick-event-manager') .
 		'</li>
-        <li>' . esc_html__('Save Changes', 'multipay') . '</li>
+        <li>' . esc_html__('Save Changes', 'quick-event-manager') . '</li>
         </ol>
         </div>
         </div>';
@@ -3050,7 +3074,7 @@ function qem_extend_guest_setup__premium_only()
 	if (! Plugin::is_plan('gold')) {
 		return;
 	}
-	if (isset($_POST['Submit'])) {
+	if (isset($_POST['Submit']) && check_admin_referer("save_qem")) {
 		$options  = array(
 			'title',
 			'blurb',
@@ -3076,15 +3100,15 @@ function qem_extend_guest_setup__premium_only()
 		$required = qem_guest_list();
 		array_push($required, 'event_captcha_label');
 		foreach ($options as $item) {
-			$qem_guest[$item] = sanitize_text_field(stripslashes(qem_get_element($_POST, $item)));
+			$qem_guest[$item] = sanitize_text_field(wp_unslash(qem_get_element($_POST, $item)));
 			$qem_guest[$item] = filter_var(qem_get_element($qem_guest, $item), FILTER_SANITIZE_STRING);
 		}
 		foreach ($required as $item) {
-			$qem_guest[$item]              = stripslashes(qem_get_element($_POST, $item));
+			$qem_guest[$item]              = sanitize_text_field(wp_unslash(qem_get_element($_POST, $item)));
 			$qem_guest[$item]              = filter_var(qem_get_element($qem_guest, $item), FILTER_SANITIZE_STRING);
-			$qem_guest[$item . '_checked'] = stripslashes(qem_get_element($_POST, $item . '_checked'));
+			$qem_guest[$item . '_checked'] = sanitize_text_field(wp_unslash(qem_get_element($_POST, $item . '_checked')));
 			$qem_guest[$item . '_checked'] = filter_var(qem_get_element($qem_guest, $item . '_checked'), FILTER_SANITIZE_STRING);
-			$qem_guest[$item . '_use']     = stripslashes(qem_get_element($_POST, $item . '_use'));
+			$qem_guest[$item . '_use']     = sanitize_text_field(wp_unslash(qem_get_element($_POST, $item . '_use')));
 			$qem_guest[$item . '_use']     = filter_var(qem_get_element($qem_guest, $item . '_use'), FILTER_SANITIZE_STRING);
 		}
 		$checked = array(
@@ -3101,7 +3125,7 @@ function qem_extend_guest_setup__premium_only()
 		qem_admin_notice("The form settings for  have been updated.");
 	}
 
-	if (isset($_POST['Reset'])) {
+	if (isset($_POST['Reset']) && check_admin_referer("save_qem")) {
 		delete_option('qem_guest');
 		qem_admin_notice("The form settings for have been reset.");
 	}
@@ -3111,7 +3135,9 @@ function qem_extend_guest_setup__premium_only()
 
 	echo '<div class="qem-settings"><div class="qem-options">
     <h2>' . esc_html__('Guest Event Settings', 'quick-event-manager') . '</h2>
-    <form id="qem_settings_form" method="post" action="">
+    <form id="qem_settings_form" method="post" action="">';
+	wp_nonce_field("save_qem");
+	echo '
     <h2>' . esc_html__('Adding the guest event form to your site', 'quick-event-manager') . '</h2>
     <p>' .
 		/* translators: leave the shortcode [qemguest] as is */
@@ -3247,7 +3273,7 @@ function qem_extend_guest_setup__premium_only()
 
 function qem_extend_setup__premium_only()
 {
-	if (isset($_POST['Submit'])) {
+	if (isset($_POST['Submit']) && check_admin_referer("save_qem")) {
 		$options = array(
 			'sendtoorganiser',
 			'pagination',
@@ -3258,13 +3284,13 @@ function qem_extend_setup__premium_only()
 			'wfea_link',
 		);
 		foreach ($options as $item) {
-			$addons[$item] = stripslashes(qem_get_element($_POST, $item));
+			$addons[$item] = sanitize_text_field(wp_unslash(qem_get_element($_POST, $item)));
 		}
 		update_option('qem_addons', $addons);
 		qem_admin_notice(esc_html__('The settings have been updated.', 'quick-event-manager'));
 	}
 
-	if (isset($_POST['Reset'])) {
+	if (isset($_POST['Reset']) && check_admin_referer("save_qem")) {
 		delete_option('qem_addons');
 		qem_admin_notice(esc_html__('The settings for have been reset.', 'quick-event-manager'));
 	}
@@ -3272,7 +3298,9 @@ function qem_extend_setup__premium_only()
 	$addons = qem_get_addons();
 	$url    = admin_url() . '/admin.php';
 
-	echo '<form id="qem_settings_form" method="post" action="">
+	echo '<form id="qem_settings_form" method="post" action="">';
+	wp_nonce_field("save_qem");
+	echo '
         <div class="qem-options">
     <h2>' . esc_html__('Notify organiser', 'quick-event-manager') . '</h2>
     <p><input type="checkbox" name="sendtoorganiser" ' . esc_attr(qem_get_element($addons, 'sendtoorganiser')) . ' value="checked" /> ' . esc_html__('Also send registration details to the event organiser', 'quick-event-manager') . '</p>
@@ -3384,15 +3412,15 @@ function qem_settings_scripts($hook)
 	wp_enqueue_script('qem-media-script', plugins_url('quick-event-media.js', __FILE__), array(
 		'jquery',
 		'wp-color-picker'
-	), false, true);
+	), QUICK_EVENT_MANAGER_PLUGIN_VERSION, true);
 	wp_enqueue_script('jquery-ui-datepicker');
-	wp_enqueue_style('datepicker-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
-	wp_enqueue_style('qem_settings', plugins_url('quick-event-manager-settings.css', __FILE__));
+	wp_enqueue_style('datepicker-style', plugins_url('jquery-ui-datepicker.css', __FILE__), array(), QUICK_EVENT_MANAGER_PLUGIN_VERSION);
+	wp_enqueue_style('qem_settings', plugins_url('quick-event-manager-settings.css', __FILE__), array(), QUICK_EVENT_MANAGER_PLUGIN_VERSION);
 	wp_enqueue_script('jquery-ui-sortable');
 
-	wp_enqueue_style('event_style', plugins_url('quick-event-manager.css', __FILE__), null);
+	wp_enqueue_style('event_style', plugins_url('quick-event-manager.css', __FILE__), null, QUICK_EVENT_MANAGER_PLUGIN_VERSION);
 	if ('settings_page_quick-event-manager/settings' == $hook) {
-		wp_enqueue_script('event_script', plugins_url('quick-event-manager.js', __FILE__));
+		wp_enqueue_script('event_script', plugins_url('quick-event-manager.js', __FILE__), array(), QUICK_EVENT_MANAGER_PLUGIN_VERSION, true);
 	}
 }
 
@@ -3413,7 +3441,9 @@ function event_page_init()
 function qem_admin_notice($message = '')
 {
 	if (! empty($message)) {
-		echo '<div class="updated"><p>' . qem_wp_kses_post($message) . '</p></div>';
+		echo '<div class="updated"><p>' .
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
+			qem_wp_kses_post($message) . '</p></div>';
 	}
 }
 

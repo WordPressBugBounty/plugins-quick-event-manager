@@ -11,7 +11,8 @@ function qem_show_calendar_esc( $atts ) {
 	if ( ! isset( $qem_calendars ) ) {
 		$qem_calendars = 0;
 	}
-	$c        = ( ( isset( $_REQUEST['qemcalendar'] ) ) ? (int) $_REQUEST['qemcalendar'] : $qem_calendars ++ );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
+	$c        = ( ( isset( $_REQUEST['qemcalendar'] ) ) ? absint( wp_unslash( $_REQUEST['qemcalendar'] ) ) : $qem_calendars ++ );
 	$cal      = qem_get_stored_calendar();
 	$style    = qem_get_stored_style();
 	$category = '';
@@ -35,7 +36,6 @@ function qem_show_calendar_esc( $atts ) {
 	$natts    = array_merge( $defaults, $atts );
 	extract( shortcode_atts( $natts, $atts ) );
 	global $post;
-	global $_GET;
 	if ( ! $widget ) {
 		$header = $cal['header'];
 	}
@@ -43,14 +43,16 @@ function qem_show_calendar_esc( $atts ) {
 		$navigation = 'off';
 	}
 	$reload = ( $cal['jumpto'] ? '#qem_calreload' : '' );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
 	if ( isset( $_REQUEST['category'] ) ) {
-		$category = sanitize_text_field( $_REQUEST['category'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
+		$category = sanitize_text_field( wp_unslash( $_REQUEST['category'] ) );
 	}
 	$args = array(
 		'post_type'      => 'event',
 		'post_status'    => 'publish',
 		'orderby'        => 'meta_value_num',
-		'meta_key'       => 'event_date',
+		'meta_key'       => 'event_date', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Intentional event meta query.
 		'order'          => 'asc',
 		'posts_per_page' => - 1,
 		'category'       => '',
@@ -86,8 +88,10 @@ function qem_show_calendar_esc( $atts ) {
 		$timestamp = strtotime( '+1 day', $timestamp );
 	}
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
 	if ( isset( $_REQUEST["qemmonth"] ) ) {
-		$month = sanitize_text_field( $_REQUEST["qemmonth"] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
+		$month = sanitize_text_field( wp_unslash( $_REQUEST["qemmonth"] ) );
 	} else {
 		if ( $month  ) {
 			if ( ! is_numeric( $month ) && 'auto' !== $month ) {
@@ -95,15 +99,17 @@ function qem_show_calendar_esc( $atts ) {
 				if ( false === $month ) {
 					$month = date_i18n( "n" );
 				}
-				$month = date( 'n', $month );
+				$month = gmdate( 'n', $month );
 			}
 		} else {
 			$month = date_i18n( "n" );
 		}
 	}
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
 	if ( isset( $_REQUEST["qemyear"] ) ) {
-		$year = sanitize_text_field( $_REQUEST["qemyear"] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
+		$year = absint( wp_unslash( $_REQUEST["qemyear"] ) );
 	} else {
 		if ( $year ) {
 			if ( ! is_numeric( $year ) ) {
@@ -111,7 +117,7 @@ function qem_show_calendar_esc( $atts ) {
 				if ( false === $year ) {
 					$year = date_i18n( "Y" );
 				}
-				$year = date( 'Y', $year );
+				$year = gmdate( 'Y', $year );
 			}
 		} else {
 			$year = date_i18n( "Y" );
@@ -123,7 +129,7 @@ function qem_show_calendar_esc( $atts ) {
 			$args  = array(
 				'post_type'      => 'event',
 				'post_status'    => 'publish',
-				'meta_query'     => array(
+				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Intentional event meta query.
 					array(
 						'key'     => 'event_date',
 						'value'   => time(),
@@ -139,14 +145,13 @@ function qem_show_calendar_esc( $atts ) {
 				$query->the_post();
 				// Set month to the month of this event
 				$event_time_stamp = get_post_meta( $post->ID, 'event_date', true );
-				$month = date( 'n', $event_time_stamp);
-				$year  = date( 'Y', $event_time_stamp );
+				$month = gmdate( 'n', $event_time_stamp);
+				$year  = gmdate( 'Y', $event_time_stamp );
 			} else {
 				$month = wp_date( "n" );
 				$year  = wp_date( "Y" );
 			}
 			wp_reset_postdata();
-			wp_reset_query();http://localhost:8200/calendar/
 		}
 	}
 	$currentmonth = filter_var( $month, FILTER_SANITIZE_NUMBER_INT );
@@ -206,8 +211,8 @@ function qem_show_calendar_esc( $atts ) {
 				if ( ! $startdate || ! is_numeric( $startdate ) ) {
 					$startdate = time();
 				}
-				$startmonth = date( "m", (int) $startdate );
-				$startyear  = date( "Y", (int) $startdate );
+				$startmonth = gmdate( "m", (int) $startdate );
+				$startyear  = gmdate( "Y", (int) $startdate );
 				$match      = false;
 
 				// Do matches for the start of an event
@@ -217,8 +222,8 @@ function qem_show_calendar_esc( $atts ) {
 
 				// Do matches for end of event (If it applies)
 				if ( ! $match && $enddate ) {
-					$endmonth = date( "m", $enddate );
-					$endyear  = date( "Y", $enddate );
+					$endmonth = gmdate( "m", $enddate );
+					$endyear  = gmdate( "Y", $enddate );
 
 					if ( $endyear == $currentyear && $endmonth == $currentmonth ) {
 						$match = true;
@@ -267,7 +272,6 @@ function qem_show_calendar_esc( $atts ) {
 		}
 	}
 	wp_reset_postdata();
-	wp_reset_query();
 
 	if ( $cal['connect'] ) {
 		$calendar .= '<p><a href="' . $cal['eventlist_url'] . '">' . $cal['eventlist_text'] . '</a></p>';
@@ -291,8 +295,10 @@ function qem_show_calendar_esc( $atts ) {
 	// Build Category Information
 
 	$category = qem_get_element( $atts, 'category' );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
 	if ( isset( $_GET['category'] ) ) {
-		$category = sanitize_text_field( $_GET['category'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public read-only frontend calendar filter; no state change.
+		$category = sanitize_text_field( wp_unslash( $_GET['category'] ) );
 	}
 
 	$catlabel = str_replace( ',', ', ', $category );
@@ -365,9 +371,9 @@ function qem_show_calendar_esc( $atts ) {
 		$tdcontent = $eventcontent = '';
 		$flag      = $cal['attendeeflagcontent'] ? $cal['attendeeflagcontent'] : '&#x25cf;';
 		foreach ( $eventdate as $key => $day ) {
-			$m   = date( 'm', $day );
-			$d   = date( 'd', $day );
-			$y   = date( 'Y', $day );
+			$m   = gmdate( 'm', $day );
+			$d   = gmdate( 'd', $day );
+			$y   = gmdate( 'Y', $day );
 			$zzz = mktime( 0, 0, 0, $m, $d, $y );
 			if ( $xxx == $zzz && $show ) {
 				$tdstart      = '<td class="eventday ' . $oldday . ' ' . $firstday . '"><' . $header . '>' . ( $i - $startday + 1 ) . '</' . $header . '>';
@@ -390,7 +396,7 @@ function qem_show_calendar_esc( $atts ) {
 				if ( $cal['attendeeflag'] ) {
 					$numbers = ( $eventnumbers[ $key ] ) ? $flag . '&nbsp;' : '';
 				}
-				$tagless_title = strip_tags( $eventtitle[ $key ] );
+				$tagless_title = wp_strip_all_tags( $eventtitle[ $key ] );
 				$trim_title    = ( strlen( $tagless_title ) > $length ) ? mb_substr( $tagless_title, 0, $short, "utf-8" ) . '...' : $tagless_title;
 				// put back tags - this is for translation plugins like TranslatePress
 				$trim = str_replace( $tagless_title, $trim_title, $eventtitle[ $key ] );

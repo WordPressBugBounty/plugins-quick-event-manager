@@ -29,6 +29,7 @@ use WP_REST_Server;
 
 class Business {
 
+	private $payment;
 	private $plugin_name;
 	private $version;
 	/**

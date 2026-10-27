@@ -81,10 +81,10 @@ class Event_Dates {
 
 
 		// by now we should have all the date pieces so reassemble into a ISO date local time
-		$event_local_start_date_fmt_string  = date( 'Y-m-d', $event_local_start_date_epoch );
-		$event_local_start_time_fmt_string  = date( 'H:i:s', $event_local_start_time_epoch );
-		$event_local_finish_date_fmt_string = date( 'Y-m-d', $event_local_finish_date_epoch );
-		$event_local_finish_time_fmt_string = date( 'H:i:s', $event_local_finish_time_epoch );
+		$event_local_start_date_fmt_string  = gmdate( 'Y-m-d', $event_local_start_date_epoch );
+		$event_local_start_time_fmt_string  = gmdate( 'H:i:s', $event_local_start_time_epoch );
+		$event_local_finish_date_fmt_string = gmdate( 'Y-m-d', $event_local_finish_date_epoch );
+		$event_local_finish_time_fmt_string = gmdate( 'H:i:s', $event_local_finish_time_epoch );
 
 		$event_local_start_date_time_fmt_string  = $event_local_start_date_fmt_string . ' ' . $event_local_start_time_fmt_string;
 		$event_local_finish_date_time_fmt_string = $event_local_finish_date_fmt_string . ' ' . $event_local_finish_time_fmt_string;

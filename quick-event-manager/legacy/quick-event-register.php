@@ -214,7 +214,8 @@ function qem_ajax_validation() {
 	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce not required end user form
 	global $post;
 	global $qem_fs;
-	$event = $_POST['id'];
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Public end-user registration form, nonce not applicable.
+	$event = isset( $_POST['id'] ) ? absint( wp_unslash( $_POST['id'] ) ) : 0;
 	$args  = array(
 		'p'         => $event,
 		'post_type' => 'any',
@@ -226,7 +227,16 @@ function qem_ajax_validation() {
 	);
 	// Start "The Loop"
 	$query      = new WP_Query( $args );
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Public end-user registration form, nonce not applicable.
 	$formvalues = qem_sanitize_forms_values( $_POST );
+	/**
+	 * Broken Access Control fix: the `ipn`/`custom` value is the server's payment-tracking token for
+	 * this registration and only becomes 'Paid' via a verified PayPal IPN callback. Regenerate it
+	 * server-side here so a client cannot submit ipn=Paid (the paid label) to forge a completed
+	 * payment. This runs before storage (qem_process_form) and the PayPal form build, so both use
+	 * the same server-generated token.
+	 */
+	$formvalues['ipn'] = md5( wp_rand() . microtime() );
 	$formerrors = array();
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
@@ -244,7 +254,7 @@ function qem_ajax_validation() {
 			$usecounter = get_post_meta( $id, 'event_number', true );
 			// the number
 			$number         = (int) get_post_meta( $id, 'event_number', true );
-			$json['coming'] = qem_places( $register, $payment, $id, $usecounter, null );
+			$json['coming'] = qem_places( $register, $id, $usecounter, $event );
 			$num            = qem_number_places_available( $id );
 
 			$json['places'] = '';
@@ -313,7 +323,7 @@ function qem_ajax_validation() {
 					$ic      = qem_get_incontext();
 
 					$usecounter     = get_post_meta( $id, 'event_number', true );
-					$json['coming'] = qem_places( $register, $payment, $id, $usecounter, null );
+					$json['coming'] = qem_places( $register, $id, $usecounter, $event );
 					$num            = qem_number_places_available( $id );
 					$json['places'] = '';
 
@@ -533,7 +543,6 @@ function qem_stripe_error__premium_only( $e, $json ) {
 		'name'  => 'youremail',
 		'error' => $msg,
 	);
-	error_log( esc_html( $e->getError()->message ) );
 
 	return $json;
 }
@@ -780,7 +789,7 @@ function qem_display_form_unprotected_esc( $values, $errors, $registered ) {
 	if ( ! empty( $cutoffdate ) && $cutoffdate <= time() ) {
 		$cutoff                  = 'checked';
 	}
-	$utc_timestamp_converted = date( 'Y-m-d H:i:s', (int) $cutoffdate );
+	$utc_timestamp_converted = gmdate( 'Y-m-d H:i:s', (int) $cutoffdate );
 	$cutoff_display_date     = get_date_from_gmt( $utc_timestamp_converted, get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) );
 
 	if ( Plugin::can_use_premium_code__premium_only() ) {
@@ -788,7 +797,7 @@ function qem_display_form_unprotected_esc( $values, $errors, $registered ) {
 		$qem_reg_start_date_time = get_post_meta( $id, 'qem_reg_start_date', true );
 		if ( ! empty( $qem_reg_start_date_time ) && $qem_reg_start_date_time > time() ) {
 			$notopen                 = 'checked';
-			$utc_timestamp_converted = date( 'Y-m-d H:i:s', $qem_reg_start_date_time );
+			$utc_timestamp_converted = gmdate( 'Y-m-d H:i:s', $qem_reg_start_date_time );
 			$start_display_date      = get_date_from_gmt( $utc_timestamp_converted, get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) );
 		}
 	}
@@ -808,17 +817,17 @@ function qem_display_form_unprotected_esc( $values, $errors, $registered ) {
 	if ( Plugin::is__premium_only() ) {
 		if ( Plugin::can_use_premium_code() ) {
 			if ( isset( $_REQUEST['_qem_stripe_cancel_nonce'] ) ) {
-				if ( wp_verify_nonce( $_REQUEST['_qem_stripe_cancel_nonce'], 'stripe-cancel_' . $id ) ) {
+				if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_qem_stripe_cancel_nonce'] ) ), 'stripe-cancel_' . $id ) ) {
 					if ( isset( $_REQUEST['txn'] ) ) {
-						return qem_display_stripe_cancelled__premium_only( $api, $id, sanitize_text_field( $_REQUEST['txn'] ) );
+						return qem_display_stripe_cancelled__premium_only( $api, $id, sanitize_text_field( wp_unslash( $_REQUEST['txn'] ) ) );
 					}
 				}
 			}
 			// @TODO should we update paid status here or only on webhook?
 			if ( isset( $_REQUEST['_qem_stripe_nonce'] ) ) {
-				if ( wp_verify_nonce( $_REQUEST['_qem_stripe_nonce'], 'stripe-success_' . $id ) ) {
+				if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_qem_stripe_nonce'] ) ), 'stripe-success_' . $id ) ) {
 					if ( isset( $_REQUEST['txn'] ) ) {
-						return qem_display_stripe_paid__premium_only( $api, $id, sanitize_text_field( $_REQUEST['txn'] ) );
+						return qem_display_stripe_paid__premium_only( $api, $id, sanitize_text_field( wp_unslash( $_REQUEST['txn'] ) ) );
 					}
 				}
 			}
@@ -1200,9 +1209,9 @@ function qem_display_form_unprotected_esc( $values, $errors, $registered ) {
 						                    esc_attr( qem_get_element( $errors, 'youranswer' ) ) .
 						                    ' style="width:3em;"  value="' . esc_attr( qem_get_element( $values, 'youranswer' ) ) .
 						                    '" onblur="if (this.value == \'\') {this.value = \'' . esc_attr( qem_get_element( $values, 'youranswer' ) ) .
-						                    '\';}" onfocus="if (this.value == \'' . esc_attr( qem_get_element( $values, 'youranswer' ) ) . '\') {this.value = \'\';}" /><input type="hidden" name="answer" value="' . esc_attr( strip_tags( qem_get_element( $values, 'answer' ) ) ) . '" />
+						                    '\';}" onfocus="if (this.value == \'' . esc_attr( qem_get_element( $values, 'youranswer' ) ) . '\') {this.value = \'\';}" /><input type="hidden" name="answer" value="' . esc_attr( wp_strip_all_tags( qem_get_element( $values, 'answer' ) ) ) . '" />
                                                   <input type="hidden" name="thesum" value="' .
-						                    esc_attr( strip_tags( qem_get_element( $values, 'thesum' ) ) ) . '" /></p>';
+						                    esc_attr( wp_strip_all_tags( qem_get_element( $values, 'thesum' ) ) ) . '" /></p>';
 					}
 					break;
 				case 'field8':
@@ -1535,18 +1544,18 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 
 	if ( 'checked' !== $event_getnames && $event_maxplaces > 1 && get_post_meta( $id, 'event_requiredplaces', true ) ) {
 		for ( $i = 1; $i <= $event_maxplaces; $i ++ ) {
-			$values[ 'name' . $i ] = filter_var( qem_get_element( $values, 'name' . $i ), FILTER_SANITIZE_STRING );
+			$values[ 'name' . $i ] = sanitize_text_field( qem_get_element( $values, 'name' . $i ) );
 			if ( empty( qem_get_element( $values, 'name' . $i ) ) ) {
 				$errors[ 'name' . $i ] = __( 'Name required', 'quick-event-manager' );
 			}
 		}
 	} elseif ( 'checked' !== $event_getnames && $event_maxplaces > 1 ) {
-		$values['name1'] = filter_var( qem_get_element( $values, 'name1' ), FILTER_SANITIZE_STRING );
+		$values['name1'] = sanitize_text_field( qem_get_element( $values, 'name1' ) );
 		if ( empty( qem_get_element( $values, 'name1' ) ) ) {
 			$errors['name1'] = __( 'Name required', 'quick-event-manager' );
 		}
 	} else {
-		$values['yourname'] = filter_var( qem_get_element( $values, 'yourname' ), FILTER_SANITIZE_STRING );
+		$values['yourname'] = sanitize_text_field( qem_get_element( $values, 'yourname' ) );
 		if ( qem_get_element( $register, 'usename' ) && qem_get_element( $register, 'reqname' ) && ( empty( qem_get_element( $values, 'yourname' ) ) || qem_get_element( $values, 'yourname' ) == qem_get_element( $register, 'yourname' ) ) ) {
 			$errors['yourname'] = __( 'Name required', 'quick-event-manager' );
 		}
@@ -1554,7 +1563,7 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 
 	if ( 'checked' !== $event_getnames && $event_maxplaces > 1 && get_post_meta( $id, 'event_requiredplaces', true ) && $event_getemails ) {
 		for ( $i = 1; $i <= $event_maxplaces; $i ++ ) {
-			$values[ 'email' . $i ] = strtolower( filter_var( qem_get_element( $values, 'email' . $i ), FILTER_SANITIZE_STRING ) );
+			$values[ 'email' . $i ] = strtolower( sanitize_text_field( qem_get_element( $values, 'email' . $i ) ) );
 			if ( empty( qem_get_element( $values, 'email' . $i ) ) ) {
 				$errors[ 'email' . $i ] = __( 'Required input', 'quick-event-manager' );
 			}
@@ -1569,13 +1578,13 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 			$errors['youremail'] = __( 'Valid email required', 'quick-event-manager' );
 		}
 
-		$values['youremail'] = strtolower( filter_var( qem_get_element( $values, 'youremail' ), FILTER_SANITIZE_STRING ) );
+		$values['youremail'] = strtolower( sanitize_text_field( qem_get_element( $values, 'youremail' ) ) );
 		if ( qem_get_element( $register, 'usemail' ) && qem_get_element( $register, 'reqmail' ) && ( empty( qem_get_element( $values, 'youremail' ) ) || qem_get_element( $values, 'youremail' ) == qem_get_element( $register, 'youremail' ) ) ) {
 			$errors['youremail'] = __( 'Valid email required', 'quick-event-manager' );
 		}
 	}
 
-	$values['yourtelephone'] = filter_var( qem_get_element( $values, 'yourtelephone' ), FILTER_SANITIZE_STRING );
+	$values['yourtelephone'] = sanitize_text_field( qem_get_element( $values, 'yourtelephone' ) );
 	if ( ( qem_get_element( $register, 'usetelephone' ) && qem_get_element( $register, 'reqtelephone' ) ) && ( empty( qem_get_element( $values, 'yourtelephone' ) ) || qem_get_element( $values, 'yourtelephone' ) == qem_get_element( $register, 'yourtelephone' ) ) ) {
 		$errors['yourtelephone'] = __( 'Valid phone number required', 'quick-event-manager' );
 	}
@@ -1590,6 +1599,7 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 		if ( ! empty( qem_get_element( $values, 'yourplaces' ) ) ) {
 			if ( qem_get_element( $values, 'yourplaces' ) > $event_maxplaces ) {
 				$errors['yourplaces'] = sprintf(
+					/* translators: %1$s: maximum number of places allowed per registration. */
 					esc_html__( 'Maximum places (%1$s) per registration exceeded', 'quick-event-manager' ),
 					$event_maxplaces
 				);
@@ -1597,6 +1607,7 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 		} else {
 			if ( qem_get_variable_prices_attending( $values ) > $event_maxplaces ) {
 				$msg    = sprintf(
+					/* translators: %1$s: maximum total number of places allowed per registration. */
 					esc_html__( 'Total Maximum places (%1$s) per registration exceeded', 'quick-event-manager' ),
 					$event_maxplaces
 				);
@@ -1640,9 +1651,9 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 	}
 
 
-	$values['morenames'] = filter_var( qem_get_element( $values, 'morenames' ), FILTER_SANITIZE_STRING );
+	$values['morenames'] = sanitize_text_field( qem_get_element( $values, 'morenames' ) );
 
-	$values['yourmessage'] = filter_var( qem_get_element( $values, 'yourmessage' ), FILTER_SANITIZE_STRING );
+	$values['yourmessage'] = sanitize_textarea_field( qem_get_element( $values, 'yourmessage' ) );
 	if ( ( qem_get_element( $register, 'usemessage' ) && qem_get_element( $register, 'reqmessage' ) ) && ( empty( qem_get_element( $values, 'yourmessage' ) ) || qem_get_element( $values, 'yourmessage' ) == qem_get_element( $register, 'yourmessage' ) ) ) {
 		$errors['yourmessage'] = __( 'Required input', 'quick-event-manager' );
 	}
@@ -1650,7 +1661,7 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 		$values['yourmessage'] = '';
 	}
 
-	$values['yourblank1'] = filter_var( qem_get_element( $values, 'yourblank1' ), FILTER_SANITIZE_STRING );
+	$values['yourblank1'] = sanitize_text_field( qem_get_element( $values, 'yourblank1' ) );
 	if ( ( qem_get_element( $register, 'useblank1' ) && qem_get_element( $register, 'reqblank1' ) ) && ( empty( qem_get_element( $values, 'yourblank1' ) ) || qem_get_element( $values, 'yourblank1' ) == qem_get_element( $register, 'yourblank1' ) ) ) {
 		$errors['yourblank1'] = __( 'Required input', 'quick-event-manager' );
 	}
@@ -1658,7 +1669,7 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 		$values['yourblank1'] = '';
 	}
 
-	$values['yourblank2'] = filter_var( qem_get_element( $values, 'yourblank2' ), FILTER_SANITIZE_STRING );
+	$values['yourblank2'] = sanitize_text_field( qem_get_element( $values, 'yourblank2' ) );
 	if ( ( qem_get_element( $register, 'useblank2' ) && qem_get_element( $register, 'reqblank2' ) ) && ( empty( qem_get_element( $values, 'yourblank2' ) ) || qem_get_element( $values, 'yourblank2' ) == qem_get_element( $register, 'yourblank2' ) ) ) {
 		$errors['yourblank2'] = __( 'Required input', 'quick-event-manager' );
 	}
@@ -1666,10 +1677,10 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 		$values['yourblank2'] = '';
 	}
 
-	$values['yourdropdown'] = filter_var( qem_get_element( $values, 'yourdropdown' ), FILTER_SANITIZE_STRING );
-	$values['yourselector'] = filter_var( qem_get_element( $values, 'yourselector' ), FILTER_SANITIZE_STRING );
+	$values['yourdropdown'] = sanitize_text_field( qem_get_element( $values, 'yourdropdown' ) );
+	$values['yourselector'] = sanitize_text_field( qem_get_element( $values, 'yourselector' ) );
 
-	$values['yournumber1'] = filter_var( qem_get_element( $values, 'yournumber1' ), FILTER_SANITIZE_STRING );
+	$values['yournumber1'] = sanitize_text_field( qem_get_element( $values, 'yournumber1' ) );
 	if ( ( qem_get_element( $register, 'usenumber1' ) && qem_get_element( $register, 'reqnumber1' ) ) && ( empty( qem_get_element( $values, 'yournumber1' ) ) || qem_get_element( $values, 'yournumber1' ) == qem_get_element( $register, 'yournumber1' ) ) ) {
 		$errors['yournumber1'] = __( 'Required input', 'quick-event-manager' );
 	}
@@ -1681,7 +1692,7 @@ function qem_verify_form( &$values, &$errors, $ajax = false ) {
 	if ( qem_get_element( $register, 'usecaptcha' ) && ( empty( qem_get_element( $values, 'youranswer' ) ) || qem_get_element( $values, 'youranswer' ) <> qem_get_element( $values, 'answer' ) ) ) {
 		$errors['youranswer'] = __( 'Incorrect value try again', 'quick-event-manager' );
 	}
-	$values['youranswer'] = filter_var( qem_get_element( $values, 'youranswer' ), FILTER_SANITIZE_STRING );
+	$values['youranswer'] = sanitize_text_field( qem_get_element( $values, 'youranswer' ) );
 
 
 	$useproducts = get_post_meta( $id, 'event_products', true );
@@ -2041,8 +2052,8 @@ function qem_add_attendee( $values, $register ) {
 
 
 	foreach ( $arr as $item ) {
-		if ( $values[ $item ] != $register[ $item ] ) {
-			$newmessage[ $item ] = $values[ $item ];
+		if ( qem_get_element( $values, $item ) != qem_get_element( $register, $item ) ) {
+			$newmessage[ $item ] = qem_get_element( $values, $item );
 		}
 	}
 
@@ -2052,8 +2063,17 @@ function qem_add_attendee( $values, $register ) {
 	}
 	$newmessage['sentdate']       = $sentdate;
 	$newmessage['datetime_added'] = time();
-	$newmessage['ipn']            = qem_get_element( $values, 'ipn' );
-	$newmessage['custom']         = qem_get_element( $values, 'ipn' );
+	/**
+	 * Defense in depth: the stored ipn/custom token is this registration's payment-tracking id and
+	 * must never be persisted as the 'Paid' sentinel supplied by a client (that status is only set
+	 * by a verified PayPal IPN callback). Replace a forged 'Paid' with a fresh server-side token.
+	 */
+	$ipn_token = qem_get_element( $values, 'ipn' );
+	if ( 'Paid' === $ipn_token ) {
+		$ipn_token = md5( wp_rand() . microtime() );
+	}
+	$newmessage['ipn']            = $ipn_token;
+	$newmessage['custom']         = $ipn_token;
 	$newmessage['ticket_no']      = qem_get_element( $values, 'ticket_no' );
 
 
@@ -2110,7 +2130,7 @@ function qem_sendremovalemail( $register, $values ) {
 	);
 
 	foreach ( $arr as $item ) {
-		if ( $values[ $item ] != $register[ $item ] ) {
+		if ( qem_get_element( $values, $item ) != qem_get_element( $register, $item ) ) {
 			$newmessage[ $item ] = $values[ $item ];
 		}
 	}
@@ -2287,26 +2307,26 @@ function qem_build_event_message( $values, $register ) {
 		switch ( $name ) {
 			case 'field1':
 				{
-					if ( $values['team'] ) {
-						$content .= $values['team'];
+					if ( qem_get_element( $values, 'team' ) ) {
+						$content .= qem_get_element( $values, 'team' );
 					} else {
-						$content .= '<p><b>' . $register['yourname'] . ': </b>' . strip_tags( stripslashes( $values['yourname'] ) ) . '</p>';
+						$content .= '<p><b>' . $register['yourname'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourname'] ) ) . '</p>';
 					}
 				}
 				break;
 			case 'field2':
-				if ( ! $values['team'] ) {
-					$content .= '<p><b>' . $register['youremail'] . ': </b>' . strip_tags( stripslashes( $values['youremail'] ) ) . '</p>';
+				if ( ! qem_get_element( $values, 'team' ) ) {
+					$content .= '<p><b>' . $register['youremail'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['youremail'] ) ) . '</p>';
 				}
 				break;
 			case 'field3':
-				if ( $register['useattend']  && $values['notattend'] ) {
+				if ( $register['useattend']  && qem_get_element( $values, 'notattend' ) ) {
 					$content .= '<p><b>' . $register['yourattend'] . ': </b></p>';
 				}
 				break;
 			case 'field4':
 				if ( $register['usetelephone'] ) {
-					$content .= '<p><b>' . $register['yourtelephone'] . ': </b>' . strip_tags( stripslashes( $values['yourtelephone'] ) ) . '</p>';
+					$content .= '<p><b>' . $register['yourtelephone'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourtelephone'] ) ) . '</p>';
 				}
 				break;
 			case 'field5':
@@ -2332,65 +2352,65 @@ function qem_build_event_message( $values, $register ) {
 							}
 						}
 						$content .= '</p>';
-					} elseif ( $register['useplaces'] && ! $values['notattend'] ) {
-						$content .= '<p><b>' . $register['yourplaces'] . ': </b>' . strip_tags( stripslashes( $values['yourplaces'] ) ) . '</p>';
-					} elseif ( ! $register['useplaces'] && ! $values['notattend'] ) {
+					} elseif ( $register['useplaces'] && ! qem_get_element( $values, 'notattend' ) ) {
+						$content .= '<p><b>' . $register['yourplaces'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourplaces'] ) ) . '</p>';
+					} elseif ( ! $register['useplaces'] && ! qem_get_element( $values, 'notattend' ) ) {
 						$values['yourplaces'] = '1';
 					} else {
 						$values['yourplaces'] = '';
 					}
 					if ( $register['usemorenames'] && $values['yourplaces'] > 1 ) {
-						$content .= '<p><b>' . $register['morenames'] . ': </b>' . strip_tags( stripslashes( $values['morenames'] ) ) . '</p>';
+						$content .= '<p><b>' . $register['morenames'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['morenames'] ) ) . '</p>';
 					}
 				}
 				break;
 			case 'field6':
 				if ( $register['usemessage'] && $register['yourmessage'] != $values['yourmessage'] ) {
-					$content .= '<p><b>' . $register['yourmessage'] . ': </b>' . strip_tags( stripslashes( $values['yourmessage'] ) ) . '</p>';
+					$content .= '<p><b>' . $register['yourmessage'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourmessage'] ) ) . '</p>';
 				}
 				break;
 			case 'field9':
 				if ( $register['useblank1'] && $register['yourblank1'] != $values['yourblank1'] ) {
-					$content .= '<p><b>' . $register['yourblank1'] . ': </b>' . strip_tags( stripslashes( $values['yourblank1'] ) ) . '</p>';
+					$content .= '<p><b>' . $register['yourblank1'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourblank1'] ) ) . '</p>';
 				}
 				break;
 			case 'field10':
 				if ( $register['useblank2'] && $register['yourblank2'] != $values['yourblank2'] ) {
-					$content .= '<p><b>' . $register['yourblank2'] . ': </b>' . strip_tags( stripslashes( $values['yourblank2'] ) ) . '</p>';
+					$content .= '<p><b>' . $register['yourblank2'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourblank2'] ) ) . '</p>';
 				}
 				break;
 			case 'field11':
 				if ( $register['usedropdown'] ) {
 					$arr     = explode( ",", $register['yourdropdown'] );
-					$content .= '<p><b>' . $arr[0] . ': </b>' . strip_tags( stripslashes( $values['yourdropdown'] ) ) . '</p>';
+					$content .= '<p><b>' . $arr[0] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourdropdown'] ) ) . '</p>';
 				}
 				break;
 			case 'field14':
 				if ( $register['useselector'] ) {
 					$arr     = explode( ",", $register['yourselector'] );
-					$content .= '<p><b>' . $arr[0] . ': </b>' . strip_tags( stripslashes( $values['yourselector'] ) ) . '</p>';
+					$content .= '<p><b>' . $arr[0] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yourselector'] ) ) . '</p>';
 				}
 				break;
 			case 'field15':
 				if ( $register['useoptin'] ) {
-					$content .= '<p><b>' . $register['optinblurb'] . ': </b>' . strip_tags( stripslashes( $values['youroptin'] ) ) . '</p>';
+					$content .= '<p><b>' . $register['optinblurb'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['youroptin'] ) ) . '</p>';
 				}
 				break;
 			case 'field16':
 				if ( $register['usechecks'] ) {
-					$content .= '<p><b>' . $register['checkslabel'] . ': </b>' . strip_tags( stripslashes( $values['checkslist'] ) ) . '</p>';
+					$content .= '<p><b>' . $register['checkslabel'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['checkslist'] ) ) . '</p>';
 				}
 				break;
 			case 'field12':
 				if ( $register['usenumber1'] && $values['yournumber1'] ) {
-					$content .= '<p><b>' . $register['yournumber1'] . ': </b>' . strip_tags( stripslashes( $values['yournumber1'] ) ) . '</p>';
+					$content .= '<p><b>' . $register['yournumber1'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['yournumber1'] ) ) . '</p>';
 				}
 				break;
 			case 'field17':
 				if ( Plugin::is__premium_only() ) {
 					if ( Plugin::can_use_premium_code() ) {
 						if ( $register['usedonation'] && $values['donation_amount'] ) {
-							$content .= '<p><b>' . $register['donation'] . ': </b>' . strip_tags( stripslashes( $values['donation_amount'] ) ) . '</p>';
+							$content .= '<p><b>' . $register['donation'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['donation_amount'] ) ) . '</p>';
 						}
 					}
 				}
@@ -2398,7 +2418,7 @@ function qem_build_event_message( $values, $register ) {
 		}
 	}
 	if ( $register['ignorepayment'] ) {
-		$content .= '<p><b>' . $register['ignorepaymentlabel'] . ': </b>' . strip_tags( stripslashes( $values['ignore'] ) ) . '</p>';
+		$content .= '<p><b>' . $register['ignorepaymentlabel'] . ': </b>' . wp_strip_all_tags( stripslashes( $values['ignore'] ) ) . '</p>';
 	}
 
 	return $content;
@@ -2540,6 +2560,7 @@ function qem_build_registration_table_esc( $register, $message, $report, $pid, $
 		// don't sort when doing an add
 		if ( ! isset( $extra_args['do_not_sort'] ) ) {
 			// sort code
+			// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- Read-only sort selection on a public attendee listing; nonce not applicable.
 
 			if ( $register['usename'] ) {
 				if ( ( isset( $extra_args['sort_attendees_by'] ) && 'surname' == $extra_args['sort_attendees_by'] )
@@ -2562,6 +2583,7 @@ function qem_build_registration_table_esc( $register, $message, $report, $pid, $
 			     || ( isset( $_POST['qem_sort_by'] ) && 'date_added_asc' == $_POST['qem_sort_by'] ) ) {
 				$sort_message = qem_sort_date_asc( $sort_message );
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
 		}
 
 	}
@@ -2934,8 +2956,10 @@ function qem_messages() {
 
 
 	global $qem_fs;
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only event/title selection for display, nonce not applicable.
 	$event          = ( isset( $_GET["event"] ) ? (int) $_GET["event"] : null );
-	$title          = ( isset( $_GET["title"] ) ? sanitize_text_field( $_GET["title"] ) : null );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only event/title selection for display, nonce not applicable.
+	$title          = ( isset( $_GET["title"] ) ? sanitize_text_field( wp_unslash( $_GET["title"] ) ) : null );
 	$unixtime       = get_post_meta( $event, 'event_date', true );
 	$date           = date_i18n( "d M Y", $unixtime );
 	$noregistration = '<p>' . esc_html__( 'No event selected', 'quick-event-manager' ) . '</p>';
@@ -2943,10 +2967,10 @@ function qem_messages() {
 
 	$category = 'All Categories';
 	if ( isset( $_POST['qem_reset_message'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event = (int) $_POST['qem_download_form'];
+		$event = isset( $_POST['qem_download_form'] ) ? (int) $_POST['qem_download_form'] : 0;
 		$title = get_the_title( $event );
 		delete_option( 'qem_messages_' . $event );
 		delete_option( $event );
@@ -2956,7 +2980,7 @@ function qem_messages() {
 	}
 
 	if ( isset( $_POST['category'] ) ) {
-		$category = sanitize_text_field( $_POST["category"] );
+		$category = sanitize_text_field( wp_unslash( $_POST["category"] ) );
 	}
 
 	if ( isset( $_POST['select_event'] ) || isset( $_POST['eventid'] ) ) {
@@ -2972,7 +2996,7 @@ function qem_messages() {
 	}
 
 	if ( isset( $_POST['changeoptions'] ) ) {
-		if ( ! isset( $_POST['_qem_changeoptions_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_changeoptions_nonce'], 'qem_changeoptions' ) ) {
+		if ( ! isset( $_POST['_qem_changeoptions_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_changeoptions_nonce'] ) ), 'qem_changeoptions' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
 		$options = array( 'showevents', 'category' );
@@ -2984,16 +3008,17 @@ function qem_messages() {
 	}
 
 	if ( isset( $_POST['qem_delete_selected'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event   = (int) $_POST["qem_download_form"];
+		$event   = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 		$message = get_option( 'qem_messages_' . $event );
 		$len     = count( $message );
 		for ( $i = 0; $i < $len; $i ++ ) {
 			if ( isset( $_POST[ $i ] ) ) {
-				$num = ( $message[ $_POST[ $i ] ]['yourplaces'] ? $message[ $_POST[ $i ] ]['yourplaces'] : 1 );
-				unset( $message[ (int) $_POST[ $i ] ] );
+				$post_key = absint( wp_unslash( $_POST[ $i ] ) );
+				$num      = ( $message[ $post_key ]['yourplaces'] ? $message[ $post_key ]['yourplaces'] : 1 );
+				unset( $message[ $post_key ] );
 			}
 		}
 		$message = array_values( $message );
@@ -3002,10 +3027,10 @@ function qem_messages() {
 	}
 	$new_row = false;
 	if ( isset( $_POST['qem_add_row'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event     = (int) $_POST["qem_download_form"];
+		$event     = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 		$message   = get_option( 'qem_messages_' . $event );
 		$message[] = array( 'datetime_added' => time() );
 		if ( Plugin::is_plan_or_trial__premium_only( 'gold' ) ) {
@@ -3019,10 +3044,10 @@ function qem_messages() {
 	}
 
 	if ( isset( $_POST['qem_delete_blanks'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event   = (int) $_POST["qem_download_form"];
+		$event   = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 		$message = get_option( 'qem_messages_' . $event );
 
 		$message = array_filter(
@@ -3037,20 +3062,21 @@ function qem_messages() {
 	}
 
 	if ( isset( $_POST['qem_approve_selected'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event    = (int) $_POST["qem_download_form"];
+		$event    = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 		$message  = get_option( 'qem_messages_' . $event );
 		$len      = count( $message );
 		$auto     = qem_get_stored_autoresponder();
 		$register = get_custom_registration_form( $event );
 		for ( $i = 0; $i < $len; $i ++ ) {
 			if ( isset( $_POST[ $i ] ) ) {
-				$num                                 = ( $message[ $_POST[ $i ] ]['yourplaces'] ? $message[ $i ]['yourplaces'] : 1 );
-				$message[ $_POST[ $i ] ]['approved'] = 'checked';
+				$post_key                       = absint( wp_unslash( $_POST[ $i ] ) );
+				$num                            = ( $message[ $post_key ]['yourplaces'] ? $message[ $i ]['yourplaces'] : 1 );
+				$message[ $post_key ]['approved'] = 'checked';
 				// @TODO  investigate what register is needed for
-				qem_send_confirmation( $auto, $message[ $_POST[ $i ] ], null, $register, $event );
+				qem_send_confirmation( $auto, $message[ $post_key ], null, $register, $event );
 			}
 		}
 		$message = array_values( $message );
@@ -3060,10 +3086,10 @@ function qem_messages() {
 
 	// Update edited applications
 	if ( isset( $_POST['qem_update'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event    = (int) $_POST["qem_download_form"];
+		$event    = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 		$unixtime = get_post_meta( $event, 'event_date', true );
 		$date     = date_i18n( "d M Y", $unixtime );
 		$title    = get_the_title( $event );
@@ -3088,16 +3114,16 @@ function qem_messages() {
 
 		// sanitize $_POST['message'] array
 
+		$raw_message = array();
+		if ( isset( $_POST['message'] ) ) {
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each field is individually sanitized via sanitize_text_field in the array_map below.
+			$raw_message = (array) wp_unslash( $_POST['message'] );
+		}
 		$post_message = array_map(
 			function ( $row ) {
-				return array_map(
-					function ( $field ) {
-						return sanitize_text_field( $field );
-					},
-					$row
-				);
+				return array_map( 'sanitize_text_field', (array) $row );
 			},
-			( isset( $_POST['message'] ) ) ? $_POST['message'] : array()
+			$raw_message
 		);
 
 		foreach ( $post_message as $registration => $row ) {
@@ -3120,10 +3146,10 @@ function qem_messages() {
 	$selected = '';
 	// Edit all applications
 	if ( isset( $_POST['qem_edit'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event    = (int) $_POST["qem_download_form"];
+		$event    = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 		$unixtime = get_post_meta( $event, 'event_date', true );
 		$date     = date_i18n( "d M Y", $unixtime );
 		$title    = get_the_title( $event );
@@ -3132,10 +3158,10 @@ function qem_messages() {
 
 	// Edit selected applications
 	if ( isset( $_POST['qem_edit_selected'] ) || false !== $new_row ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
-		$event    = (int) $_POST["qem_download_form"];
+		$event    = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 		$unixtime = get_post_meta( $event, 'event_date', true );
 		$date     = date_i18n( "d M Y", $unixtime );
 		$title    = get_the_title( $event );
@@ -3157,7 +3183,7 @@ function qem_messages() {
 		}
 	}
 	if ( isset( $_POST['qem_emaillist'] ) ) {
-		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+		if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 			wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 		}
 		if ( empty( $register['sendemail'] ) ) {
@@ -3166,8 +3192,8 @@ function qem_messages() {
 			$emails    = explode( ',', $register['sendemail'] );
 			$sys_email = $emails[0];
 		}
-		$event    = (int) $_POST["qem_download_form"];
-		$title    = sanitize_text_field( $_POST["qem_download_title"] );
+		$event    = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
+		$title    = isset( $_POST["qem_download_title"] ) ? sanitize_text_field( wp_unslash( $_POST["qem_download_title"] ) ) : '';
 		$message  = get_option( 'qem_messages_' . $event );
 		$register = get_custom_registration_form( $event );
 		$number   = get_post_meta( $event, 'event_number', true );
@@ -3187,10 +3213,10 @@ function qem_messages() {
 	}
 	if ( Plugin::can_use_premium_code__premium_only() ) {
 		if ( isset( $_POST['qem_sort_by'] ) ) {
-			if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( $_POST['_qem_download_form_nonce'], 'qem_download_form' ) ) {
+			if ( ! isset( $_POST['_qem_download_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_qem_download_form_nonce'] ) ), 'qem_download_form' ) ) {
 				wp_die( esc_html__( 'Invalid Nonce, sorry something went wrong', 'quick-event-manager' ) );
 			}
-			$event    = (int) $_POST["qem_download_form"];
+			$event    = isset( $_POST["qem_download_form"] ) ? (int) $_POST["qem_download_form"] : 0;
 			$unixtime = get_post_meta( $event, 'event_date', true );
 			$date     = date_i18n( "d M Y", $unixtime );
 			$title    = get_the_title( $event );
@@ -3229,11 +3255,13 @@ function qem_messages() {
 		echo '<p>' . esc_html__( 'Event ID:', 'quick-event-manager' ) . ' ' . esc_html( $event ) . '</p>';
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- legacy structure required generation of content prior for if statement above that contains inline santized legacy scripts
 		echo $content_escaped;
+		/* translators: %s: event title. */
+		$qem_delete_all_confirm = sprintf( __( 'Are you sure you want to delete all the attendees for %s?', 'quick-event-manager' ), $title );
 		echo '<div class="bottom-actions"><input type="hidden" name="qem_download_form" value = "' . esc_attr( $event ) . '" />
         <input type="hidden" name="qem_download_title" value = "' . esc_attr( $title ) . '" />
         <input type="submit" name="qem_download_csv" class="button-primary" value="' . esc_html__( 'Export to CSV', 'quick-event-manager' ) . '" />
         <input type="submit" name="qem_emaillist" class="button-primary" value="' . esc_html__( 'Email List', 'quick-event-manager' ) . '" />
-        <input type="submit" name="qem_reset_message" class="button-secondary" value="' . esc_html__( 'Delete All Attendees', 'quick-event-manager' ) . '" onclick="return window.confirm( \'' . sprintf( esc_html__( 'Are you sure you want to delete all the attendees for %s?', 'quick-event-manager' ), esc_html( $title ) ) . '\' );"/>
+        <input type="submit" name="qem_reset_message" class="button-secondary" value="' . esc_html__( 'Delete All Attendees', 'quick-event-manager' ) . '" onclick="return window.confirm( \'' . esc_js( $qem_delete_all_confirm ) . '\' );"/>
         <input type="submit" name="qem_delete_selected" class="button-secondary" value="' . esc_html__( 'Delete Selected', 'quick-event-manager' ) . '" onclick="return window.confirm( \'' . esc_html__( 'Are you sure you want to delete the selected attendees?', 'quick-event-manager' ) . '\' );"/>
         <input type="submit" name="qem_delete_blanks" class="button-secondary" value="' . esc_html__( 'Delete Blanks', 'quick-event-manager' ) . '" onclick="return window.confirm( \'' . esc_html__( 'Are you sure you want to delete the blanks?', 'quick-event-manager' ) . '\' );"/>
 		<input type="submit" name="qem_add_row" class="button-secondary" value="' . esc_html__( 'Add Attendee', 'quick-event-manager' ) . '" onclick="return window.confirm( \'' . esc_html__( 'Are you sure you want to manually add an attendee? The number of free places will not be checked here. They WILL NOT get an auto email so you may need to email them details manually', 'quick-event-manager' ) . '\' );"/>';
@@ -3245,7 +3273,7 @@ function qem_messages() {
 				$selected = 'email';
 			}
 			if ( isset( $_POST['qem_sort_by'] ) ) {
-				$selected = sanitize_text_field( $_POST['qem_sort_by'] );
+				$selected = sanitize_text_field( wp_unslash( $_POST['qem_sort_by'] ) );
 			}
 			echo '<label for="cars">&nbsp' . esc_html__( 'Sort by:', 'quick-event-manager' ) . ':</label>
 <select name="qem_sort_by" onchange="this.form.submit()">';
@@ -3290,9 +3318,11 @@ function qem_messages() {
 				)
 			);
 			$template_loader->get_template_part( 'upgrade_cta' );
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 			echo qem_wp_kses_post( $template_loader->get_output() );
 		}
 	} else {
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- qem_wp_kses_post() escapes output via wp_kses_post().
 		echo qem_wp_kses_post( $noregistration );
 	}
 	echo '</div></div>';
@@ -3319,12 +3349,12 @@ function qem_get_eventlist_e( $event, $register, $messageoptions, $thecat ) {
 	echo '<select name="eventid" onchange="this.form.submit()"><option value="">' . esc_html__( 'Select an Event', 'quick-event-manager' ) . '</option>' . "\r\t";
 	$args        = array(
 		'post_type'      => 'event',
-		'meta_key'       => 'event_date',
+		'meta_key'       => 'event_date', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Intentional meta query required for event lookup.
 		'orderby'        => array( 'meta_value_num' => 'ASC', 'title' => 'DESC' ),
 		'posts_per_page' => - 1,
 		'category_name'  => $slug
 	);
-	$today       = strtotime( date( 'Y-m-d' ) );
+	$today       = strtotime( gmdate( 'Y-m-d' ) );
 	$event_posts = new WP_Query( $args );
 	if ( $event_posts->have_posts() ) {
 		while ( $event_posts->have_posts() ) {

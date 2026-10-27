@@ -1,6 +1,51 @@
 <?php
 // Check for IPN payment
 
+use Quick_Event_Manager\Plugin\Control\Plugin;
+
+/**
+ * Confirm a verified IPN message actually pays for this registration: completed status, paid to the
+ * configured merchant account, in the configured currency, for at least the stored total. A message
+ * being VERIFIED only proves it came from PayPal, not that it paid this merchant the right amount.
+ *
+ * @param array $ipn_data     IPN fields as posted by PayPal.
+ * @param array $payment      Stored payment settings.
+ * @param array $registration Stored registration row.
+ *
+ * @return bool
+ */
+function qem_ipn_payment_matches($ipn_data, $payment, $registration)
+{
+    if ('Completed' !== qem_get_element($ipn_data, 'payment_status', '')) {
+        return false;
+    }
+
+    $merchant = strtolower(trim((string) qem_get_element($payment, 'paypalemail', '')));
+    if ('' === $merchant) {
+        return false;
+    }
+    $receivers = array(
+        strtolower(trim((string) qem_get_element($ipn_data, 'receiver_email', ''))),
+        strtolower(trim((string) qem_get_element($ipn_data, 'business', ''))),
+        strtolower(trim((string) qem_get_element($ipn_data, 'receiver_id', ''))),
+    );
+    if (!in_array($merchant, $receivers, true)) {
+        return false;
+    }
+
+    if (strtoupper((string) qem_get_element($payment, 'currency', '')) !== strtoupper((string) qem_get_element($ipn_data, 'mc_currency', ''))) {
+        return false;
+    }
+
+    $expected = (float) qem_get_element($registration, 'total', 0);
+    $paid     = (float) qem_get_element($ipn_data, 'mc_gross', 0);
+    if ($expected <= 0 || $paid + 0.005 < $expected) {
+        return false;
+    }
+
+    return true;
+}
+
 function qem_check_ipnblock($payment, $item)
 {
     if (qem_get_element($payment, 'paypal', false) &&
@@ -33,6 +78,7 @@ function qem_ipn()
         define("QEMFW_LOG_FILE", "./ipn.log");
     }
 
+    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- PayPal IPN is a server-to-server callback and cannot carry a WP nonce.
     if (!isset ($_GET['debug'])) {
         $raw_post_data = file_get_contents('php://input');
         $raw_post_array = explode('&', $raw_post_data);
@@ -66,39 +112,43 @@ function qem_ipn()
         );
 
         if (is_wp_error($response) || 200 != wp_remote_retrieve_response_code($response)) {
-            if (QEMFW_DEBUG == true) {
-                error_log(date('[Y-m-d H:i e] ') . "Can't connect to PayPal to validate IPN message: Indetermined" . PHP_EOL, 3, QEMFW_LOG_FILE);
-            }
-
             return;
         }
 
-        $status = wp_remote_retrieve_body($response);
-
-        if (QEMFW_DEBUG == true) {
-            error_log(date('[Y-m-d H:i e] ') . "HTTP request of validation request:  for IPN payload: $req" .
-                print_r(wp_remote_retrieve_headers($response), true) .
-                PHP_EOL, 3, QEMFW_LOG_FILE);
-            error_log(date('[Y-m-d H:i e] ') . "HTTP response of validation request: $status" . PHP_EOL, 3, QEMFW_LOG_FILE);
-        }
+        $status   = wp_remote_retrieve_body($response);
+        $ipn_data = $myPost;
     } else {
+        /**
+         * Debug mode skips PayPal verification, so it must never be reachable by the public: without this
+         * gate anyone could request ?qem_ipn&debug=1&custom=<their token> to mark an unpaid registration Paid.
+         */
+        if (!(defined('WP_DEBUG') && WP_DEBUG && current_user_can('manage_options'))) {
+            return;
+        }
         $status = 'VERIFIED';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin-only IPN debug simulation.
+        $ipn_data = array_map('sanitize_text_field', wp_unslash((array) $_REQUEST));
     }
 
     if ('VERIFIED' == $status) {
-// phpcs:ignore WordPress.Security.NonceVerification.Missing -- No action, nonce is not required as from PayPal
-        $custom = sanitize_text_field($_REQUEST['custom']);
+        $custom = sanitize_text_field((string) qem_get_element($ipn_data, 'custom', ''));
+        if ('' === $custom || 'Paid' === $custom) {
+            return;
+        }
         $args = array('post_type' => 'event', 'posts_per_page' => -1);
-        query_posts($args);
-        if (have_posts()) {
-            while (have_posts()) {
-                the_post();
+        $qem_ipn_query = new WP_Query($args);
+        if ($qem_ipn_query->have_posts()) {
+            while ($qem_ipn_query->have_posts()) {
+                $qem_ipn_query->the_post();
                 $id = get_the_id();
                 $message = get_option('qem_messages_' . $id);
                 if ($message) {
                     $count = count($message);
                     for ($i = 0; $i < $count; $i++) {
                         if ($message[$i]['ipn'] == $custom) {
+                            if (!qem_ipn_payment_matches($ipn_data, $payment, $message[$i])) {
+                                continue;
+                            }
                             $message[$i]['ipn'] = 'Paid';
                             $auto = qem_get_stored_autoresponder();
                             $register = get_custom_registration_form($id);
@@ -158,5 +208,6 @@ function qem_ipn()
                 }
             }
         }
+        wp_reset_postdata();
     }
 }
