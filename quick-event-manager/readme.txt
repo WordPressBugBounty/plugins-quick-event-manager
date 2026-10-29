@@ -2,7 +2,7 @@
 Contributors: brightvesseldev, kleinmannbrightvessel
 Tags: event manager, calendar, events, event booking, event calendar
 Tested up to: 7.1
-Stable tag: 9.19
+Stable tag: 9.19.1
 Requires at least: 5.6
 Requires PHP: 7.4
 License: GPLv3 or later
@@ -126,6 +126,9 @@ Well OK yes you can add more fields if you want but you are going to have to fid
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/quick-event-manager)
 
 == Changelog ==
+
+= 9.19.1 - 29 Oct 2026 =
+* Fix: Included missing CSS stylesheet for admin registration/event styles.
 
 = 9.19 - 27 Oct 2026 =
 * Security fix: Restricted calendar (.ics) downloads to published events only. (Special thanks to Shikhali Jamalzade for reporting).
